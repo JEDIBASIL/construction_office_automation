@@ -1,13 +1,23 @@
 package com.example.construction_office_automation;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
-public class HelloController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class HelloController implements Initializable {
     @FXML
     private Label welcomeText;
+
+    @FXML
+//   ADMIN DASHBOARD SCENE
+    private AnchorPane appContainer;
 
     @FXML
 //   TAB LINKS
@@ -22,6 +32,29 @@ public class HelloController {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
+
+//      ADDED AN EVENTLISTENER TO EACH OF THE SIDEBAR LINKS
+        homeTabLink.setOnMouseClicked(event -> {
+            switchPane(0);
+            switchActiveLink(sideBarLinks,homeTabLink);
+        });
+        projectsTabLink.setOnMouseClicked(event -> {
+            switchPane(1);
+            switchActiveLink(sideBarLinks,projectsTabLink);
+        });
+        workersTabLink.setOnMouseClicked(event -> {
+            switchPane(2);
+            switchActiveLink(sideBarLinks,workersTabLink);
+        });
+        settingsTabLink.setOnMouseClicked(event -> {
+            switchPane(7);
+            switchActiveLink(sideBarLinks,settingsTabLink);
+        });
+//       >>>
+    }
 
 //   METHOD TO SWITCH APP TABPANE
      public void switchPane(int tab){
@@ -42,6 +75,8 @@ public class HelloController {
             activeLink.getStyleClass().add("active");
         }
     }
+
+
 
 
 

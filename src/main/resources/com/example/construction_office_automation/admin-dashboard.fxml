@@ -28,7 +28,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1194.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.construction_office_automation.HelloController">
+<AnchorPane fx:id="appContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1194.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.construction_office_automation.HelloController">
    <children>
       <VBox prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0" />
       <AnchorPane layoutX="333.0" layoutY="215.0" prefHeight="200.0" prefWidth="200.0" styleClass="modal-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -96,7 +96,7 @@
                <children>
                   <VBox prefHeight="228.0" prefWidth="230.0" spacing="15.0">
                      <children>
-                        <HBox fx:id="homeTabLink" alignment="CENTER_LEFT" onMouseClicked="#onHomeTabLinkClick" prefHeight="43.0" prefWidth="189.0">
+                        <HBox fx:id="homeTabLink" alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="189.0">
                            <children>
                               <ImageView fitHeight="28.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -452,6 +452,128 @@
                               </ScrollPane>
                            </content>
                         </Tab>
+                        <Tab text="projects table section">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <VBox prefHeight="767.0" prefWidth="985.0">
+                                       <styleClass>
+                                          <String fx:value="body" />
+                                          <String fx:value="white" />
+                                       </styleClass>
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="713.0" prefWidth="898.0" spacing="10.0" styleClass="table-container">
+                                             <children>
+                                                <HBox alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="957.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="33.0" prefWidth="408.0" HBox.hgrow="ALWAYS">
+                                                         <children>
+                                                            <TextField prefHeight="33.0" prefWidth="238.0" promptText="Search workers" styleClass="search-input" />
+                                                         </children>
+                                                      </VBox>
+                                                      <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" styleClass="add-worker-btn" text="Add project">
+                                                         <font>
+                                                            <Font name="Arial Rounded MT Bold" size="15.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="730.0" prefWidth="958.0">
+                                                   <children>
+                                                      <VBox prefHeight="720.0" prefWidth="955.0" HBox.hgrow="ALWAYS">
+                                                         <children>
+                                                            <TreeTableView prefHeight="616.0" prefWidth="957.0">
+                                                               <columns>
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" styleClass="tree-table-column" text="Name" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Owner" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Budget" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Location" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Prj Dr" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Starting date" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Finsihing date" />
+                                                               </columns>
+                                                               <columnResizePolicy>
+                                                                  <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                               </columnResizePolicy>
+                                                            </TreeTableView>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="984.0">
+                                                               <children>
+                                                                  <Pagination prefHeight="51.0" prefWidth="229.0" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="workers table section">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <VBox prefHeight="788.0" prefWidth="985.0">
+                                       <styleClass>
+                                          <String fx:value="body" />
+                                          <String fx:value="white" />
+                                       </styleClass>
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="705.0" prefWidth="945.0" spacing="10.0" styleClass="table-container">
+                                             <children>
+                                                <HBox alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="957.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="33.0" prefWidth="408.0" HBox.hgrow="ALWAYS">
+                                                         <children>
+                                                            <TextField prefHeight="33.0" prefWidth="238.0" promptText="Search workers" styleClass="search-input" />
+                                                         </children>
+                                                      </VBox>
+                                                      <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" styleClass="add-worker-btn" text="Add worker">
+                                                         <font>
+                                                            <Font name="Arial Rounded MT Bold" size="15.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="730.0" prefWidth="958.0">
+                                                   <children>
+                                                      <VBox prefHeight="720.0" prefWidth="955.0" HBox.hgrow="ALWAYS">
+                                                         <children>
+                                                            <TreeTableView prefHeight="616.0" prefWidth="957.0">
+                                                               <columns>
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="First name" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Surname" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Other names" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Phone no" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Department" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Age" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Gender" />
+                                                               </columns>
+                                                               <columnResizePolicy>
+                                                                  <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                               </columnResizePolicy>
+                                                            </TreeTableView>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="984.0">
+                                                               <children>
+                                                                  <Pagination prefHeight="51.0" prefWidth="229.0" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
                         <Tab text="add worker section">
                            <content>
                               <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
@@ -743,128 +865,6 @@
                               </ScrollPane>
                            </content>
                         </Tab>
-                        <Tab text="projects table section">
-                           <content>
-                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
-                                 <content>
-                                    <VBox prefHeight="767.0" prefWidth="985.0">
-                                       <styleClass>
-                                          <String fx:value="body" />
-                                          <String fx:value="white" />
-                                       </styleClass>
-                                       <children>
-                                          <VBox alignment="CENTER" prefHeight="713.0" prefWidth="898.0" spacing="10.0" styleClass="table-container">
-                                             <children>
-                                                <HBox alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="957.0">
-                                                   <children>
-                                                      <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="33.0" prefWidth="408.0" HBox.hgrow="ALWAYS">
-                                                         <children>
-                                                            <TextField prefHeight="33.0" prefWidth="238.0" promptText="Search workers" styleClass="search-input" />
-                                                         </children>
-                                                      </VBox>
-                                                      <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" styleClass="add-worker-btn" text="Add project">
-                                                         <font>
-                                                            <Font name="Arial Rounded MT Bold" size="15.0" />
-                                                         </font>
-                                                      </Button>
-                                                   </children>
-                                                </HBox>
-                                                <HBox prefHeight="730.0" prefWidth="958.0">
-                                                   <children>
-                                                      <VBox prefHeight="720.0" prefWidth="955.0" HBox.hgrow="ALWAYS">
-                                                         <children>
-                                                            <TreeTableView prefHeight="616.0" prefWidth="957.0">
-                                                               <columns>
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" styleClass="tree-table-column" text="Name" />
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Owner" />
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Budget" />
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Location" />
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Prj Dr" />
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Starting date" />
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Finsihing date" />
-                                                               </columns>
-                                                               <columnResizePolicy>
-                                                                  <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                                               </columnResizePolicy>
-                                                            </TreeTableView>
-                                                            <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="984.0">
-                                                               <children>
-                                                                  <Pagination prefHeight="51.0" prefWidth="229.0" />
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </VBox>
-                                 </content>
-                              </ScrollPane>
-                           </content>
-                        </Tab>
-                        <Tab text="workers table section">
-                           <content>
-                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
-                                 <content>
-                                    <VBox prefHeight="788.0" prefWidth="985.0">
-                                       <styleClass>
-                                          <String fx:value="body" />
-                                          <String fx:value="white" />
-                                       </styleClass>
-                                       <children>
-                                          <VBox alignment="CENTER" prefHeight="705.0" prefWidth="945.0" spacing="10.0" styleClass="table-container">
-                                             <children>
-                                                <HBox alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="957.0">
-                                                   <children>
-                                                      <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="33.0" prefWidth="408.0" HBox.hgrow="ALWAYS">
-                                                         <children>
-                                                            <TextField prefHeight="33.0" prefWidth="238.0" promptText="Search workers" styleClass="search-input" />
-                                                         </children>
-                                                      </VBox>
-                                                      <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" styleClass="add-worker-btn" text="Add worker">
-                                                         <font>
-                                                            <Font name="Arial Rounded MT Bold" size="15.0" />
-                                                         </font>
-                                                      </Button>
-                                                   </children>
-                                                </HBox>
-                                                <HBox prefHeight="730.0" prefWidth="958.0">
-                                                   <children>
-                                                      <VBox prefHeight="720.0" prefWidth="955.0" HBox.hgrow="ALWAYS">
-                                                         <children>
-                                                            <TreeTableView prefHeight="616.0" prefWidth="957.0">
-                                                               <columns>
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="First name" />
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Surname" />
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Other names" />
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Phone no" />
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Department" />
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Age" />
-                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Gender" />
-                                                               </columns>
-                                                               <columnResizePolicy>
-                                                                  <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                                               </columnResizePolicy>
-                                                            </TreeTableView>
-                                                            <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="984.0">
-                                                               <children>
-                                                                  <Pagination prefHeight="51.0" prefWidth="229.0" />
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </VBox>
-                                 </content>
-                              </ScrollPane>
-                           </content>
-                        </Tab>
                         <Tab text="project statistics section">
                            <content>
                               <ScrollPane fitToWidth="true" prefHeight="954.0" prefWidth="973.0">
@@ -1054,6 +1054,155 @@
                                                 </VBox>
                                              </children>
                                           </VBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="add worker section">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <VBox prefHeight="764.0" prefWidth="985.0">
+                                       <styleClass>
+                                          <String fx:value="body" />
+                                          <String fx:value="white" />
+                                       </styleClass>
+                                       <children>
+                                          <HBox fillHeight="false" prefHeight="579.0" prefWidth="925.0" spacing="40.0" styleClass="form-container">
+                                             <children>
+                                                <VBox prefHeight="539.0" prefWidth="588.0" spacing="30.0">
+                                                   <children>
+                                                      <Label styleClass="heading" text="Add worker" />
+                                                      <GridPane hgap="20.0" prefHeight="486.0" prefWidth="597.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content">
+                                                               <children>
+                                                                  <Label text="First name" />
+                                                                  <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
+                                                               <children>
+                                                                  <Label text="Surname" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <Label text="Other names" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <Label text="Email" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="3">
+                                                               <children>
+                                                                  <Label text="Age" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                               <children>
+                                                                  <Label text="Gender" />
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="313.0" spacing="10.0">
+                                                                     <children>
+                                                                        <RadioButton mnemonicParsing="false" text="Male" />
+                                                                        <RadioButton mnemonicParsing="false" text="Female" />
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                                                               <children>
+                                                                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="287.0" styleClass="add-worker-btn" text="Add ">
+                                                                     <HBox.margin>
+                                                                        <Insets top="10.0" />
+                                                                     </HBox.margin>
+                                                                     <font>
+                                                                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                               </children>
+                                                            </HBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="2">
+                                                               <children>
+                                                                  <Label text="Department" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <children>
+                                                                  <Label text="Phone number" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="237.0" prefWidth="252.0" styleClass="img-container">
+                                                   <children>
+                                                      <ImageView fitHeight="270.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets top="70.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
                                        </children>
                                     </VBox>
                                  </content>
@@ -1448,155 +1597,6 @@
                                                 </TabPane>
                                              </children>
                                           </VBox>
-                                       </children>
-                                    </VBox>
-                                 </content>
-                              </ScrollPane>
-                           </content>
-                        </Tab>
-                        <Tab text="add worker section">
-                           <content>
-                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
-                                 <content>
-                                    <VBox prefHeight="764.0" prefWidth="985.0">
-                                       <styleClass>
-                                          <String fx:value="body" />
-                                          <String fx:value="white" />
-                                       </styleClass>
-                                       <children>
-                                          <HBox fillHeight="false" prefHeight="579.0" prefWidth="925.0" spacing="40.0" styleClass="form-container">
-                                             <children>
-                                                <VBox prefHeight="539.0" prefWidth="588.0" spacing="30.0">
-                                                   <children>
-                                                      <Label styleClass="heading" text="Add worker" />
-                                                      <GridPane hgap="20.0" prefHeight="486.0" prefWidth="597.0">
-                                                         <columnConstraints>
-                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                         </columnConstraints>
-                                                         <rowConstraints>
-                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                         </rowConstraints>
-                                                         <children>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content">
-                                                               <children>
-                                                                  <Label text="First name" />
-                                                                  <TextField prefHeight="39.0" prefWidth="314.0">
-                                                                     <VBox.margin>
-                                                                        <Insets bottom="3.0" top="10.0" />
-                                                                     </VBox.margin>
-                                                                  </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
-                                                               </children>
-                                                            </VBox>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
-                                                               <children>
-                                                                  <Label text="Surname" />
-                                                                  <TextField>
-                                                                     <VBox.margin>
-                                                                        <Insets bottom="3.0" top="10.0" />
-                                                                     </VBox.margin>
-                                                                  </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
-                                                               </children>
-                                                            </VBox>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="1">
-                                                               <children>
-                                                                  <Label text="Other names" />
-                                                                  <TextField>
-                                                                     <VBox.margin>
-                                                                        <Insets bottom="3.0" top="10.0" />
-                                                                     </VBox.margin>
-                                                                  </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
-                                                               </children>
-                                                            </VBox>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                               <children>
-                                                                  <Label text="Email" />
-                                                                  <TextField>
-                                                                     <VBox.margin>
-                                                                        <Insets bottom="3.0" top="10.0" />
-                                                                     </VBox.margin>
-                                                                  </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
-                                                               </children>
-                                                            </VBox>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="3">
-                                                               <children>
-                                                                  <Label text="Age" />
-                                                                  <TextField>
-                                                                     <VBox.margin>
-                                                                        <Insets bottom="3.0" top="10.0" />
-                                                                     </VBox.margin>
-                                                                  </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
-                                                               </children>
-                                                            </VBox>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                                               <children>
-                                                                  <Label text="Gender" />
-                                                                  <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="313.0" spacing="10.0">
-                                                                     <children>
-                                                                        <RadioButton mnemonicParsing="false" text="Male" />
-                                                                        <RadioButton mnemonicParsing="false" text="Female" />
-                                                                     </children>
-                                                                  </HBox>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
-                                                               </children>
-                                                            </VBox>
-                                                            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
-                                                               <children>
-                                                                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="287.0" styleClass="add-worker-btn" text="Add ">
-                                                                     <HBox.margin>
-                                                                        <Insets top="10.0" />
-                                                                     </HBox.margin>
-                                                                     <font>
-                                                                        <Font name="Arial Rounded MT Bold" size="17.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                               </children>
-                                                            </HBox>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="2">
-                                                               <children>
-                                                                  <Label text="Department" />
-                                                                  <TextField>
-                                                                     <VBox.margin>
-                                                                        <Insets bottom="3.0" top="10.0" />
-                                                                     </VBox.margin>
-                                                                  </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
-                                                               </children>
-                                                            </VBox>
-                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                                               <children>
-                                                                  <Label text="Phone number" />
-                                                                  <TextField>
-                                                                     <VBox.margin>
-                                                                        <Insets bottom="3.0" top="10.0" />
-                                                                     </VBox.margin>
-                                                                  </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </GridPane>
-                                                   </children>
-                                                </VBox>
-                                                <VBox prefHeight="237.0" prefWidth="252.0" styleClass="img-container">
-                                                   <children>
-                                                      <ImageView fitHeight="270.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true" />
-                                                   </children>
-                                                   <HBox.margin>
-                                                      <Insets top="70.0" />
-                                                   </HBox.margin>
-                                                </VBox>
-                                             </children>
-                                          </HBox>
                                        </children>
                                     </VBox>
                                  </content>
