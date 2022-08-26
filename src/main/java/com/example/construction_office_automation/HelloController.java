@@ -28,5 +28,21 @@ public class HelloController {
         appTabPane.getSelectionModel().select(tab);
      }
 
+//  ALGORITHM TO SWITCH PANE ON CLICK OF EACH ITEM IN THE SIDEBAR
+    public  static  void switchActiveLink(HBox[] links, HBox activeLink){
+
+        if(activeLink == null){
+            for(HBox link:links){
+                link.getStyleClass().remove("active");
+            }
+        }else{
+            for(HBox link:links){
+                link.getStyleClass().remove("active");
+            }
+            activeLink.getStyleClass().add("active");
+        }
+    }
+
+
 
 }
