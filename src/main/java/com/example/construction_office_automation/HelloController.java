@@ -4,12 +4,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class HelloController implements Initializable {
     @FXML
@@ -19,6 +19,9 @@ public class HelloController implements Initializable {
 //   ADMIN DASHBOARD SCENE
     private AnchorPane appContainer;
 
+    @FXML
+//  MODAL CONTAINER
+    private AnchorPane modalContainer;
     @FXML
 //   TAB LINKS
     private HBox homeTabLink,projectsTabLink,workersTabLink,settingsTabLink;
@@ -34,7 +37,13 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
+
+//      SETTING THE MODAL CONTAINER INVISIBLE
+        modalContainer.setVisible(false);
+
 
 //      ADDED AN EVENTLISTENER TO EACH OF THE SIDEBAR LINKS
         homeTabLink.setOnMouseClicked(event -> {
@@ -54,11 +63,17 @@ public class HelloController implements Initializable {
             switchActiveLink(sideBarLinks,settingsTabLink);
         });
 //       >>>
+
     }
 
 //   METHOD TO SWITCH APP TABPANE
      public void switchPane(int tab){
         appTabPane.getSelectionModel().select(tab);
+     }
+
+//   METHOD TO SWITCH TO DARK MODE
+     public  void switchTheme(){
+         appContainer.getStylesheets().add(1, String.valueOf(HelloApplication.class.getResource("styles/dark-mode.css")));
      }
 
 //  ALGORITHM TO SWITCH PANE ON CLICK OF EACH ITEM IN THE SIDEBAR
@@ -75,8 +90,6 @@ public class HelloController implements Initializable {
             activeLink.getStyleClass().add("active");
         }
     }
-
-
 
 
 

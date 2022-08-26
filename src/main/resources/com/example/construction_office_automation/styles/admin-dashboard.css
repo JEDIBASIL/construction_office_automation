@@ -436,7 +436,7 @@
     -fx-background-radius:5;
     -fx-border-radius:5;
     -fx-alignment:CENTER;
-    -fx-border-color:rgb(165, 165, 165);
+    -fx-border-color:rgb(128, 128, 128);
 }
 
 .modal-heading{
