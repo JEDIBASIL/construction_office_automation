@@ -1,0 +1,157 @@
+.side-bar {
+    -fx-background-color: rgb(37, 38, 43);
+    /* -fx-background-color: rgb(20, 21, 23); */
+    -fx-border-color: rgb(25, 25, 25);
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+
+
+.menu:hover {
+    -fx-background-color: rgba(249, 249, 249, 0.053);
+}
+
+.menu .label {
+    -fx-text-fill:gainsboro;
+}
+
+.top-bar {
+    /* -fx-background-color: rgb(244, 246, 250); */
+    -fx-background-color: rgb(37, 38, 43);
+    -fx-border-color: rgb(25, 25, 25);
+    /*  */
+}
+
+.top-bar .search-box {
+    -fx-background-color: rgb(29, 30, 35);
+    -fx-border-color: rgb(68, 68, 68);
+}
+.top-bar .search-box .text-field{
+    -fx-text-fill: whitesmoke;
+}
+.top-bar-icon {
+    -fx-border-color: rgb(74, 75, 76);
+}
+
+.white {
+    -fx-background-color: rgb(26, 27, 30);
+}
+
+.scroll-bar:horizontal,
+.scroll-bar:vertical {
+    -fx-background-color: rgb(37, 38, 43);
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgb(90, 90, 90);
+    -fx-background-radius: 5em;
+}
+
+.overview-container .overview-card {
+    -fx-background-color: rgb(37, 38, 43);
+}
+
+.overview-container .overview-card .details .label {
+    -fx-text-fill: rgb(225, 222, 222);
+}
+
+.overview-container .overview-card .title {
+    -fx-background-color: rgba(249, 249, 249, 0.053);
+}
+
+.quick-action-container .content {
+    -fx-background-color: rgb(37, 38, 43);
+}
+
+.quick-action-container .content:hover {
+    -fx-background-color: rgb(52, 54, 61);
+}
+
+.quick-action-container .content .card {
+    -fx-background-radius: 20;
+    -fx-background-color: rgb(50, 201, 175);
+}
+
+
+.upcoming-project-container {
+    -fx-background-color: rgb(37, 38, 43);
+}
+
+.upcoming-project-container-list {
+    -fx-background-color: rgb(29, 30, 35);
+    /* -fx-border-color: rgb(74, 75, 76); */
+}
+
+
+
+.display_workers-details-card {
+    -fx-background-color: rgb(37, 38, 43);
+}
+
+.form-container {
+    -fx-background-color: rgb(37, 38, 43);
+    -fx-border-color: rgb(25, 25, 25);
+}
+
+.form-content {
+    /* -fx-background-color: white; */
+}
+
+.form-content .label {
+    -fx-text-fill: gainsboro;
+}
+
+.form-content .text-field {
+    -fx-border-color: rgb(74, 75, 76);
+    -fx-text-fill: whitesmoke;
+}
+
+.form-content .error-message {
+    -fx-text-fill: crimson;
+}
+
+
+
+.img-container {
+    -fx-background-color: rgb(29, 30, 35);
+    -fx-border-color: rgb(74, 75, 76);
+}
+
+.table-container {
+    -fx-background-color: rgb(37, 38, 43);
+    -fx-border-color: rgb(25, 25, 25);
+}
+
+.search-input {
+    -fx-border-color: rgb(74, 75, 76);
+    -fx-text-fill: whitesmoke;
+}
+
+.progress-bar .track{
+    -fx-background-color: rgb(29, 30, 35);
+}
+
+.border-bottom{
+    -fx-border-color: rgb(74, 75, 76);
+}
+
+.setting-tab .tab-header-area .tab-header-background{
+    -fx-border-color:gainsboro;
+    -fx-border-color: rgb(74, 75, 76);
+}
+
+.setting-tab .tab .tab-label{
+    -fx-text-fill:whitesmoke;
+}
+
+.modal-container{
+    -fx-background-color: rgba(25, 25, 25, 0.733);
+}
+
+.modal,.toast{
+    -fx-background-color: rgb(36, 38, 42);
+    -fx-border-color: rgb(74, 75, 76);}
