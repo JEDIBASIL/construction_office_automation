@@ -2,6 +2,7 @@ package com.example.construction_office_automation;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
@@ -29,6 +30,10 @@ public class HelloController implements Initializable {
     @FXML
 //   APP TABPANE
     private TabPane appTabPane;
+
+//   DARK MODE CHECKBOX
+    @FXML
+     private CheckBox darkModeCheckBox;
 
     @FXML
     protected void onHelloButtonClick() {
@@ -64,6 +69,16 @@ public class HelloController implements Initializable {
         });
 //       >>>
 
+        darkModeCheckBox.setOnAction(event -> {
+            if (darkModeCheckBox.isSelected()){
+                switchTheme(true);
+                darkModeCheckBox.setText("ON");
+            }else{
+                switchTheme(false);
+                darkModeCheckBox.setText("OFF");
+            }
+        });
+
     }
 
 //   METHOD TO SWITCH APP TABPANE
@@ -72,8 +87,13 @@ public class HelloController implements Initializable {
      }
 
 //   METHOD TO SWITCH TO DARK MODE
-     public  void switchTheme(){
-         appContainer.getStylesheets().add(1, String.valueOf(HelloApplication.class.getResource("styles/dark-mode.css")));
+     public  void switchTheme(boolean theme){
+        if(theme == true){
+            appContainer.getStylesheets().add(1, String.valueOf(HelloApplication.class.getResource("styles/dark-mode.css")));
+        }else {
+            appContainer.getStylesheets().remove(1);
+
+        }
      }
 
 //  ALGORITHM TO SWITCH PANE ON CLICK OF EACH ITEM IN THE SIDEBAR

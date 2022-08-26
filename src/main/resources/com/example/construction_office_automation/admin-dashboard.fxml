@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
@@ -30,6 +31,65 @@
 <AnchorPane fx:id="appContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1194.0" stylesheets="@styles/admin-dashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.construction_office_automation.HelloController">
    <children>
       <VBox prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0" />
+      <AnchorPane fx:id="modalContainer" layoutX="333.0" layoutY="215.0" prefHeight="200.0" prefWidth="200.0" styleClass="modal-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox prefHeight="252.0" prefWidth="543.0" styleClass="modal">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <HBox layoutX="221.0" layoutY="35.0" prefHeight="11.0" prefWidth="22.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ICONS/icons8_forward_50px.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                              </HBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label styleClass="modal-heading" text="Risky" />
+                                    <Label styleClass="modal-sub-heading" text="Are you sure you want to terminate this project" />
+                                    <HBox alignment="CENTER" prefHeight="65.0" prefWidth="756.0" spacing="20.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="108.0" style="-fx-background-color: gray;" text="Close">
+                                             <font>
+                                                <Font name="Arial Rounded MT Bold" size="17.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="add-worker-btn" />
+                                                <String fx:value="small-btn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="111.0" style="-fx-background-color: crimson;" text="Terminate">
+                                             <font>
+                                                <Font name="Arial Rounded MT Bold" size="17.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="add-worker-btn" />
+                                                <String fx:value="small-btn" />
+                                             </styleClass>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="793.0" prefWidth="1192.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <VBox prefHeight="709.0" prefWidth="219.0" styleClass="side-bar" BorderPane.alignment="CENTER">
@@ -1165,7 +1225,31 @@
                                                    <tabs>
                                                       <Tab text="Genral">
                                                          <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="586.0" prefWidth="854.0">
+                                                               <children>
+                                                                  <VBox layoutX="156.0" layoutY="396.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <children>
+                                                                        <HBox prefHeight="466.0" prefWidth="854.0" spacing="40.0">
+                                                                           <children>
+                                                                              <VBox prefHeight="302.0" prefWidth="632.0" styleClass="upcoming-project-container">
+                                                                                 <children>
+                                                                                    <Label styleClass="sub-heading" text="Dark mode" />
+                                                                                    <CheckBox fx:id="darkModeCheckBox" mnemonicParsing="false" text="OFF">
+                                                                                       <font>
+                                                                                          <Font name="Hiragino Sans W6" size="13.0" />
+                                                                                       </font>
+                                                                                    </CheckBox>
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                               <padding>
+                                                                  <Insets bottom="10.0" top="30.0" />
+                                                               </padding>
+                                                            </AnchorPane>
                                                          </content>
                                                       </Tab>
                                                       <Tab text="Admin">
@@ -1590,64 +1674,5 @@
             </GridPane>
          </top>
       </BorderPane>
-      <AnchorPane fx:id="modalContainer" layoutX="333.0" layoutY="215.0" prefHeight="200.0" prefWidth="200.0" styleClass="modal-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <VBox prefHeight="252.0" prefWidth="543.0" styleClass="modal">
-                     <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <HBox layoutX="221.0" layoutY="35.0" prefHeight="11.0" prefWidth="22.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@ICONS/icons8_forward_50px.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                                 <padding>
-                                    <Insets right="10.0" />
-                                 </padding>
-                              </HBox>
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label styleClass="modal-heading" text="Risky" />
-                                    <Label styleClass="modal-sub-heading" text="Are you sure you want to terminate this project" />
-                                    <HBox alignment="CENTER" prefHeight="65.0" prefWidth="756.0" spacing="20.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="108.0" style="-fx-background-color: gray;" text="Close">
-                                             <font>
-                                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                                             </font>
-                                             <styleClass>
-                                                <String fx:value="add-worker-btn" />
-                                                <String fx:value="small-btn" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="111.0" style="-fx-background-color: crimson;" text="Terminate">
-                                             <font>
-                                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                                             </font>
-                                             <styleClass>
-                                                <String fx:value="add-worker-btn" />
-                                                <String fx:value="small-btn" />
-                                             </styleClass>
-                                          </Button>
-                                       </children>
-                                       <padding>
-                                          <Insets left="20.0" />
-                                       </padding>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

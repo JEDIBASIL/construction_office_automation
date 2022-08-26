@@ -4,7 +4,7 @@
     -fx-border-color: rgb(25, 25, 25);
 }
 
-.label {
+.label,.check-box {
     -fx-text-fill: white;
 }
 
