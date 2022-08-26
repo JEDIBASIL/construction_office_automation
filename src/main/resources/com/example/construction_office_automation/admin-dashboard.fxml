@@ -1,0 +1,1650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1194.0" stylesheets="@styles/admin-dashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.construction_office_automation.HelloController">
+   <children>
+      <AnchorPane layoutX="333.0" layoutY="215.0" prefHeight="200.0" prefWidth="200.0" styleClass="modal-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox prefHeight="252.0" prefWidth="543.0" styleClass="modal">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <HBox layoutX="221.0" layoutY="35.0" prefHeight="11.0" prefWidth="22.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ICONS/icons8_forward_50px.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                              </HBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label styleClass="modal-heading" text="Risky" />
+                                    <Label styleClass="modal-sub-heading" text="Are you sure you want to terminate this project" />
+                                    <HBox alignment="CENTER" prefHeight="65.0" prefWidth="756.0" spacing="20.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="108.0" style="-fx-background-color: gray;" text="Close">
+                                             <font>
+                                                <Font name="Arial Rounded MT Bold" size="17.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="add-worker-btn" />
+                                                <String fx:value="small-btn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="111.0" style="-fx-background-color: crimson;" text="Terminate">
+                                             <font>
+                                                <Font name="Arial Rounded MT Bold" size="17.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="add-worker-btn" />
+                                                <String fx:value="small-btn" />
+                                             </styleClass>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <VBox prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0" />
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="793.0" prefWidth="1192.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="709.0" prefWidth="219.0" styleClass="side-bar" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="228.0" prefWidth="230.0" spacing="15.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="189.0">
+                           <children>
+                              <ImageView fitHeight="28.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ICONS/icons8_hangar_50px.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Home" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="menu" />
+                              <String fx:value="active" />
+                           </styleClass>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="10.0" prefHeight="43.0" prefWidth="189.0" styleClass="menu">
+                           <children>
+                              <ImageView fitHeight="32.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ICONS/icons8_project_50px.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Projects" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="68.0" prefHeight="43.0" prefWidth="189.0" styleClass="menu">
+                           <children>
+                              <ImageView fitHeight="32.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ICONS/icons8_workers_50px_1.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Workers" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="126.0" prefHeight="43.0" prefWidth="189.0" styleClass="menu">
+                           <children>
+                              <ImageView fitHeight="32.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@ICONS/icons8_settings_50px_1.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Settings" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="app-container" BorderPane.alignment="CENTER">
+               <children>
+                  <TabPane layoutX="76.0" layoutY="-33.0" prefHeight="720.0" prefWidth="737.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-33.0">
+                     <tabs>
+                        <Tab text="home section">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <VBox prefHeight="881.0" prefWidth="914.0" spacing="20.0">
+                                       <children>
+                                          <HBox fillHeight="false" prefHeight="336.0" prefWidth="582.0" spacing="30.0">
+                                             <children>
+                                                <VBox prefHeight="336.0" prefWidth="344.0" styleClass="overview-container" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <GridPane hgap="30.0" prefHeight="337.0" prefWidth="321.0" vgap="30.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="100.0" styleClass="overview-card" GridPane.columnIndex="1">
+                                                               <children>
+                                                                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="141.0" styleClass="details">
+                                                                     <children>
+                                                                        <Label prefHeight="34.0" prefWidth="163.0" text="100">
+                                                                           <font>
+                                                                              <Font name="Apple Symbols" size="14.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                                                           <children>
+                                                                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                                                                                 <image>
+                                                                                    <Image url="@ICONS/icons8-verified_account.png" />
+                                                                                 </image>
+                                                                              </ImageView>
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" prefHeight="44.0" prefWidth="141.0" styleClass="title">
+                                                                     <children>
+                                                                        <Label text="Completed project" />
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="overview-card" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="141.0" styleClass="details">
+                                                                     <children>
+                                                                        <Label prefHeight="34.0" prefWidth="284.0" text="100" />
+                                                                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                                                           <children>
+                                                                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                                                                                 <image>
+                                                                                    <Image url="@ICONS/icons8-timetable.png" />
+                                                                                 </image>
+                                                                              </ImageView>
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" prefHeight="44.0" prefWidth="141.0" styleClass="title">
+                                                                     <children>
+                                                                        <Label text="Pending project" />
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox alignment="BOTTOM_LEFT" layoutX="181.0" layoutY="189.0" prefHeight="200.0" prefWidth="100.0" styleClass="overview-card" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="141.0" styleClass="details">
+                                                                     <children>
+                                                                        <Label prefHeight="34.0" prefWidth="285.0" text="100" />
+                                                                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                                                           <children>
+                                                                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                                                                                 <image>
+                                                                                    <Image url="@ICONS/icons8-advance.png" />
+                                                                                 </image>
+                                                                              </ImageView>
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" prefHeight="44.0" prefWidth="141.0" styleClass="title">
+                                                                     <children>
+                                                                        <Label text="Ongoing project" />
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox alignment="BOTTOM_LEFT" layoutX="181.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="141.0" styleClass="details">
+                                                                     <children>
+                                                                        <Label prefHeight="38.0" prefWidth="103.0" text="100" />
+                                                                        <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="52.0" HBox.hgrow="ALWAYS">
+                                                                           <children>
+                                                                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                                                                                 <image>
+                                                                                    <Image url="@ICONS/icons8-verified_account.png" />
+                                                                                 </image>
+                                                                              </ImageView>
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" prefHeight="44.0" prefWidth="141.0" styleClass="title">
+                                                                     <children>
+                                                                        <Label text="Total project" />
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                               <styleClass>
+                                                                  <String fx:value="overview-card" />
+                                                                  <String fx:value="total-project" />
+                                                               </styleClass>
+                                                            </VBox>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="326.0" prefWidth="235.0" spacing="20.0" styleClass="quick-action-container">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="15.0" prefWidth="263.0" text="Quick actions" VBox.vgrow="ALWAYS">
+                                                         <font>
+                                                            <Font name="Hiragino Sans W7" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <GridPane hgap="30.0" prefHeight="274.0" prefWidth="258.0" vgap="30.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="content">
+                                                               <children>
+                                                                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="card">
+                                                                     <children>
+                                                                        <ImageView fitHeight="38.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@ICONS/icons8_hammer_120px.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <Label text="Add projects" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="content" GridPane.columnIndex="1">
+                                                               <children>
+                                                                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: rgb(236,99,99);" styleClass="card">
+                                                                     <children>
+                                                                        <ImageView fitHeight="38.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@ICONS/icons8_worker_120px.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <Label text="Add worker" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="content" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: rgb(79,193,233);" styleClass="card">
+                                                                     <children>
+                                                                        <ImageView fitHeight="38.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@ICONS/icons8_tow_truck_50px.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <Label text="View projects" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox alignment="CENTER" layoutX="10.0" layoutY="157.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="content" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <GridPane hgap="30.0" prefHeight="94.0" prefWidth="898.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" styleClass="display_workers-details-card">
+                                                   <children>
+                                                      <Label text="Total workers">
+                                                         <font>
+                                                            <Font name="Hiragino Sans W6" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="500K">
+                                                         <font>
+                                                            <Font name="Hiragino Sans W8" size="22.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" styleClass="display_workers-details-card" GridPane.columnIndex="1">
+                                                   <children>
+                                                      <Label text="Assign workers">
+                                                         <font>
+                                                            <Font name="Hiragino Sans W6" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="500K">
+                                                         <font>
+                                                            <Font name="Hiragino Sans W8" size="22.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox layoutX="300.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" styleClass="display_workers-details-card" GridPane.columnIndex="2">
+                                                   <children>
+                                                      <Label text="Unassign workers">
+                                                         <font>
+                                                            <Font name="Hiragino Sans W6" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="500K">
+                                                         <font>
+                                                            <Font name="Hiragino Sans W8" size="22.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </GridPane>
+                                          <HBox prefHeight="302.0" prefWidth="854.0">
+                                             <children>
+                                                <VBox prefHeight="302.0" prefWidth="632.0" styleClass="upcoming-project-container" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label styleClass="sub-heading" text="Upcoming projects" />
+                                                      <VBox prefHeight="222.0" prefWidth="591.0" spacing="10.0">
+                                                         <children>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                               <children>
+                                                                  <Label text="Apple store" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="30.0" prefHeight="56.0" prefWidth="530.0" styleClass="upcoming-project-container-list">
+                                                               <children>
+                                                                  <Label text="Apple store" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="96.0" prefHeight="56.0" prefWidth="530.0" styleClass="upcoming-project-container-list">
+                                                               <children>
+                                                                  <Label text="Apple store" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="162.0" prefHeight="56.0" prefWidth="530.0" styleClass="upcoming-project-container-list">
+                                                               <children>
+                                                                  <Label text="Apple store" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                         <padding>
+                                                            <Insets top="5.0" />
+                                                         </padding>
+                                                      </VBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="white" />
+                                          <String fx:value="body" />
+                                       </styleClass>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="add worker section">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <VBox prefHeight="764.0" prefWidth="985.0">
+                                       <styleClass>
+                                          <String fx:value="body" />
+                                          <String fx:value="white" />
+                                       </styleClass>
+                                       <children>
+                                          <HBox fillHeight="false" prefHeight="658.0" prefWidth="898.0" spacing="40.0" styleClass="form-container">
+                                             <children>
+                                                <VBox prefHeight="638.0" prefWidth="654.0">
+                                                   <children>
+                                                      <Label styleClass="heading" text="Add project">
+                                                         <VBox.margin>
+                                                            <Insets bottom="30.0" />
+                                                         </VBox.margin>
+                                                      </Label>
+                                                      <GridPane hgap="20.0" prefHeight="289.0" prefWidth="654.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content">
+                                                               <children>
+                                                                  <Label text="Name" />
+                                                                  <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
+                                                               <children>
+                                                                  <Label text="Owner" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <Label text="Starting date" />
+                                                                  <DatePicker prefHeight="40.0" prefWidth="339.0" showWeekNumbers="true" styleClass="text-field" VBox.vgrow="ALWAYS">
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </DatePicker>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <Label text="Finishing date" />
+                                                                  <DatePicker prefHeight="40.0" prefWidth="426.0" styleClass="text-field" VBox.vgrow="ALWAYS">
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </DatePicker>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <children>
+                                                                  <Label text="Project director" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="2">
+                                                               <children>
+                                                                  <Label text="Location" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </GridPane>
+                                                      <VBox prefHeight="170.0" prefWidth="654.0" styleClass="form-content">
+                                                         <children>
+                                                            <Label text="Description" />
+                                                            <TextArea prefHeight="200.0" prefWidth="200.0">
+                                                               <VBox.margin>
+                                                                  <Insets bottom="3.0" top="10.0" />
+                                                               </VBox.margin>
+                                                            </TextArea>
+                                                            <Label styleClass="error-message" text="Input field is empty" />
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets top="5.0" />
+                                                         </VBox.margin>
+                                                      </VBox>
+                                                      <HBox prefHeight="82.0" prefWidth="654.0">
+                                                         <children>
+                                                            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="287.0" styleClass="add-worker-btn" text="Add ">
+                                                               <HBox.margin>
+                                                                  <Insets />
+                                                               </HBox.margin>
+                                                               <font>
+                                                                  <Font name="Arial Rounded MT Bold" size="17.0" />
+                                                               </font>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="worker details section">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <VBox prefHeight="881.0" prefWidth="958.0">
+                                       <styleClass>
+                                          <String fx:value="body" />
+                                          <String fx:value="white" />
+                                       </styleClass>
+                                       <children>
+                                          <HBox fillHeight="false" prefHeight="809.0" prefWidth="898.0" spacing="40.0" styleClass="form-container">
+                                             <children>
+                                                <VBox fillWidth="false" prefHeight="789.0" prefWidth="685.0" spacing="30.0">
+                                                   <children>
+                                                      <VBox prefHeight="237.0" prefWidth="252.0" styleClass="img-container">
+                                                         <children>
+                                                            <ImageView fitHeight="270.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true" />
+                                                         </children>
+                                                      </VBox>
+                                                      <GridPane hgap="20.0" prefHeight="459.0" prefWidth="663.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content">
+                                                               <children>
+                                                                  <Label text="First name" />
+                                                                  <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
+                                                               <children>
+                                                                  <Label text="Surname" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <Label text="Other names" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <Label text="Email" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="3">
+                                                               <children>
+                                                                  <Label text="Age" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                               <children>
+                                                                  <Label text="Gender" />
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="313.0" spacing="10.0">
+                                                                     <children>
+                                                                        <RadioButton mnemonicParsing="false" text="Male" />
+                                                                        <RadioButton mnemonicParsing="false" text="Female" />
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                                                               <children>
+                                                                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="321.0" styleClass="add-worker-btn" text="Edit">
+                                                                     <HBox.margin>
+                                                                        <Insets top="10.0" />
+                                                                     </HBox.margin>
+                                                                     <font>
+                                                                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                               </children>
+                                                            </HBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="2">
+                                                               <children>
+                                                                  <Label text="Department" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <children>
+                                                                  <Label text="Phone number" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                               <children>
+                                                                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="321.0" style="-fx-background-color: crimson;" styleClass="add-worker-btn" text="Delete">
+                                                                     <HBox.margin>
+                                                                        <Insets top="10.0" />
+                                                                     </HBox.margin>
+                                                                     <font>
+                                                                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="projects table section">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <VBox prefHeight="767.0" prefWidth="985.0">
+                                       <styleClass>
+                                          <String fx:value="body" />
+                                          <String fx:value="white" />
+                                       </styleClass>
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="713.0" prefWidth="898.0" spacing="10.0" styleClass="table-container">
+                                             <children>
+                                                <HBox alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="957.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="33.0" prefWidth="408.0" HBox.hgrow="ALWAYS">
+                                                         <children>
+                                                            <TextField prefHeight="33.0" prefWidth="238.0" promptText="Search workers" styleClass="search-input" />
+                                                         </children>
+                                                      </VBox>
+                                                      <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" styleClass="add-worker-btn" text="Add project">
+                                                         <font>
+                                                            <Font name="Arial Rounded MT Bold" size="15.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="730.0" prefWidth="958.0">
+                                                   <children>
+                                                      <VBox prefHeight="720.0" prefWidth="955.0" HBox.hgrow="ALWAYS">
+                                                         <children>
+                                                            <TreeTableView prefHeight="616.0" prefWidth="957.0">
+                                                               <columns>
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" styleClass="tree-table-column" text="Name" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Owner" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Budget" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Location" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Prj Dr" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Starting date" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Finsihing date" />
+                                                               </columns>
+                                                               <columnResizePolicy>
+                                                                  <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                               </columnResizePolicy>
+                                                            </TreeTableView>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="984.0">
+                                                               <children>
+                                                                  <Pagination prefHeight="51.0" prefWidth="229.0" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="workers table section">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <VBox prefHeight="788.0" prefWidth="985.0">
+                                       <styleClass>
+                                          <String fx:value="body" />
+                                          <String fx:value="white" />
+                                       </styleClass>
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="705.0" prefWidth="945.0" spacing="10.0" styleClass="table-container">
+                                             <children>
+                                                <HBox alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="957.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="33.0" prefWidth="408.0" HBox.hgrow="ALWAYS">
+                                                         <children>
+                                                            <TextField prefHeight="33.0" prefWidth="238.0" promptText="Search workers" styleClass="search-input" />
+                                                         </children>
+                                                      </VBox>
+                                                      <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" styleClass="add-worker-btn" text="Add worker">
+                                                         <font>
+                                                            <Font name="Arial Rounded MT Bold" size="15.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="730.0" prefWidth="958.0">
+                                                   <children>
+                                                      <VBox prefHeight="720.0" prefWidth="955.0" HBox.hgrow="ALWAYS">
+                                                         <children>
+                                                            <TreeTableView prefHeight="616.0" prefWidth="957.0">
+                                                               <columns>
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="First name" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Surname" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Other names" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Phone no" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Department" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Age" />
+                                                                  <TreeTableColumn editable="false" prefWidth="75.0" text="Gender" />
+                                                               </columns>
+                                                               <columnResizePolicy>
+                                                                  <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                               </columnResizePolicy>
+                                                            </TreeTableView>
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="984.0">
+                                                               <children>
+                                                                  <Pagination prefHeight="51.0" prefWidth="229.0" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="project statistics section">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="954.0" prefWidth="973.0">
+                                 <content>
+                                    <VBox prefHeight="789.0" prefWidth="973.0" spacing="20.0">
+                                       <styleClass>
+                                          <String fx:value="body" />
+                                          <String fx:value="white" />
+                                       </styleClass>
+                                       <children>
+                                          <VBox prefHeight="298.0" prefWidth="913.0" spacing="10.0" styleClass="table-container">
+                                             <children>
+                                                <VBox prefHeight="297.0" prefWidth="854.0" spacing="10.0" styleClass="project-container">
+                                                   <children>
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="812.0" styleClass="border-bottom">
+                                                         <children>
+                                                            <Label styleClass="project-title" text="Apple store" />
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                                               <children>
+                                                                  <Label text="Pending">
+                                                                     <font>
+                                                                        <Font name="Hiragino Sans W6" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </HBox>
+                                                      <VBox fillWidth="false" prefHeight="80.0" prefWidth="829.0" spacing="8.0" styleClass="border-bottom">
+                                                         <children>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="630.0" styleClass="progress-bar-details">
+                                                               <children>
+                                                                  <Label text="Project progress" />
+                                                                  <HBox alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="485.0" HBox.hgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Label text="55%" />
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="812.0">
+                                                               <children>
+                                                                  <ProgressBar prefHeight="20.0" prefWidth="643.0" progress="0.07" styleClass="pending-progress-bar" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox fillWidth="false" layoutX="31.0" layoutY="124.0" prefHeight="80.0" prefWidth="834.0" spacing="8.0" styleClass="border-bottom">
+                                                         <children>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="630.0" styleClass="progress-bar-details">
+                                                               <children>
+                                                                  <Label text="Budget expenses" />
+                                                                  <HBox alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="485.0" HBox.hgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Label text="0%" />
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="812.0">
+                                                               <children>
+                                                                  <ProgressBar prefHeight="20.0" prefWidth="643.0" progress="1.0" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox layoutX="40.0" layoutY="40.0" prefHeight="407.0" prefWidth="913.0" spacing="10.0" styleClass="table-container">
+                                             <children>
+                                                <VBox fillWidth="false" prefHeight="559.0" prefWidth="854.0">
+                                                   <VBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <VBox prefHeight="352.0" prefWidth="756.0" spacing="30.0">
+                                                         <children>
+                                                            <GridPane hgap="20.0" prefHeight="283.0" prefWidth="756.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content">
+                                                                     <children>
+                                                                        <Label text="Name" />
+                                                                        <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="3.0" top="10.0" />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <Label styleClass="error-message" text="Input field is empty" />
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
+                                                                     <children>
+                                                                        <Label text="Owner" />
+                                                                        <TextField>
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="3.0" top="10.0" />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <Label styleClass="error-message" text="Input field is empty" />
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="1">
+                                                                     <children>
+                                                                        <Label text="Location" />
+                                                                        <TextField>
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="3.0" top="10.0" />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <Label styleClass="error-message" text="Input field is empty" />
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                                     <children>
+                                                                        <Label text="Project director" />
+                                                                        <TextField>
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="3.0" top="10.0" />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <Label styleClass="error-message" text="Input field is empty" />
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="2">
+                                                                     <children>
+                                                                        <Label text="Finishing date" />
+                                                                        <DatePicker prefHeight="40.0" prefWidth="406.0" styleClass="text-field" VBox.vgrow="ALWAYS">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="3.0" top="5.0" />
+                                                                           </VBox.margin>
+                                                                        </DatePicker>
+                                                                        <Label styleClass="error-message" text="Input field is empty" />
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <VBox layoutX="10.0" layoutY="174.0" prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                                     <children>
+                                                                        <Label text="Finishing date" />
+                                                                        <DatePicker prefHeight="40.0" prefWidth="406.0" styleClass="text-field" VBox.vgrow="ALWAYS">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="3.0" top="5.0" />
+                                                                           </VBox.margin>
+                                                                        </DatePicker>
+                                                                        <Label styleClass="error-message" text="Input field is empty" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </GridPane>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="756.0" spacing="20.0">
+                                                               <children>
+                                                                  <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="80.0" text="Edit">
+                                                                     <font>
+                                                                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                                                                     </font>
+                                                                     <styleClass>
+                                                                        <String fx:value="add-worker-btn" />
+                                                                        <String fx:value="small-btn" />
+                                                                     </styleClass>
+                                                                  </Button>
+                                                                  <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="112.0" style="-fx-background-color: crimson;" text="Terminate">
+                                                                     <font>
+                                                                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                                                                     </font>
+                                                                     <styleClass>
+                                                                        <String fx:value="add-worker-btn" />
+                                                                        <String fx:value="small-btn" />
+                                                                     </styleClass>
+                                                                  </Button>
+                                                               </children>
+                                                               <padding>
+                                                                  <Insets left="20.0" />
+                                                               </padding>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="settings section">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="954.0" prefWidth="973.0">
+                                 <content>
+                                    <VBox prefHeight="805.0" prefWidth="956.0" spacing="20.0">
+                                       <styleClass>
+                                          <String fx:value="body" />
+                                          <String fx:value="white" />
+                                       </styleClass>
+                                       <children>
+                                          <VBox layoutX="40.0" layoutY="40.0" prefHeight="783.0" prefWidth="896.0" spacing="10.0" styleClass="table-container">
+                                             <children>
+                                                <TabPane prefHeight="648.0" prefWidth="854.0" styleClass="setting-tab" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                                                   <tabs>
+                                                      <Tab text="Genral">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab text="Admin">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="586.0" prefWidth="854.0">
+                                                               <children>
+                                                                  <VBox layoutX="156.0" layoutY="396.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <children>
+                                                                        <HBox prefHeight="466.0" prefWidth="854.0" spacing="40.0">
+                                                                           <children>
+                                                                              <VBox prefHeight="396.0" prefWidth="340.0">
+                                                                                 <children>
+                                                                                    <Label prefHeight="17.0" prefWidth="274.0" styleClass="sub-heading" text="Add admin" VBox.vgrow="ALWAYS">
+                                                                                       <font>
+                                                                                          <Font name="Hiragino Sans W7" size="15.0" />
+                                                                                       </font>
+                                                                                       <VBox.margin>
+                                                                                          <Insets bottom="10.0" />
+                                                                                       </VBox.margin>
+                                                                                    </Label>
+                                                                                    <VBox prefHeight="95.0" prefWidth="278.0" styleClass="form-content">
+                                                                                       <children>
+                                                                                          <Label text="Username" />
+                                                                                          <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                                             <VBox.margin>
+                                                                                                <Insets bottom="3.0" top="10.0" />
+                                                                                             </VBox.margin>
+                                                                                          </TextField>
+                                                                                          <Label styleClass="error-message" text="Input field is empty" />
+                                                                                       </children>
+                                                                                    </VBox>
+                                                                                    <VBox prefHeight="86.0" prefWidth="278.0" styleClass="form-content">
+                                                                                       <children>
+                                                                                          <Label text="Password" />
+                                                                                          <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                                             <VBox.margin>
+                                                                                                <Insets bottom="3.0" top="10.0" />
+                                                                                             </VBox.margin>
+                                                                                          </TextField>
+                                                                                          <Label styleClass="error-message" text="Input field is empty" />
+                                                                                       </children>
+                                                                                    </VBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="567.0" styleClass="add-worker-btn" text="Add admin">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="10.0" />
+                                                                                             </HBox.margin>
+                                                                                             <font>
+                                                                                                <Font name="Arial Rounded MT Bold" size="17.0" />
+                                                                                             </font>
+                                                                                          </Button>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                 </children>
+                                                                                 <padding>
+                                                                                    <Insets top="20.0" />
+                                                                                 </padding>
+                                                                              </VBox>
+                                                                              <VBox prefHeight="302.0" prefWidth="632.0" styleClass="upcoming-project-container">
+                                                                                 <children>
+                                                                                    <Label styleClass="sub-heading" text="Admin" />
+                                                                                    <VBox prefHeight="381.0" prefWidth="513.0" spacing="10.0">
+                                                                                       <children>
+                                                                                          <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="Johnsmith" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="15.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="YoungJohn the wicked producer" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="65.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="YoungJohn the wicked producer" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="115.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="YoungJohn the wicked producer" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="165.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="YoungJohn the wicked producer" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="196.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="YoungJohn the wicked producer" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="230.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="YoungJohn the wicked producer" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                       </children>
+                                                                                       <padding>
+                                                                                          <Insets top="5.0" />
+                                                                                       </padding>
+                                                                                    </VBox>
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                               <padding>
+                                                                  <Insets bottom="10.0" top="30.0" />
+                                                               </padding>
+                                                            </AnchorPane>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab text="Security">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <VBox layoutX="148.0" layoutY="90.0" prefHeight="565.0" prefWidth="854.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <children>
+                                                                        <VBox fillWidth="false" prefHeight="410.0" prefWidth="421.0">
+                                                                           <children>
+                                                                              <Label prefHeight="17.0" prefWidth="274.0" styleClass="sub-heading" text="Change password" VBox.vgrow="ALWAYS">
+                                                                                 <font>
+                                                                                    <Font name="Hiragino Sans W7" size="15.0" />
+                                                                                 </font>
+                                                                                 <VBox.margin>
+                                                                                    <Insets bottom="20.0" />
+                                                                                 </VBox.margin>
+                                                                              </Label>
+                                                                              <VBox prefHeight="94.0" prefWidth="419.0" styleClass="form-content">
+                                                                                 <children>
+                                                                                    <Label text="Old password" />
+                                                                                    <PasswordField>
+                                                                                       <VBox.margin>
+                                                                                          <Insets bottom="3.0" top="10.0" />
+                                                                                       </VBox.margin>
+                                                                                    </PasswordField>
+                                                                                    <Label styleClass="error-message" text="Input field is empty" />
+                                                                                 </children>
+                                                                              </VBox>
+                                                                              <VBox layoutX="10.0" layoutY="70.0" prefHeight="94.0" prefWidth="423.0" styleClass="form-content">
+                                                                                 <children>
+                                                                                    <Label text="New password" />
+                                                                                    <PasswordField>
+                                                                                       <VBox.margin>
+                                                                                          <Insets bottom="3.0" top="10.0" />
+                                                                                       </VBox.margin>
+                                                                                    </PasswordField>
+                                                                                    <Label styleClass="error-message" text="Input field is empty" />
+                                                                                 </children>
+                                                                              </VBox>
+                                                                              <VBox layoutX="10.0" layoutY="265.0" prefHeight="94.0" prefWidth="421.0" styleClass="form-content">
+                                                                                 <children>
+                                                                                    <Label text="Confirm new password" />
+                                                                                    <PasswordField prefWidth="379.0">
+                                                                                       <VBox.margin>
+                                                                                          <Insets bottom="3.0" top="10.0" />
+                                                                                       </VBox.margin>
+                                                                                    </PasswordField>
+                                                                                    <Label styleClass="error-message" text="Input field is empty" />
+                                                                                 </children>
+                                                                              </VBox>
+                                                                              <HBox prefHeight="63.0" prefWidth="421.0">
+                                                                                 <children>
+                                                                                    <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="421.0" styleClass="add-worker-btn" text="Change">
+                                                                                       <HBox.margin>
+                                                                                          <Insets top="10.0" />
+                                                                                       </HBox.margin>
+                                                                                       <font>
+                                                                                          <Font name="Arial Rounded MT Bold" size="17.0" />
+                                                                                       </font>
+                                                                                    </Button>
+                                                                                 </children>
+                                                                              </HBox>
+                                                                           </children>
+                                                                           <padding>
+                                                                              <Insets top="20.0" />
+                                                                           </padding>
+                                                                        </VBox>
+                                                                        <VBox prefHeight="190.0" prefWidth="854.0" styleClass="back-up-ads" VBox.vgrow="ALWAYS">
+                                                                           <children>
+                                                                              <ImageView fitHeight="86.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                                                                                 <image>
+                                                                                    <Image url="@ICONS/icons8-cloud_storage.png" />
+                                                                                 </image>
+                                                                              </ImageView>
+                                                                              <Label styleClass="back-up-ads-heading" text="Panda cloud" />
+                                                                              <Label styleClass="back-up-ads-sub-heading" text="Back up your data on the cloud">
+                                                                                 <VBox.margin>
+                                                                                    <Insets top="5.0" />
+                                                                                 </VBox.margin>
+                                                                              </Label>
+                                                                              <Label text="coming soon">
+                                                                                 <padding>
+                                                                                    <Insets top="30.0" />
+                                                                                 </padding>
+                                                                              </Label>
+                                                                              <VBox prefHeight="200.0" prefWidth="100.0" />
+                                                                           </children>
+                                                                        </VBox>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                               <padding>
+                                                                  <Insets bottom="10.0" top="30.0" />
+                                                               </padding>
+                                                            </AnchorPane>
+                                                         </content>
+                                                      </Tab>
+                                                   </tabs>
+                                                </TabPane>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="add worker section">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <VBox prefHeight="764.0" prefWidth="985.0">
+                                       <styleClass>
+                                          <String fx:value="body" />
+                                          <String fx:value="white" />
+                                       </styleClass>
+                                       <children>
+                                          <HBox fillHeight="false" prefHeight="579.0" prefWidth="925.0" spacing="40.0" styleClass="form-container">
+                                             <children>
+                                                <VBox prefHeight="539.0" prefWidth="588.0" spacing="30.0">
+                                                   <children>
+                                                      <Label styleClass="heading" text="Add worker" />
+                                                      <GridPane hgap="20.0" prefHeight="486.0" prefWidth="597.0">
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content">
+                                                               <children>
+                                                                  <Label text="First name" />
+                                                                  <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
+                                                               <children>
+                                                                  <Label text="Surname" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <Label text="Other names" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <Label text="Email" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="3">
+                                                               <children>
+                                                                  <Label text="Age" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                               <children>
+                                                                  <Label text="Gender" />
+                                                                  <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="313.0" spacing="10.0">
+                                                                     <children>
+                                                                        <RadioButton mnemonicParsing="false" text="Male" />
+                                                                        <RadioButton mnemonicParsing="false" text="Female" />
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                                                               <children>
+                                                                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="287.0" styleClass="add-worker-btn" text="Add ">
+                                                                     <HBox.margin>
+                                                                        <Insets top="10.0" />
+                                                                     </HBox.margin>
+                                                                     <font>
+                                                                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                               </children>
+                                                            </HBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="2">
+                                                               <children>
+                                                                  <Label text="Department" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <children>
+                                                                  <Label text="Phone number" />
+                                                                  <TextField>
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="3.0" top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </TextField>
+                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="237.0" prefWidth="252.0" styleClass="img-container">
+                                                   <children>
+                                                      <ImageView fitHeight="270.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets top="70.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <GridPane prefHeight="50.0" prefWidth="968.0" styleClass="top-bar" BorderPane.alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label styleClass="heading" text="Panda" />
+                  <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="29.0" prefWidth="31.0" styleClass="top-bar-icon">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@ICONS/icons8_notification_50px_2.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="545.0" layoutY="20.0" prefHeight="29.0" prefWidth="31.0" styleClass="top-bar-icon">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@ICONS/icons8_notification_50px_2.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
