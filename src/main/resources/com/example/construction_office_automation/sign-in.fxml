@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="440.0" styleClass="form-container" stylesheets="@styles/sign-in.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" prefHeight="139.0" prefWidth="356.0" spacing="10.0">
+         <children>
+            <ImageView fitHeight="82.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ICONS/icons8-engineer.png" />
+               </image>
+            </ImageView>
+            <Label text="Sign in">
+               <font>
+                  <Font name="Hiragino Sans W8" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox prefHeight="323.0" prefWidth="334.0" spacing="10.0">
+         <children>
+            <VBox prefHeight="92.0" prefWidth="334.0" styleClass="form-content">
+               <children>
+                  <Label text="Username" />
+                  <TextField>
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label styleClass="error-message" text="Input field is empty" />
+               </children>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="10.0" prefHeight="92.0" prefWidth="334.0" styleClass="form-content">
+               <children>
+                  <Label text="Password" />
+                  <PasswordField>
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="10.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <Label styleClass="error-message" text="Input field is empty" />
+               </children>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="112.0" prefHeight="92.0" prefWidth="334.0" styleClass="form-content">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="334.0" text="Sign in" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>
