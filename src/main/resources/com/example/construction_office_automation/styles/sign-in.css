@@ -1,0 +1,59 @@
+.form-container {
+    -fx-background-color: white;
+}
+
+.form-content {
+    /* -fx-background-color: white; */
+}
+
+.form-content .label {
+    -fx-font-family: "Hiragino Sans W6";
+    -fx-font-size: 12;
+}
+
+.welcome-text {
+    -fx-font-family: "Hiragino Sans W8";
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+}
+
+.welcome-sub-text {
+    -fx-font-family: "Hiragino Sans W5";
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+}
+
+.form-content .text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: gainsboro;
+    -fx-border-radius: 3;
+    -fx-border-width: 1;
+    -fx-font-size: 14;
+    -fx-pref-height: 42;
+    -fx-effect: none;
+}
+
+.form-content .text-field:focused {
+    -fx-border-color: rgb(84,84,208);
+    -fx-border-width: 2;
+}
+
+.form-content .error-message {
+    -fx-text-fill: crimson;
+    -fx-text-fill: white;
+    -fx-font-size: 10;
+}
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Hiragino Sans W8";
+    -fx-background-radius: 5;
+    -fx-padding: 8 10 8 10;
+    -fx-cusor: pointer;
+    -fx-background-color: rgb(84,84,208);
+}
+
+.img-container{
+    -fx-background-color: rgb(84,84,208);
+    /* -fx-background-color: whitesmoke; */
+}
