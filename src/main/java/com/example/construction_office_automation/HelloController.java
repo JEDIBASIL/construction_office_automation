@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +24,10 @@ public class HelloController implements Initializable {
     @FXML
 //  MODAL CONTAINER
     private AnchorPane modalContainer;
+
+    @FXML
+//  CLOSE MODAL ICON
+    private HBox closeModal;
     @FXML
 //   TAB LINKS
     private HBox homeTabLink,projectsTabLink,workersTabLink,settingsTabLink;
@@ -47,8 +52,7 @@ public class HelloController implements Initializable {
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
 
 //      SETTING THE MODAL CONTAINER INVISIBLE
-        modalContainer.setVisible(false);
-
+//        displayModal(false);
 
 //      ADDED AN EVENTLISTENER TO EACH OF THE SIDEBAR LINKS
         homeTabLink.setOnMouseClicked(event -> {
@@ -69,6 +73,9 @@ public class HelloController implements Initializable {
         });
 //       >>>
 
+//       ADDED AN EVENT LISTENER ON THE CLOSE MODAL ICON
+        closeModal.setOnMouseClicked(e->displayModal(false));
+
         darkModeCheckBox.setOnAction(event -> {
             if (darkModeCheckBox.isSelected()){
                 switchTheme(true);
@@ -85,6 +92,12 @@ public class HelloController implements Initializable {
      public void switchPane(int tab){
         appTabPane.getSelectionModel().select(tab);
      }
+
+//   FUNCTION TO HIDE AND SHOW MODAL
+     public void displayModal(boolean display){
+         modalContainer.setVisible(display);
+     }
+
 
 //   METHOD TO SWITCH TO DARK MODE
      public  void switchTheme(boolean theme){
