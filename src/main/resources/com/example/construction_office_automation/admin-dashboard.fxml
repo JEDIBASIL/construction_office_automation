@@ -1572,7 +1572,7 @@
                         <Insets top="10.0" />
                      </padding>
                   </TabPane>
-                  <GridPane prefHeight="50.0" prefWidth="968.0" styleClass="top-bar">
+                  <GridPane prefHeight="50.0" prefWidth="968.0" styleClass="top-bar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -1675,7 +1675,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <VBox fx:id="toast" prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0">
+      <VBox fx:id="toast" prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="-400.0" AnchorPane.topAnchor="60.0">
          <children>
             <Label fx:id="toastTimerLabel" text="Label">
                <font>

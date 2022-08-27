@@ -1,5 +1,6 @@
 package com.example.construction_office_automation;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -13,6 +14,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
@@ -65,18 +67,10 @@ public class HelloController extends Thread implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
 
-        HelloController helloController = new HelloController();
-        Thread thread = new Thread(helloController);
-
-        thread.start();
-
-
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
 
 //      SETTING THE MODAL CONTAINER INVISIBLE
         displayModal(false);
-
-
 
 //      ADDED AN EVENTLISTENER TO EACH OF THE SIDEBAR LINKS
         homeTabLink.setOnMouseClicked(event -> {
@@ -157,8 +151,27 @@ public class HelloController extends Thread implements Initializable {
         }
     }
 
-    public void displayToast(boolean display){
-        toast.setVisible(display);
+//   FUNCTION TO DISPLAY TOAST
+    public void displayToast(boolean animate,String animationType){
+        TranslateTransition toastAnimation = new TranslateTransition();
+        toastAnimation.setNode(toast);
+        toastAnimation.setDuration(Duration.seconds(0.3));
+        if(animate){
+            toastAnimation.setByX(-430);
+            toastAnimation.setRate(3);
+        }
+        if(!animate) {
+            toastAnimation.setDuration(Duration.seconds(0.3));
+            toastAnimation.setDelay(Duration.seconds(5));
+            toastAnimation.setByX(430);
+        }
+
+        if(!animate && animationType != null && animationType.equals("CLOSE")) {
+            toastAnimation.setDelay(Duration.seconds(0));
+            toastAnimation.setByX(430);
+        }
+        toastAnimation.play();
+//        toastAnimation.stop();
     }
 
 }
