@@ -300,4 +300,5 @@ public class HelloController extends Thread implements Initializable {
 //        toastAnimation.stop();
     }
 
+
 }
