@@ -1,5 +1,6 @@
 package com.example.construction_office_automation;
 
+import com.example.construction_office_automation.model.Employees;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +19,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HelloController extends Thread implements Initializable {
     @FXML
@@ -168,6 +171,8 @@ public class HelloController extends Thread implements Initializable {
 
 
 
+    Employees employees = new Employees();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
@@ -299,6 +304,68 @@ public class HelloController extends Thread implements Initializable {
         toastAnimation.play();
 //        toastAnimation.stop();
     }
+
+//  FUNCTION TO VALIDATE TEXT FIELD BASE ON ARGUMENTS
+    public String validateTextFields(Label errorMessage,TextField field,String validationType,String fieldName,String extra){
+        String emailRegex = "^(.+)@(.+)$";
+        String numberRegex = "\\d+";
+
+        if(validationType.equals("NAME") && extra == null){
+            if(field.getText().trim().length() < 3) errorMessage.setText(fieldName+" must be at least 3 characters");
+            else if (field.getText().length() > 25)errorMessage.setText(fieldName+" should not be more than 25 letters");
+            else{
+                errorMessage.setText("");
+                return field.getText();
+            }
+        }
+
+        if(validationType.equals("EMAIL") && extra == null){
+            Pattern emailPattern = Pattern.compile(emailRegex);
+            Matcher emailMatcher = emailPattern.matcher(field.getText());
+            if(!emailMatcher.matches()){
+                errorMessage.setText(fieldName+" is invalid");
+            }else{
+                errorMessage.setText("");
+                return field.getText();
+            }
+        }
+
+        if(validationType.equals("NUMBER")) {
+            Pattern numberPattern = Pattern.compile(numberRegex);
+            Matcher numberMatcher = numberPattern.matcher(field.getText());
+
+            if (numberMatcher.matches()) {
+                Long text = Long.parseLong(field.getText());
+                if(extra.equals("AGE")){
+                    if(text < 18) errorMessage.setText(fieldName+" should be above 18");
+
+                    else if(text > 55) errorMessage.setText("workers " + fieldName + " should not be above 55");
+
+                    else{
+                        errorMessage.setText("");
+                        return field.getText();
+                    }
+                }
+
+                if(extra.equals("PHONE_NUMBER")){
+                    if (field.getText().length() < 10 || field.getText().length() > 16) errorMessage.setText(fieldName + " is invalid");
+                    else{
+                        errorMessage.setText("");
+                        return field.getText();
+                    }
+                }
+                return "0";
+            }else{
+                errorMessage.setText(fieldName+" should be a number");
+                return "0";
+            }
+        }
+
+
+
+        return null;
+    }
+
 
 
 }
