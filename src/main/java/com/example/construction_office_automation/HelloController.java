@@ -2,18 +2,24 @@ package com.example.construction_office_automation;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class HelloController implements Initializable {
+public class HelloController extends Thread implements Initializable {
     @FXML
     private Label welcomeText;
 
@@ -28,6 +34,13 @@ public class HelloController implements Initializable {
     @FXML
 //  CLOSE MODAL ICON
     private HBox closeModal;
+
+    @FXML
+//  TOAST CONTAINER
+    private VBox toast;
+     int toastTimer;
+     @FXML
+     private Label toastTimerLabel;
     @FXML
 //   TAB LINKS
     private HBox homeTabLink,projectsTabLink,workersTabLink,settingsTabLink;
@@ -40,19 +53,30 @@ public class HelloController implements Initializable {
     @FXML
      private CheckBox darkModeCheckBox;
 
+    private Stage stage;
+    final FileChooser fileChooser = new FileChooser();
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 
+
+
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle)  {
+
+        HelloController helloController = new HelloController();
+        Thread thread = new Thread(helloController);
+
+        thread.start();
 
 
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
 
 //      SETTING THE MODAL CONTAINER INVISIBLE
-//        displayModal(false);
+        displayModal(false);
+
+
 
 //      ADDED AN EVENTLISTENER TO EACH OF THE SIDEBAR LINKS
         homeTabLink.setOnMouseClicked(event -> {
@@ -87,6 +111,15 @@ public class HelloController implements Initializable {
         });
 
     }
+
+//   FUNCTION TO SHOW FILECHOOSER
+
+     public  File displayFileChooser(String title){
+         fileChooser.setTitle(title);
+         fileChooser.getExtensionFilters().addAll(new ExtensionFilter("All Images","*.png","*.jpg","*.jpeg"));
+           File file = fileChooser.showOpenDialog(null);
+           return file;
+     }
 
 //   METHOD TO SWITCH APP TABPANE
      public void switchPane(int tab){
@@ -124,6 +157,8 @@ public class HelloController implements Initializable {
         }
     }
 
-
+    public void displayToast(boolean display){
+        toast.setVisible(display);
+    }
 
 }

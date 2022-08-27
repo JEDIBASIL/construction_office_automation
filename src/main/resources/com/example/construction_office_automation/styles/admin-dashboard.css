@@ -96,7 +96,7 @@
 }
 
 .white {
-    -fx-background-color: rgb(244, 246, 250);
+    -fx-background-color: rgb(243,243,243);
 }
 
 .scroll-pane {
@@ -126,7 +126,7 @@
 .overview-container .overview-card {
     -fx-background-color: white;
     /* -fx-border-color: rgb(234, 234, 234); */
-    -fx-background-radius: 5;
+    -fx-background-radius: 20;
     -fx-border-radius: 10;
     -fx-padding: 10;
     -fx-spacing: 20;
@@ -148,7 +148,7 @@
 .overview-container .overview-card .title {
     -fx-background-color: rgba(244, 246, 250, 0.467);
     -fx-pref-height: 50;
-    -fx-background-radius: 5;
+    -fx-background-radius: 20;
     -fx-padding: 0 10;
 }
 
@@ -180,7 +180,7 @@
 
 .quick-action-container .content {
     -fx-padding: 12;
-    -fx-background-radius: 5;
+    -fx-background-radius: 20;
     -fx-background-color: rgb(255, 255, 255);
 }
 
@@ -196,7 +196,7 @@
 
 .upcoming-project-container {
     -fx-spacing: 20;
-    -fx-background-radius: 5;
+    -fx-background-radius: 20;
     -fx-padding: 20;
     -fx-background-color: white;
 }
@@ -217,8 +217,8 @@
 
 .display_workers-details-card {
     -fx-background-color: white;
-    -fx-padding: 10;
-    -fx-background-radius: 5;
+    -fx-padding: 20;
+    -fx-background-radius: 20;
 }
 
 .form-container {
@@ -241,7 +241,7 @@
 .form-content .text-field {
     -fx-background-color: transparent;
     -fx-border-color: rgb(177, 177, 177);
-    -fx-border-radius: 3;
+    -fx-border-radius: 6;
     -fx-border-width: 1;
     -fx-font-size: 14;
     -fx-pref-height: 42;
@@ -433,8 +433,8 @@
 
 .modal{
     -fx-background-color: white;
-    -fx-background-radius:5;
-    -fx-border-radius:5;
+    -fx-background-radius:20;
+    -fx-border-radius:20;
     -fx-alignment:CENTER;
     -fx-border-color:rgb(128, 128, 128);
 }
@@ -452,7 +452,8 @@
 
 .toast{
     -fx-background-color:white;
-    -fx-background-radius:5;
-    -fx-border-radius:5;
+    -fx-background-radius:10;
+    -fx-border-radius:10;
     -fx-border-color:gainsboro;
+    -fx-padding:20px;
 }

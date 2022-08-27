@@ -30,7 +30,6 @@
 
 <AnchorPane fx:id="appContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1194.0" stylesheets="@styles/admin-dashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.construction_office_automation.HelloController">
    <children>
-      <VBox prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0" />
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="793.0" prefWidth="1192.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <VBox prefHeight="709.0" prefWidth="219.0" styleClass="side-bar" BorderPane.alignment="CENTER">
@@ -95,7 +94,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="app-container" BorderPane.alignment="CENTER">
                <children>
-                  <TabPane fx:id="appTabPane" layoutX="76.0" layoutY="-33.0" prefHeight="720.0" prefWidth="737.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-33.0">
+                  <TabPane fx:id="appTabPane" layoutX="76.0" layoutY="-33.0" prefHeight="720.0" prefWidth="737.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <tabs>
                         <Tab text="home section">
                            <content>
@@ -1569,51 +1568,53 @@
                            </content>
                         </Tab>
                      </tabs>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
                   </TabPane>
+                  <GridPane prefHeight="50.0" prefWidth="968.0" styleClass="top-bar">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label styleClass="heading" text="Panda">
+                           <font>
+                              <Font name="Arial Italic" size="35.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="29.0" prefWidth="31.0" styleClass="top-bar-icon">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                       <image>
+                                          <Image url="@ICONS/icons8_notification_50px_2.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" layoutX="545.0" layoutY="20.0" prefHeight="29.0" prefWidth="31.0" styleClass="top-bar-icon">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                       <image>
+                                          <Image url="@ICONS/icons8_notification_50px_2.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
                </children>
             </AnchorPane>
          </center>
-         <top>
-            <GridPane prefHeight="50.0" prefWidth="968.0" styleClass="top-bar" BorderPane.alignment="CENTER">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Label styleClass="heading" text="Panda">
-                     <font>
-                        <Font name="Arial Italic" size="35.0" />
-                     </font></Label>
-                  <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2">
-                     <children>
-                        <VBox alignment="CENTER" prefHeight="29.0" prefWidth="31.0" styleClass="top-bar-icon">
-                           <children>
-                              <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-                                 <image>
-                                    <Image url="@ICONS/icons8_notification_50px_2.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" layoutX="545.0" layoutY="20.0" prefHeight="29.0" prefWidth="31.0" styleClass="top-bar-icon">
-                           <children>
-                              <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-                                 <image>
-                                    <Image url="@ICONS/icons8_notification_50px_2.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" />
-               </children>
-            </GridPane>
-         </top>
       </BorderPane>
       <AnchorPane fx:id="modalContainer" layoutX="333.0" layoutY="215.0" prefHeight="200.0" prefWidth="200.0" styleClass="modal-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -1629,7 +1630,7 @@
                                     <Label styleClass="modal-sub-heading" text="Are you sure you want to terminate this project" />
                                     <HBox alignment="CENTER" prefHeight="65.0" prefWidth="756.0" spacing="20.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="108.0" style="-fx-background-color: gray;" text="Close">
+                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="108.0" style="-fx-background-color: gray;" text="Close">
                                              <font>
                                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                                              </font>
@@ -1674,5 +1675,13 @@
             </VBox>
          </children>
       </AnchorPane>
+      <VBox fx:id="toast" prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <Label fx:id="toastTimerLabel" text="Label">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children></VBox>
    </children>
 </AnchorPane>
