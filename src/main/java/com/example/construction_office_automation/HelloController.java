@@ -94,6 +94,7 @@ public class HelloController extends Thread implements Initializable {
 //       ADDED AN EVENT LISTENER ON THE CLOSE MODAL ICON
         closeModal.setOnMouseClicked(e->displayModal(false));
 
+//       ADDED AN EVENT LISTENER ON THE DARKMODECHECKBOX TO TOGGLE THEME
         darkModeCheckBox.setOnAction(event -> {
             if (darkModeCheckBox.isSelected()){
                 switchTheme(true);
