@@ -269,13 +269,13 @@
 
 .form-content .error-message {
     -fx-text-fill: crimson;
-    -fx-text-fill:transparent !important;
+    /* -fx-text-fill:transparent !important; */
     -fx-font-size: 10;
 }
 
 .add-worker-btn {
     -fx-text-fill: white;
-    -fx-background-radius: 5;
+    -fx-background-radius: 6;
     -fx-padding: 8 10 8 10;
     -fx-cusor: pointer;
     -fx-background-color: rgb(84,84,208);

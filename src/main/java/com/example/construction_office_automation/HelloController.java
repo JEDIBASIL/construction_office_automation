@@ -66,6 +66,59 @@ public class HelloController extends Thread implements Initializable {
     @FXML
 //  QUICK ACTION TAB LINKS
     private VBox addProjectQuickLink,addWorkerQuickLink,viewProjectsQuickLink;
+    @FXML
+//  ERROR LABELS
+    private Label
+//    ADD WORKER ERROR LABEL
+
+            firstNameError,
+            surnameError,
+            otherNamesError,
+            emailError,
+            departmentError,
+            phoneNumberError,
+            ageError,
+
+//    ADD PROJECT ERROR LABEL
+
+            pjNameError,
+            pjOwnerError,
+            pjStartingDateError,
+            pjFinishingDateError,
+            pjLocationError,
+            pjDirectorError,
+            pjDescriptionError,
+
+//    EDIT WORKER ERROR LABEL
+
+            editFirstNameError,
+            editSurnameError,
+            editOtherNamesError,
+            editEmailError,
+            editDepartmentError,
+            editPhoneNumberError,
+            editAgeError,
+
+//    EDIT WORKER ERROR LABEL
+            editPjNameError,
+            editPjOwnerError,
+            editPjLocationError,
+            editPjDirectorError,
+            editPjStartingDateError,
+            editPjFinishingDateError,
+
+    //    ADD ADMIN ERROR LABEL
+
+            addAdminUsernameError,
+            addAdminPasswordError,
+
+    //    CHANGE PASSWORD ERROR LABEL
+
+            oldPasswordError,
+            newPasswordError,
+            confirmNewPasswordError
+    ;
+
 
 
     final FileChooser fileChooser = new FileChooser();
@@ -78,7 +131,6 @@ public class HelloController extends Thread implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
-
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
 
 //      SETTING THE MODAL CONTAINER INVISIBLE
@@ -118,12 +170,26 @@ public class HelloController extends Thread implements Initializable {
         });
 
         addProjectTabLink.setOnAction(e->switchPane(4));
-        addProjectQuickLink.setOnMouseClicked(e->switchPane(4));
+        addProjectQuickLink.setOnMouseClicked(e-> {
+            switchPane(4);
+            switchActiveLink(sideBarLinks,projectsTabLink);
 
-        addWorkerQuickLink.setOnMouseClicked(e->switchPane(3));
-        addWorkerTabLink.setOnAction(e->switchPane(3));
+        });
 
-        viewProjectsQuickLink.setOnMouseClicked(e->switchPane(1));
+        addWorkerQuickLink.setOnMouseClicked(e-> {
+            switchPane(3);
+            switchActiveLink(sideBarLinks,workersTabLink);
+        });
+        addWorkerTabLink.setOnAction(e-> {
+            switchPane(3);
+            switchActiveLink(sideBarLinks,workersTabLink);
+
+        });
+
+        viewProjectsQuickLink.setOnMouseClicked(e-> {
+            switchPane(1);
+            switchActiveLink(sideBarLinks,projectsTabLink);
+        });
 
     }
 

@@ -30,6 +30,73 @@
 
 <AnchorPane fx:id="appContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1194.0" stylesheets="@styles/admin-dashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.construction_office_automation.HelloController">
    <children>
+      <AnchorPane fx:id="modalContainer" layoutX="333.0" layoutY="215.0" prefHeight="200.0" prefWidth="200.0" styleClass="modal-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox prefHeight="252.0" prefWidth="543.0" styleClass="modal">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label styleClass="modal-heading" text="Risky" />
+                                    <Label styleClass="modal-sub-heading" text="Are you sure you want to terminate this project" />
+                                    <HBox alignment="CENTER" prefHeight="65.0" prefWidth="756.0" spacing="20.0">
+                                       <children>
+                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="108.0" style="-fx-background-color: gray;" text="Close">
+                                             <font>
+                                                <Font name="Arial Rounded MT Bold" size="17.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="add-worker-btn" />
+                                                <String fx:value="small-btn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="111.0" style="-fx-background-color: crimson;" text="Terminate">
+                                             <font>
+                                                <Font name="Arial Rounded MT Bold" size="17.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="add-worker-btn" />
+                                                <String fx:value="small-btn" />
+                                             </styleClass>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <HBox fx:id="closeModal" layoutX="221.0" layoutY="35.0" prefHeight="23.0" prefWidth="24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ICONS/icons8_forward_50px.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <VBox fx:id="toast" prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="-400.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <Label fx:id="toastTimerLabel" text="Label">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children></VBox>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="793.0" prefWidth="1192.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <VBox prefHeight="709.0" prefWidth="219.0" styleClass="side-bar" BorderPane.alignment="CENTER">
@@ -550,7 +617,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="firstNameError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
@@ -561,7 +628,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="surnameError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="1">
@@ -572,7 +639,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="otherNamesError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -583,7 +650,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="emailError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="3">
@@ -594,7 +661,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="ageError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -629,7 +696,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="departmentError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -640,7 +707,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="phoneNumberError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                          </children>
@@ -701,7 +768,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="pjNameError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
@@ -712,7 +779,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="pjOwnerError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="1">
@@ -723,7 +790,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </DatePicker>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="pjStartingDateError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -734,7 +801,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </DatePicker>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="pjFinishingDateError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -745,7 +812,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="pjDirectorError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="2">
@@ -756,7 +823,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="pjLocationError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                          </children>
@@ -769,7 +836,7 @@
                                                                   <Insets bottom="3.0" top="10.0" />
                                                                </VBox.margin>
                                                             </TextArea>
-                                                            <Label styleClass="error-message" text="Input field is empty" />
+                                                            <Label fx:id="pjDescriptionError" styleClass="error-message" text="Input field is empty" />
                                                          </children>
                                                          <VBox.margin>
                                                             <Insets top="5.0" />
@@ -837,7 +904,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="editFirstNameError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
@@ -848,7 +915,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="editSurnameError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="1">
@@ -859,7 +926,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="editOtherNamesError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -870,7 +937,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="editEmailError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="3">
@@ -881,7 +948,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="editAgeError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -916,7 +983,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="editDepartmentError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -927,7 +994,7 @@
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </TextField>
-                                                                  <Label styleClass="error-message" text="Input field is empty" />
+                                                                  <Label fx:id="editPhoneNumberError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
                                                             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -1052,7 +1119,7 @@
                                                                               <Insets bottom="3.0" top="10.0" />
                                                                            </VBox.margin>
                                                                         </TextField>
-                                                                        <Label styleClass="error-message" text="Input field is empty" />
+                                                                        <Label fx:id="editPjNameError" styleClass="error-message" text="Input field is empty" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
@@ -1063,7 +1130,7 @@
                                                                               <Insets bottom="3.0" top="10.0" />
                                                                            </VBox.margin>
                                                                         </TextField>
-                                                                        <Label styleClass="error-message" text="Input field is empty" />
+                                                                        <Label fx:id="editPjOwnerError" styleClass="error-message" text="Input field is empty" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="1">
@@ -1074,7 +1141,7 @@
                                                                               <Insets bottom="3.0" top="10.0" />
                                                                            </VBox.margin>
                                                                         </TextField>
-                                                                        <Label styleClass="error-message" text="Input field is empty" />
+                                                                        <Label fx:id="editPjLocationError" styleClass="error-message" text="Input field is empty" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -1085,7 +1152,7 @@
                                                                               <Insets bottom="3.0" top="10.0" />
                                                                            </VBox.margin>
                                                                         </TextField>
-                                                                        <Label styleClass="error-message" text="Input field is empty" />
+                                                                        <Label fx:id="editPjDirectorError" styleClass="error-message" text="Input field is empty" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="2">
@@ -1096,7 +1163,7 @@
                                                                               <Insets bottom="3.0" top="5.0" />
                                                                            </VBox.margin>
                                                                         </DatePicker>
-                                                                        <Label styleClass="error-message" text="Input field is empty" />
+                                                                        <Label fx:id="editPjStartingDateError" styleClass="error-message" text="Input field is empty" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox layoutX="10.0" layoutY="174.0" prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -1107,7 +1174,7 @@
                                                                               <Insets bottom="3.0" top="5.0" />
                                                                            </VBox.margin>
                                                                         </DatePicker>
-                                                                        <Label styleClass="error-message" text="Input field is empty" />
+                                                                        <Label fx:id="editPjFinishingDateError" styleClass="error-message" text="Input field is empty" />
                                                                      </children>
                                                                   </VBox>
                                                                </children>
@@ -1218,7 +1285,7 @@
                                                                                                 <Insets bottom="3.0" top="10.0" />
                                                                                              </VBox.margin>
                                                                                           </TextField>
-                                                                                          <Label styleClass="error-message" text="Input field is empty" />
+                                                                                          <Label fx:id="addAdminUsernameError" styleClass="error-message" text="Input field is empty" />
                                                                                        </children>
                                                                                     </VBox>
                                                                                     <VBox prefHeight="86.0" prefWidth="278.0" styleClass="form-content">
@@ -1229,7 +1296,7 @@
                                                                                                 <Insets bottom="3.0" top="10.0" />
                                                                                              </VBox.margin>
                                                                                           </TextField>
-                                                                                          <Label styleClass="error-message" text="Input field is empty" />
+                                                                                          <Label fx:id="addAdminPasswordError" styleClass="error-message" text="Input field is empty" />
                                                                                        </children>
                                                                                     </VBox>
                                                                                     <HBox prefHeight="100.0" prefWidth="200.0">
@@ -1485,7 +1552,7 @@
                                                                                           <Insets bottom="3.0" top="10.0" />
                                                                                        </VBox.margin>
                                                                                     </PasswordField>
-                                                                                    <Label styleClass="error-message" text="Input field is empty" />
+                                                                                    <Label fx:id="oldPasswordError" styleClass="error-message" text="Input field is empty" />
                                                                                  </children>
                                                                               </VBox>
                                                                               <VBox layoutX="10.0" layoutY="70.0" prefHeight="94.0" prefWidth="423.0" styleClass="form-content">
@@ -1496,7 +1563,7 @@
                                                                                           <Insets bottom="3.0" top="10.0" />
                                                                                        </VBox.margin>
                                                                                     </PasswordField>
-                                                                                    <Label styleClass="error-message" text="Input field is empty" />
+                                                                                    <Label fx:id="newPasswordError" styleClass="error-message" text="Input field is empty" />
                                                                                  </children>
                                                                               </VBox>
                                                                               <VBox layoutX="10.0" layoutY="265.0" prefHeight="94.0" prefWidth="421.0" styleClass="form-content">
@@ -1507,7 +1574,7 @@
                                                                                           <Insets bottom="3.0" top="10.0" />
                                                                                        </VBox.margin>
                                                                                     </PasswordField>
-                                                                                    <Label styleClass="error-message" text="Input field is empty" />
+                                                                                    <Label fx:id="confirmNewPasswordError" styleClass="error-message" text="Input field is empty" />
                                                                                  </children>
                                                                               </VBox>
                                                                               <HBox prefHeight="63.0" prefWidth="421.0">
@@ -1616,72 +1683,5 @@
             </AnchorPane>
          </center>
       </BorderPane>
-      <AnchorPane fx:id="modalContainer" layoutX="333.0" layoutY="215.0" prefHeight="200.0" prefWidth="200.0" styleClass="modal-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <VBox prefHeight="252.0" prefWidth="543.0" styleClass="modal">
-                     <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label styleClass="modal-heading" text="Risky" />
-                                    <Label styleClass="modal-sub-heading" text="Are you sure you want to terminate this project" />
-                                    <HBox alignment="CENTER" prefHeight="65.0" prefWidth="756.0" spacing="20.0">
-                                       <children>
-                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="108.0" style="-fx-background-color: gray;" text="Close">
-                                             <font>
-                                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                                             </font>
-                                             <styleClass>
-                                                <String fx:value="add-worker-btn" />
-                                                <String fx:value="small-btn" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="111.0" style="-fx-background-color: crimson;" text="Terminate">
-                                             <font>
-                                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                                             </font>
-                                             <styleClass>
-                                                <String fx:value="add-worker-btn" />
-                                                <String fx:value="small-btn" />
-                                             </styleClass>
-                                          </Button>
-                                       </children>
-                                       <padding>
-                                          <Insets left="20.0" />
-                                       </padding>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                              <HBox fx:id="closeModal" layoutX="221.0" layoutY="35.0" prefHeight="23.0" prefWidth="24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@ICONS/icons8_forward_50px.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                                 <padding>
-                                    <Insets right="10.0" />
-                                 </padding>
-                              </HBox>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-      <VBox fx:id="toast" prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="-400.0" AnchorPane.topAnchor="60.0">
-         <children>
-            <Label fx:id="toastTimerLabel" text="Label">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-         </children></VBox>
    </children>
 </AnchorPane>
