@@ -4,10 +4,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -119,9 +116,51 @@ public class HelloController extends Thread implements Initializable {
             confirmNewPasswordError
     ;
 
+    @FXML
+//   TEXT FIELDS
+
+    private TextField
+
+//    ADD WORKER TEXT FIELD
+
+            firstNameField,
+            surnameField,
+            otherNamesField,
+            emailField,
+            phoneNumberField,
+            ageField,
+
+    //    ADD PROJECT TEXT FIELD
+
+            pjNameField,
+            pjOwnerField,
+            pjDateField,
+
+    //    EDIT WORKER TEXT FIELD
+
+            editFirstNameField,
+            editSurnameField,
+            editOtherNamesField,
+            editEmailField,
+            editPhoneNumberField,
+            editAgeField,
+
+    //    EDIT PROJECT TEXT FIELD
+
+            editPjNameField,
+            editPjOwnerField,
+
+    //    ADD ADMIN TEXT FIELD
+
+            addAdminField
+    ;
 
 
     final FileChooser fileChooser = new FileChooser();
+
+    public HelloController() {
+    }
+
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");

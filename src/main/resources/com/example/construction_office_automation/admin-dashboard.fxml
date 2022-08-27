@@ -612,7 +612,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content">
                                                                <children>
                                                                   <Label text="First name" />
-                                                                  <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                  <TextField fx:id="firstNameField" prefHeight="39.0" prefWidth="314.0">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -623,7 +623,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
                                                                <children>
                                                                   <Label text="Surname" />
-                                                                  <TextField>
+                                                                  <TextField fx:id="surnameField">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -634,7 +634,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="1">
                                                                <children>
                                                                   <Label text="Other names" />
-                                                                  <TextField>
+                                                                  <TextField fx:id="otherNamesField">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -645,7 +645,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                <children>
                                                                   <Label text="Email" />
-                                                                  <TextField>
+                                                                  <TextField fx:id="emailField">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -656,7 +656,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="3">
                                                                <children>
                                                                   <Label text="Age" />
-                                                                  <TextField>
+                                                                  <TextField fx:id="ageField">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -702,7 +702,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                <children>
                                                                   <Label text="Phone number" />
-                                                                  <TextField>
+                                                                  <TextField fx:id="phoneNumberField">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -763,7 +763,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content">
                                                                <children>
                                                                   <Label text="Name" />
-                                                                  <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                  <TextField fx:id="pjNameField" prefHeight="39.0" prefWidth="314.0">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -774,7 +774,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
                                                                <children>
                                                                   <Label text="Owner" />
-                                                                  <TextField>
+                                                                  <TextField fx:id="pjOwnerField">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -818,7 +818,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="2">
                                                                <children>
                                                                   <Label text="Location" />
-                                                                  <TextField>
+                                                                  <TextField fx:id="pjDateField">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -899,7 +899,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content">
                                                                <children>
                                                                   <Label text="First name" />
-                                                                  <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                  <TextField fx:id="editFirstNameField" prefHeight="39.0" prefWidth="314.0">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -910,7 +910,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
                                                                <children>
                                                                   <Label text="Surname" />
-                                                                  <TextField>
+                                                                  <TextField fx:id="editSurnameField">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -921,7 +921,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="1">
                                                                <children>
                                                                   <Label text="Other names" />
-                                                                  <TextField>
+                                                                  <TextField fx:id="editOtherNamesField">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -932,7 +932,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                <children>
                                                                   <Label text="Email" />
-                                                                  <TextField>
+                                                                  <TextField fx:id="editEmailField">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -943,7 +943,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="3">
                                                                <children>
                                                                   <Label text="Age" />
-                                                                  <TextField>
+                                                                  <TextField fx:id="editAgeField">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -989,7 +989,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                <children>
                                                                   <Label text="Phone number" />
-                                                                  <TextField>
+                                                                  <TextField fx:id="editPhoneNumberField">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -1114,7 +1114,7 @@
                                                                   <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content">
                                                                      <children>
                                                                         <Label text="Name" />
-                                                                        <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                        <TextField fx:id="editPjNameField" prefHeight="39.0" prefWidth="314.0">
                                                                            <VBox.margin>
                                                                               <Insets bottom="3.0" top="10.0" />
                                                                            </VBox.margin>
@@ -1125,7 +1125,7 @@
                                                                   <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.columnIndex="1">
                                                                      <children>
                                                                         <Label text="Owner" />
-                                                                        <TextField>
+                                                                        <TextField fx:id="editPjOwnerField">
                                                                            <VBox.margin>
                                                                               <Insets bottom="3.0" top="10.0" />
                                                                            </VBox.margin>
@@ -1280,7 +1280,7 @@
                                                                                     <VBox prefHeight="95.0" prefWidth="278.0" styleClass="form-content">
                                                                                        <children>
                                                                                           <Label text="Username" />
-                                                                                          <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                                          <TextField fx:id="addAdminField" prefHeight="39.0" prefWidth="314.0">
                                                                                              <VBox.margin>
                                                                                                 <Insets bottom="3.0" top="10.0" />
                                                                                              </VBox.margin>
