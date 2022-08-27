@@ -3,9 +3,13 @@ package com.example.construction_office_automation.model;
 public class Employees {
     private int id;
     private String firstName;
-    private String username;
+    private String surname;
     private String otherNames;
     private String email;
+    private String Department;
+    private int PhoneNumber;
+    private int Age;
+    private String gender;
 
     public int getId() {
         return id;
@@ -23,12 +27,12 @@ public class Employees {
         this.firstName = firstName;
     }
 
-    public String getUsername() {
-        return username;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setSurname(String username) {
+        this.surname = username;
     }
 
     public String getOtherNames() {
@@ -79,8 +83,21 @@ public class Employees {
         this.gender = gender;
     }
 
-    private String Department;
-    private int PhoneNumber;
-    private int Age;
-    private String gender;
+    public boolean validateFields(){
+        if(
+               getFirstName() == null
+               &&  getEmail() == null
+               && getSurname() == null
+               && getOtherNames()== null
+               && getDepartment() == null
+               && getGender() == null
+               && getAge() == 0
+               && getPhoneNumber() == 0
+
+        ) return false;
+
+        return true;
+    }
+
+
 }
