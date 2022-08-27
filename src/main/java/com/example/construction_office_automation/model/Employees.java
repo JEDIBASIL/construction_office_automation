@@ -7,7 +7,7 @@ public class Employees {
     private String otherNames;
     private String email;
     private String Department;
-    private int PhoneNumber;
+    private long PhoneNumber;
     private int Age;
     private String gender;
 
@@ -59,11 +59,11 @@ public class Employees {
         Department = department;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return PhoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         PhoneNumber = phoneNumber;
     }
 
