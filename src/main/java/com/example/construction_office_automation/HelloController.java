@@ -4,6 +4,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
@@ -54,8 +55,19 @@ public class HelloController extends Thread implements Initializable {
 //   DARK MODE CHECKBOX
     @FXML
      private CheckBox darkModeCheckBox;
+    @FXML
+//  ADD PROJECT TAB LINK
+    private Button addProjectTabLink;
 
-    private Stage stage;
+    @FXML
+//  ADD WORKER TAB LINK
+    private  Button addWorkerTabLink;
+
+    @FXML
+//  QUICK ACTION TAB LINKS
+    private VBox addProjectQuickLink,addWorkerQuickLink,viewProjectsQuickLink;
+
+
     final FileChooser fileChooser = new FileChooser();
     @FXML
     protected void onHelloButtonClick() {
@@ -104,6 +116,14 @@ public class HelloController extends Thread implements Initializable {
                 darkModeCheckBox.setText("OFF");
             }
         });
+
+        addProjectTabLink.setOnAction(e->switchPane(4));
+        addProjectQuickLink.setOnMouseClicked(e->switchPane(4));
+
+        addWorkerQuickLink.setOnMouseClicked(e->switchPane(3));
+        addWorkerTabLink.setOnAction(e->switchPane(3));
+
+        viewProjectsQuickLink.setOnMouseClicked(e->switchPane(1));
 
     }
 

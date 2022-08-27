@@ -4,6 +4,10 @@
     -fx-border-color: rgb(234, 234, 234);
 }
 
+.button{
+    -fx-alignment:CENTER;
+}
+
 .menu {
     -fx-padding: 0 10;
     -fx-background-radius: 5;
