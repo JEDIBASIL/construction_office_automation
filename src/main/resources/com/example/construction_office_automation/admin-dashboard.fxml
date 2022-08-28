@@ -32,7 +32,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="appContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1194.0" stylesheets="@styles/admin-dashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.example.construction_office_automation.controller.HelloController">
+<AnchorPane fx:id="appContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1194.0" stylesheets="@styles/admin-dashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.construction_office_automation.controller.HelloController">
    <children>
       <VBox fx:id="toast" prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="-400.0" AnchorPane.topAnchor="60.0">
          <children>
@@ -496,7 +496,7 @@
                                                       <Font name="Arial Rounded MT Bold" size="15.0" />
                                                    </font>
                                                 </Button>
-                                                <Button layoutX="31.0" layoutY="31.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="151.0" styleClass="add-worker-btn" text="Add department">
+                                                <Button fx:id="addDepartmentFormShow" layoutX="31.0" layoutY="31.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="151.0" styleClass="add-worker-btn" text="Add department">
                                                    <font>
                                                       <Font name="Arial Rounded MT Bold" size="15.0" />
                                                    </font>
@@ -1661,8 +1661,8 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label styleClass="modal-heading" text="Risky" />
-                                    <Label styleClass="modal-sub-heading" text="Are you sure you want to terminate this project" />
+                                    <Label fx:id="modalHeading" styleClass="modal-heading" text="Risky" />
+                                    <Label fx:id="modalSubHeading" styleClass="modal-sub-heading" text="Are you sure you want to terminate this project" />
                                     <HBox alignment="CENTER" prefHeight="65.0" prefWidth="756.0" spacing="20.0">
                                        <children>
                                           <Button fx:id="modalNoOption" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="108.0" style="-fx-background-color: gray;" text="Close">
@@ -1740,12 +1740,12 @@
                                     <Insets bottom="3.0" top="10.0" />
                                  </VBox.margin>
                               </TextField>
-                              <Label fx:id="addAdminUsernameError1" styleClass="error-message" text="Input field is empty" />
+                              <Label fx:id="addDepartmentError" styleClass="error-message" text="Input field is empty" />
                            </children>
                         </VBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="addDepartmentBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="567.0" styleClass="add-worker-btn" text="Add department">
+                              <Button fx:id="addDepartmentBtn" mnemonicParsing="false" onMouseClicked="#onModalClose" prefHeight="42.0" prefWidth="567.0" styleClass="add-worker-btn" text="Add department">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin>
