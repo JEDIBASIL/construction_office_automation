@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -62,6 +63,12 @@ public class HelloController extends Thread implements Initializable {
     @FXML
 //  ADD WORKER TAB LINK
     private  Button addWorkerTabLink;
+
+    @FXML
+
+//  MODAL BOXES
+
+    private VBox confirmationModal,addCategoryModalForm;
 
     @FXML
 //  QUICK ACTION TAB LINKS
@@ -200,7 +207,6 @@ public class HelloController extends Thread implements Initializable {
 //       >>>
 
 //       ADDED AN EVENT LISTENER ON THE CLOSE MODAL ICON
-        closeModal.setOnMouseClicked(e->displayModal(false));
 
 //       ADDED AN EVENT LISTENER ON THE DARKMODECHECKBOX TO TOGGLE THEME
         darkModeCheckBox.setOnAction(event -> {
@@ -252,7 +258,7 @@ public class HelloController extends Thread implements Initializable {
      }
 
 //   FUNCTION TO HIDE AND SHOW MODAL
-     public void displayModal(boolean display){
+     public String displayModal(boolean display,String displayType){
          modalContainer.setVisible(display);
      }
 
@@ -366,6 +372,13 @@ public class HelloController extends Thread implements Initializable {
         return null;
     }
 
+    @FXML
+    protected void onAddWorkerClicked(){
 
+    }
+    @FXML
+    protected void onModalClose(){
+        displayModal(false);
+    }
 
 }

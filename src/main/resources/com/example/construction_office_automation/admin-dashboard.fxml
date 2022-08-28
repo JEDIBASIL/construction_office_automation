@@ -32,7 +32,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="appContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1194.0" stylesheets="@styles/admin-dashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.construction_office_automation.HelloController">
+<AnchorPane fx:id="appContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1194.0" stylesheets="@styles/admin-dashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.example.construction_office_automation.controller.HelloController">
    <children>
       <VBox fx:id="toast" prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="-400.0" AnchorPane.topAnchor="60.0">
          <children>
@@ -1653,9 +1653,9 @@
       </BorderPane>
       <AnchorPane fx:id="modalContainer" layoutX="333.0" layoutY="215.0" prefHeight="200.0" prefWidth="200.0" styleClass="modal-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox prefHeight="252.0" prefWidth="543.0" styleClass="modal">
+                  <VBox fx:id="confirmationModal" prefHeight="252.0" prefWidth="543.0" styleClass="modal">
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
@@ -1665,7 +1665,7 @@
                                     <Label styleClass="modal-sub-heading" text="Are you sure you want to terminate this project" />
                                     <HBox alignment="CENTER" prefHeight="65.0" prefWidth="756.0" spacing="20.0">
                                        <children>
-                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="108.0" style="-fx-background-color: gray;" text="Close">
+                                          <Button fx:id="modalNoOption" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="108.0" style="-fx-background-color: gray;" text="Close">
                                              <font>
                                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                                              </font>
@@ -1674,7 +1674,7 @@
                                                 <String fx:value="small-btn" />
                                              </styleClass>
                                           </Button>
-                                          <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="111.0" style="-fx-background-color: crimson;" text="Terminate">
+                                          <Button fx:id="modalYesOption" mnemonicParsing="false" prefHeight="29.0" prefWidth="111.0" style="-fx-background-color: crimson;" text="Terminate">
                                              <font>
                                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                                              </font>
@@ -1706,7 +1706,7 @@
                         </AnchorPane>
                      </children>
                   </VBox>
-                  <VBox prefHeight="258.0" prefWidth="538.0" styleClass="modal-form">
+                  <VBox fx:id="addCategoryModalForm" prefHeight="258.0" prefWidth="538.0" styleClass="modal-form">
                      <children>
                         <HBox prefHeight="15.0" prefWidth="496.0">
                            <children>
@@ -1735,7 +1735,7 @@
                         <VBox prefHeight="95.0" prefWidth="278.0" styleClass="form-content">
                            <children>
                               <Label text="Name" />
-                              <TextField fx:id="addAdminField1" prefHeight="39.0" prefWidth="314.0">
+                              <TextField fx:id="addDepartmentField" prefHeight="39.0" prefWidth="314.0">
                                  <VBox.margin>
                                     <Insets bottom="3.0" top="10.0" />
                                  </VBox.margin>
@@ -1745,7 +1745,7 @@
                         </VBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="567.0" styleClass="add-worker-btn" text="Add department">
+                              <Button fx:id="addDepartmentBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="567.0" styleClass="add-worker-btn" text="Add department">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin>
