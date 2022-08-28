@@ -152,7 +152,7 @@
 .overview-container .overview-card .title {
     -fx-background-color: rgba(244, 246, 250, 0.467);
     -fx-pref-height: 50;
-    -fx-background-radius: 20;
+    -fx-background-radius: 15;
     -fx-padding: 0 10;
 }
 
@@ -176,20 +176,23 @@
     -fx-background-color: rgba(255, 255, 255, 0.358) !important;
 } */
 
-.quick-action-container {
-    /* -fx-background-color: whitesmoke; */
-    /* -fx-padding: 20; */
-    /* -fx-background-color: lightblue; */
-}
-
-.quick-action-container .content {
-    -fx-padding: 12;
+.quick-action-container,.chart-container  {
+    -fx-padding:20;
     -fx-background-radius: 20;
     -fx-background-color: rgb(255, 255, 255);
 }
 
+.quick-action-container .content {
+    -fx-padding:8;
+    -fx-background-color: rgb(255, 255, 255);
+}
+
+.quick-action-grid{
+   
+}
+
 .quick-action-container .content .card {
-    -fx-background-radius: 20;
+    -fx-background-radius: 15;
     -fx-background-color: rgb(50, 201, 175);
 }
 
@@ -435,7 +438,8 @@
 
 }
 
-.modal{
+.modal,.modal-form{
+    -fx-padding:20;
     -fx-background-color: white;
     -fx-background-radius:20;
     -fx-border-radius:20;
@@ -461,3 +465,4 @@
     -fx-border-color:gainsboro;
     -fx-padding:20px;
 }
+
