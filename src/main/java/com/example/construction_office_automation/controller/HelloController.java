@@ -1,27 +1,26 @@
-package com.example.construction_office_automation;
+package com.example.construction_office_automation.controller;
 
+import com.example.construction_office_automation.HelloApplication;
+import com.example.construction_office_automation.enums.Validation;
 import com.example.construction_office_automation.model.Employees;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.example.construction_office_automation.enums.Validation.*;
 
 public class HelloController extends Thread implements Initializable {
     @FXML
@@ -65,10 +64,21 @@ public class HelloController extends Thread implements Initializable {
     private  Button addWorkerTabLink;
 
     @FXML
+//   BUTTON TO DISPLAY ADD DEPARTMENT MODAL
+    private Button addDepartmentFormShow;
+
+    @FXML
 
 //  MODAL BOXES
-
     private VBox confirmationModal,addCategoryModalForm;
+
+    @FXML
+//  MODAL BOX BUTTONS
+    private Button modalYesOption,modalNoOption,addDepartmentBtn;
+
+    @FXML
+//  MODAL LABELS
+    private Label modalHeading,modalSubHeading;
 
     @FXML
 //  QUICK ACTION TAB LINKS
@@ -123,7 +133,11 @@ public class HelloController extends Thread implements Initializable {
 
             oldPasswordError,
             newPasswordError,
-            confirmNewPasswordError
+            confirmNewPasswordError,
+
+//         ADD DEPARTMENT ERROR LABEL
+
+            addDepartmentError
     ;
 
     @FXML
@@ -162,7 +176,11 @@ public class HelloController extends Thread implements Initializable {
 
     //    ADD ADMIN TEXT FIELD
 
-            addAdminField
+            addAdminField,
+
+    //    ADD DEPARTMENT TEXT FIELD
+
+           addDepartmentField
     ;
 
 
@@ -176,6 +194,7 @@ public class HelloController extends Thread implements Initializable {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 
+   Validation validation;
 
 
     Employees employees = new Employees();
@@ -185,7 +204,7 @@ public class HelloController extends Thread implements Initializable {
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
 
 //      SETTING THE MODAL CONTAINER INVISIBLE
-        displayModal(false);
+        modalContainer.setVisible(false);
 
 //      ADDED AN EVENTLISTENER TO EACH OF THE SIDEBAR LINKS
         homeTabLink.setOnMouseClicked(event -> {
@@ -241,6 +260,7 @@ public class HelloController extends Thread implements Initializable {
             switchActiveLink(sideBarLinks,projectsTabLink);
         });
 
+
     }
 
 //   FUNCTION TO SHOW FILECHOOSER
@@ -258,9 +278,7 @@ public class HelloController extends Thread implements Initializable {
      }
 
 //   FUNCTION TO HIDE AND SHOW MODAL
-     public String displayModal(boolean display,String displayType){
-         modalContainer.setVisible(display);
-     }
+
 
 
 //   METHOD TO SWITCH TO DARK MODE
@@ -316,7 +334,7 @@ public class HelloController extends Thread implements Initializable {
         String emailRegex = "^(.+)@(.+)$";
         String numberRegex = "\\d+";
 
-        if(validationType.equals("NAME") && extra == null){
+        if(validationType.equals(NAME.toString()) && extra == null){
             if(field.getText().trim().length() < 3) errorMessage.setText(fieldName+" must be at least 3 characters");
             else if (field.getText().length() > 25)errorMessage.setText(fieldName+" should not be more than 25 letters");
             else{
@@ -325,7 +343,7 @@ public class HelloController extends Thread implements Initializable {
             }
         }
 
-        if(validationType.equals("EMAIL") && extra == null){
+        if(validationType.equals(EMAIL.toString()) && extra == null){
             Pattern emailPattern = Pattern.compile(emailRegex);
             Matcher emailMatcher = emailPattern.matcher(field.getText());
             if(!emailMatcher.matches()){
@@ -336,13 +354,13 @@ public class HelloController extends Thread implements Initializable {
             }
         }
 
-        if(validationType.equals("NUMBER")) {
+        if(validationType.equals(NUMBER.toString())) {
             Pattern numberPattern = Pattern.compile(numberRegex);
             Matcher numberMatcher = numberPattern.matcher(field.getText());
 
             if (numberMatcher.matches()) {
                 Long text = Long.parseLong(field.getText());
-                if(extra.equals("AGE")){
+                if(extra.equals(AGE.toString())){
                     if(text < 18) errorMessage.setText(fieldName+" should be above 18");
 
                     else if(text > 55) errorMessage.setText("workers " + fieldName + " should not be above 55");
@@ -353,7 +371,7 @@ public class HelloController extends Thread implements Initializable {
                     }
                 }
 
-                if(extra.equals("PHONE_NUMBER")){
+                if(extra.equals(PHONE_NUMBER.toString())){
                     if (field.getText().length() < 10 || field.getText().length() > 16) errorMessage.setText(fieldName + " is invalid");
                     else{
                         errorMessage.setText("");
@@ -372,13 +390,28 @@ public class HelloController extends Thread implements Initializable {
         return null;
     }
 
+//  FUNCTION TO DISPLAY MODAL
+    public void displayModal(boolean display,String displayType){
+        modalContainer.setVisible(display);
+        if(displayType.equals("FORM")){
+            confirmationModal.setMaxHeight(0);
+            confirmationModal.setMinHeight(0);
+            confirmationModal.setVisible(false);
+        }else if(displayType.equals("OPTION")){
+            addCategoryModalForm.setMaxHeight(0);
+            addCategoryModalForm.setMinHeight(0);
+            addCategoryModalForm.setVisible(false);
+        }else{
+            modalContainer.setVisible(false);
+        }
+    }
+
     @FXML
     protected void onAddWorkerClicked(){
 
     }
     @FXML
     protected void onModalClose(){
-        displayModal(false);
     }
 
 }
