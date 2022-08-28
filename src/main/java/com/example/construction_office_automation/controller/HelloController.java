@@ -204,7 +204,7 @@ public class HelloController extends Thread implements Initializable {
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
 
 //      SETTING THE MODAL CONTAINER INVISIBLE
-        modalContainer.setVisible(false);
+        displayModal(null);
 
 //      ADDED AN EVENTLISTENER TO EACH OF THE SIDEBAR LINKS
         homeTabLink.setOnMouseClicked(event -> {
@@ -283,7 +283,7 @@ public class HelloController extends Thread implements Initializable {
 
 //   METHOD TO SWITCH TO DARK MODE
      public  void switchTheme(boolean theme){
-        if(theme == true){
+        if(theme){
             appContainer.getStylesheets().add(1, String.valueOf(HelloApplication.class.getResource("styles/dark-mode.css")));
         }else {
             appContainer.getStylesheets().remove(1);
@@ -391,16 +391,18 @@ public class HelloController extends Thread implements Initializable {
     }
 
 //  FUNCTION TO DISPLAY MODAL
-    public void displayModal(boolean display,String displayType){
-        modalContainer.setVisible(display);
-        if(displayType.equals("FORM")){
-            confirmationModal.setMaxHeight(0);
-            confirmationModal.setMinHeight(0);
-            confirmationModal.setVisible(false);
-        }else if(displayType.equals("OPTION")){
-            addCategoryModalForm.setMaxHeight(0);
-            addCategoryModalForm.setMinHeight(0);
-            addCategoryModalForm.setVisible(false);
+    public void displayModal(String displayType){
+        if(displayType != null){
+            modalContainer.setVisible(true);
+            if(displayType.equals("FORM")){
+                confirmationModal.setMaxHeight(0);
+                confirmationModal.setMinHeight(0);
+                confirmationModal.setVisible(false);
+            } if(displayType.equals("OPTION")){
+                addCategoryModalForm.setMaxHeight(0);
+                addCategoryModalForm.setMinHeight(0);
+                addCategoryModalForm.setVisible(false);
+            }
         }else{
             modalContainer.setVisible(false);
         }
@@ -412,6 +414,7 @@ public class HelloController extends Thread implements Initializable {
     }
     @FXML
     protected void onModalClose(){
+
     }
 
 }
