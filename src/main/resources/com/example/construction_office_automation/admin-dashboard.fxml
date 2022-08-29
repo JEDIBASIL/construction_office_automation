@@ -34,14 +34,6 @@
 
 <AnchorPane fx:id="appContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1194.0" stylesheets="@styles/admin-dashboard.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.construction_office_automation.controller.HelloController">
    <children>
-      <VBox fx:id="toast" prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="-400.0" AnchorPane.topAnchor="60.0">
-         <children>
-            <Label fx:id="toastTimerLabel" text="Label">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-         </children></VBox>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="793.0" prefWidth="1192.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <VBox prefHeight="709.0" prefWidth="219.0" styleClass="side-bar" BorderPane.alignment="CENTER">
@@ -1706,7 +1698,7 @@
                         </AnchorPane>
                      </children>
                   </VBox>
-                  <VBox fx:id="addCategoryModalForm" prefHeight="258.0" prefWidth="538.0" styleClass="modal-form">
+                  <VBox fx:id="addCategoryModalForm" prefHeight="258.0" prefWidth="538.0" styleClass="modal">
                      <children>
                         <HBox prefHeight="15.0" prefWidth="496.0">
                            <children>
@@ -1740,12 +1732,12 @@
                                     <Insets bottom="3.0" top="10.0" />
                                  </VBox.margin>
                               </TextField>
-                              <Label fx:id="addDepartmentError" styleClass="error-message" text="Input field is empty" />
+                              <Label fx:id="addDepartmentError" styleClass="error-message" />
                            </children>
                         </VBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="addDepartmentBtn" mnemonicParsing="false" onMouseClicked="#onModalClose" prefHeight="42.0" prefWidth="567.0" styleClass="add-worker-btn" text="Add department">
+                              <Button mnemonicParsing="false" onAction="#onAddDepartmentClicked" prefHeight="42.0" prefWidth="567.0" styleClass="add-worker-btn" text="Add department">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin>
@@ -1767,5 +1759,13 @@
             </VBox>
          </children>
       </AnchorPane>
+      <VBox fx:id="toast" prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="-400.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <Label fx:id="toastTimerLabel" text="Label">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children></VBox>
    </children>
 </AnchorPane>

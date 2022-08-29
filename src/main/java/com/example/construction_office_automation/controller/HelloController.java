@@ -1,5 +1,6 @@
 package com.example.construction_office_automation.controller;
 
+import animatefx.animation.*;
 import com.example.construction_office_automation.HelloApplication;
 import com.example.construction_office_automation.enums.Validation;
 import com.example.construction_office_automation.model.Employees;
@@ -183,6 +184,7 @@ public class HelloController extends Thread implements Initializable {
            addDepartmentField
     ;
 
+    private String departmentNameToBeAdded;
 
     final FileChooser fileChooser = new FileChooser();
 
@@ -260,6 +262,7 @@ public class HelloController extends Thread implements Initializable {
             switchActiveLink(sideBarLinks,projectsTabLink);
         });
 
+        addDepartmentFormShow.setOnAction(e->displayModal("FORM"));
 
     }
 
@@ -313,12 +316,14 @@ public class HelloController extends Thread implements Initializable {
         toastAnimation.setDuration(Duration.seconds(0.3));
         if(animate){
             toastAnimation.setByX(-430);
-            toastAnimation.setRate(3);
+            toastAnimation.setAutoReverse(true);
+            toastAnimation.setCycleCount(TranslateTransition.INDEFINITE-2);
+            toastAnimation.setAutoReverse(true);
         }
         if(!animate) {
-            toastAnimation.setDuration(Duration.seconds(0.3));
-            toastAnimation.setDelay(Duration.seconds(5));
+            toastAnimation.setDelay(Duration.seconds(3));
             toastAnimation.setByX(430);
+
         }
 
         if(!animate && animationType != null && animationType.equals("CLOSE")) {
@@ -398,22 +403,31 @@ public class HelloController extends Thread implements Initializable {
                 confirmationModal.setMaxHeight(0);
                 confirmationModal.setMinHeight(0);
                 confirmationModal.setVisible(false);
+                new BounceInDown(addCategoryModalForm).play();
             } if(displayType.equals("OPTION")){
                 addCategoryModalForm.setMaxHeight(0);
                 addCategoryModalForm.setMinHeight(0);
                 addCategoryModalForm.setVisible(false);
+                new BounceInDown(confirmationModal).play();
             }
         }else{
+            new BounceInDown(modalContainer).play();
+            new BounceInDown(confirmationModal).play();
             modalContainer.setVisible(false);
         }
     }
 
     @FXML
     protected void onAddWorkerClicked(){
-
+        System.out.println("working");
     }
     @FXML
     protected void onModalClose(){
+        displayModal(null);
+    }
+
+    @FXML
+    protected void onAddDepartmentClicked(){
 
     }
 
