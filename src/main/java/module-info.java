@@ -1,6 +1,7 @@
 module com.example.construction_office_automation {
     requires javafx.controls;
     requires javafx.fxml;
+    requires AnimateFX;
 
 
     opens com.example.construction_office_automation to javafx.fxml;
