@@ -27,7 +27,7 @@
 }
 
 .logo{
-    -fx-text-fill: rgb(84,84,208);
+    -fx-text-fill: rgb(84,84,208) !important;
 }
 
 .active .image-view{
@@ -53,7 +53,7 @@
 
 .scroll-bar:horizontal,
 .scroll-bar:vertical {
-    -fx-background-color: white;
+    -fx-background-color: rgb(243,243,243);
 }
 
 .increment-button,
@@ -134,7 +134,7 @@
 .overview-container .overview-card {
     -fx-background-color: white;
     /* -fx-border-color: rgb(234, 234, 234); */
-    -fx-background-radius: 20;
+    -fx-background-radius: 15;
     -fx-border-radius: 10;
     -fx-padding: 10;
     -fx-spacing: 20;
@@ -182,7 +182,7 @@
 
 .quick-action-container,.chart-container  {
     -fx-padding:20;
-    -fx-background-radius: 20;
+    -fx-background-radius: 15;
     -fx-background-color: rgb(255, 255, 255);
 }
 
@@ -229,7 +229,7 @@
 .display_workers-details-card {
     -fx-background-color: white;
     -fx-padding: 20;
-    -fx-background-radius: 20;
+    -fx-background-radius: 15;
 }
 
 .form-container {

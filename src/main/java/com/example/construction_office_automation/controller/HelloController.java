@@ -179,6 +179,12 @@ public class HelloController extends Thread implements Initializable {
            addDepartmentField
     ;
 
+    @FXML
+
+//  CURRENT TAB NAME
+
+    private Label currentTabName;
+
     private String departmentNameToBeAdded;
 
     final FileChooser fileChooser = new FileChooser();
@@ -222,7 +228,7 @@ public class HelloController extends Thread implements Initializable {
             switchActiveLink(sideBarLinks,workersTabLink);
         });
         settingsTabLink.setOnMouseClicked(event -> {
-            switchPane(7);
+            switchPane(3);
             switchActiveLink(sideBarLinks,settingsTabLink);
             displayModal("Hello world","it fells good to be on earth");
 
@@ -268,7 +274,7 @@ public class HelloController extends Thread implements Initializable {
 
     }
 
-//   FUNCTION TO SHOW FILECHOOSER
+//   FUNCTION TO SHOW FILE-CHOOSER
 
      public  File displayFileChooser(String title){
          fileChooser.setTitle(title);
@@ -282,7 +288,12 @@ public class HelloController extends Thread implements Initializable {
         appTabPane.getSelectionModel().select(tab);
      }
 
-//   FUNCTION TO HIDE AND SHOW MODAL
+//   FUNCTION TO CHANGE THE NAME OF THE CURRENT TAB
+
+    public  void changeCurrentTabName(String name){
+        currentTabName.setText(name);
+
+    }
 
 
 
@@ -297,13 +308,17 @@ public class HelloController extends Thread implements Initializable {
      }
 
 //  ALGORITHM TO SWITCH PANE ON CLICK OF EACH ITEM IN THE SIDEBAR
-    public  static  void switchActiveLink(HBox[] links, HBox activeLink){
+    public    void switchActiveLink(HBox[] links, HBox activeLink){
 
         if(activeLink == null){
             for(HBox link:links){
                 link.getStyleClass().remove("active");
             }
         }else{
+            if(appTabPane.getSelectionModel().getSelectedIndex() == 0)changeCurrentTabName("Home");
+            else if(appTabPane.getSelectionModel().getSelectedIndex() == 1)changeCurrentTabName("Projects");
+            else if(appTabPane.getSelectionModel().getSelectedIndex() == 2)changeCurrentTabName("Workers");
+            else if(appTabPane.getSelectionModel().getSelectedIndex() == 3)changeCurrentTabName("Settings");
             for(HBox link:links){
                 link.getStyleClass().remove("active");
             }

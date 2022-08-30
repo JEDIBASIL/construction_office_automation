@@ -682,6 +682,424 @@
                               </ScrollPane>
                            </content>
                         </Tab>
+                        <Tab text="settings section">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="954.0" prefWidth="973.0">
+                                 <content>
+                                    <VBox prefHeight="805.0" prefWidth="956.0" spacing="20.0">
+                                       <styleClass>
+                                          <String fx:value="body" />
+                                          <String fx:value="white" />
+                                       </styleClass>
+                                       <children>
+                                          <VBox layoutX="40.0" layoutY="40.0" prefHeight="783.0" prefWidth="896.0" spacing="10.0" styleClass="table-container">
+                                             <children>
+                                                <TabPane prefHeight="648.0" prefWidth="854.0" styleClass="setting-tab" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                                                   <tabs>
+                                                      <Tab text="Genral">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="586.0" prefWidth="854.0">
+                                                               <children>
+                                                                  <VBox layoutX="156.0" layoutY="396.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <children>
+                                                                        <HBox prefHeight="466.0" prefWidth="854.0" spacing="40.0">
+                                                                           <children>
+                                                                              <VBox prefHeight="302.0" prefWidth="632.0" styleClass="upcoming-project-container">
+                                                                                 <children>
+                                                                                    <Label styleClass="sub-heading" text="Dark mode" />
+                                                                                    <CheckBox fx:id="darkModeCheckBox" mnemonicParsing="false" text="OFF">
+                                                                                       <font>
+                                                                                          <Font name="Hiragino Sans W6" size="13.0" />
+                                                                                       </font>
+                                                                                    </CheckBox>
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                               <padding>
+                                                                  <Insets bottom="10.0" top="30.0" />
+                                                               </padding>
+                                                            </AnchorPane>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab text="Admin">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="586.0" prefWidth="854.0">
+                                                               <children>
+                                                                  <VBox layoutX="156.0" layoutY="396.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <children>
+                                                                        <HBox prefHeight="466.0" prefWidth="854.0" spacing="40.0">
+                                                                           <children>
+                                                                              <VBox prefHeight="396.0" prefWidth="340.0">
+                                                                                 <children>
+                                                                                    <Label prefHeight="17.0" prefWidth="274.0" styleClass="sub-heading" text="Add admin" VBox.vgrow="ALWAYS">
+                                                                                       <font>
+                                                                                          <Font name="Hiragino Sans W7" size="15.0" />
+                                                                                       </font>
+                                                                                       <VBox.margin>
+                                                                                          <Insets bottom="10.0" />
+                                                                                       </VBox.margin>
+                                                                                    </Label>
+                                                                                    <VBox prefHeight="95.0" prefWidth="278.0" styleClass="form-content">
+                                                                                       <children>
+                                                                                          <Label text="Username" />
+                                                                                          <TextField fx:id="addAdminField" prefHeight="39.0" prefWidth="314.0">
+                                                                                             <VBox.margin>
+                                                                                                <Insets bottom="3.0" top="10.0" />
+                                                                                             </VBox.margin>
+                                                                                          </TextField>
+                                                                                          <Label fx:id="addAdminUsernameError" styleClass="error-message" text="Input field is empty" />
+                                                                                       </children>
+                                                                                    </VBox>
+                                                                                    <VBox prefHeight="86.0" prefWidth="278.0" styleClass="form-content">
+                                                                                       <children>
+                                                                                          <Label text="Password" />
+                                                                                          <TextField prefHeight="39.0" prefWidth="314.0">
+                                                                                             <VBox.margin>
+                                                                                                <Insets bottom="3.0" top="10.0" />
+                                                                                             </VBox.margin>
+                                                                                          </TextField>
+                                                                                          <Label fx:id="addAdminPasswordError" styleClass="error-message" text="Input field is empty" />
+                                                                                       </children>
+                                                                                    </VBox>
+                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                                       <children>
+                                                                                          <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="567.0" styleClass="add-worker-btn" text="Add admin">
+                                                                                             <HBox.margin>
+                                                                                                <Insets top="10.0" />
+                                                                                             </HBox.margin>
+                                                                                             <font>
+                                                                                                <Font name="Arial Rounded MT Bold" size="17.0" />
+                                                                                             </font>
+                                                                                          </Button>
+                                                                                       </children>
+                                                                                    </HBox>
+                                                                                 </children>
+                                                                                 <padding>
+                                                                                    <Insets top="20.0" />
+                                                                                 </padding>
+                                                                              </VBox>
+                                                                              <VBox prefHeight="302.0" prefWidth="632.0" styleClass="upcoming-project-container">
+                                                                                 <children>
+                                                                                    <Label styleClass="sub-heading" text="Admin" />
+                                                                                    <VBox prefHeight="381.0" prefWidth="513.0" spacing="10.0">
+                                                                                       <children>
+                                                                                          <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="Johnsmith" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="15.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="YoungJohn the wicked producer" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="65.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="YoungJohn the wicked producer" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="115.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="YoungJohn the wicked producer" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="165.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="YoungJohn the wicked producer" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="196.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="YoungJohn the wicked producer" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="230.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
+                                                                                             <children>
+                                                                                                <Label text="YoungJohn the wicked producer" />
+                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                                                   <children>
+                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
+                                                                                                         <children>
+                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                                                                                               <image>
+                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
+                                                                                                               </image>
+                                                                                                            </ImageView>
+                                                                                                         </children>
+                                                                                                      </VBox>
+                                                                                                   </children>
+                                                                                                </HBox>
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                       </children>
+                                                                                       <padding>
+                                                                                          <Insets top="5.0" />
+                                                                                       </padding>
+                                                                                    </VBox>
+                                                                                 </children>
+                                                                              </VBox>
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                               <padding>
+                                                                  <Insets bottom="10.0" top="30.0" />
+                                                               </padding>
+                                                            </AnchorPane>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab text="Security">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <VBox layoutX="148.0" layoutY="90.0" prefHeight="565.0" prefWidth="854.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <children>
+                                                                        <VBox fillWidth="false" prefHeight="410.0" prefWidth="421.0">
+                                                                           <children>
+                                                                              <Label prefHeight="17.0" prefWidth="274.0" styleClass="sub-heading" text="Change password" VBox.vgrow="ALWAYS">
+                                                                                 <font>
+                                                                                    <Font name="Hiragino Sans W7" size="15.0" />
+                                                                                 </font>
+                                                                                 <VBox.margin>
+                                                                                    <Insets bottom="20.0" />
+                                                                                 </VBox.margin>
+                                                                              </Label>
+                                                                              <VBox prefHeight="94.0" prefWidth="419.0" styleClass="form-content">
+                                                                                 <children>
+                                                                                    <Label text="Old password" />
+                                                                                    <PasswordField>
+                                                                                       <VBox.margin>
+                                                                                          <Insets bottom="3.0" top="10.0" />
+                                                                                       </VBox.margin>
+                                                                                    </PasswordField>
+                                                                                    <Label fx:id="oldPasswordError" styleClass="error-message" text="Input field is empty" />
+                                                                                 </children>
+                                                                              </VBox>
+                                                                              <VBox layoutX="10.0" layoutY="70.0" prefHeight="94.0" prefWidth="423.0" styleClass="form-content">
+                                                                                 <children>
+                                                                                    <Label text="New password" />
+                                                                                    <PasswordField>
+                                                                                       <VBox.margin>
+                                                                                          <Insets bottom="3.0" top="10.0" />
+                                                                                       </VBox.margin>
+                                                                                    </PasswordField>
+                                                                                    <Label fx:id="newPasswordError" styleClass="error-message" text="Input field is empty" />
+                                                                                 </children>
+                                                                              </VBox>
+                                                                              <VBox layoutX="10.0" layoutY="265.0" prefHeight="94.0" prefWidth="421.0" styleClass="form-content">
+                                                                                 <children>
+                                                                                    <Label text="Confirm new password" />
+                                                                                    <PasswordField prefWidth="379.0">
+                                                                                       <VBox.margin>
+                                                                                          <Insets bottom="3.0" top="10.0" />
+                                                                                       </VBox.margin>
+                                                                                    </PasswordField>
+                                                                                    <Label fx:id="confirmNewPasswordError" styleClass="error-message" text="Input field is empty" />
+                                                                                 </children>
+                                                                              </VBox>
+                                                                              <HBox prefHeight="63.0" prefWidth="421.0">
+                                                                                 <children>
+                                                                                    <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="421.0" styleClass="add-worker-btn" text="Change">
+                                                                                       <HBox.margin>
+                                                                                          <Insets top="10.0" />
+                                                                                       </HBox.margin>
+                                                                                       <font>
+                                                                                          <Font name="Arial Rounded MT Bold" size="17.0" />
+                                                                                       </font>
+                                                                                    </Button>
+                                                                                 </children>
+                                                                              </HBox>
+                                                                           </children>
+                                                                           <padding>
+                                                                              <Insets top="20.0" />
+                                                                           </padding>
+                                                                        </VBox>
+                                                                        <VBox prefHeight="190.0" prefWidth="854.0" styleClass="back-up-ads" VBox.vgrow="ALWAYS">
+                                                                           <children>
+                                                                              <ImageView fitHeight="86.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                                                                                 <image>
+                                                                                    <Image url="@ICONS/icons8-cloud_storage.png" />
+                                                                                 </image>
+                                                                              </ImageView>
+                                                                              <Label styleClass="back-up-ads-heading" text="Panda cloud" />
+                                                                              <Label styleClass="back-up-ads-sub-heading" text="Back up your data on the cloud">
+                                                                                 <VBox.margin>
+                                                                                    <Insets top="5.0" />
+                                                                                 </VBox.margin>
+                                                                              </Label>
+                                                                              <Label text="coming soon">
+                                                                                 <padding>
+                                                                                    <Insets top="30.0" />
+                                                                                 </padding>
+                                                                              </Label>
+                                                                              <VBox prefHeight="200.0" prefWidth="100.0" />
+                                                                           </children>
+                                                                        </VBox>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                               <padding>
+                                                                  <Insets bottom="10.0" top="30.0" />
+                                                               </padding>
+                                                            </AnchorPane>
+                                                         </content>
+                                                      </Tab>
+                                                   </tabs>
+                                                </TabPane>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
                         <Tab text="add worker section">
                            <content>
                               <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
@@ -1317,430 +1735,12 @@
                               </ScrollPane>
                            </content>
                         </Tab>
-                        <Tab text="settings section">
-                           <content>
-                              <ScrollPane fitToWidth="true" prefHeight="954.0" prefWidth="973.0">
-                                 <content>
-                                    <VBox prefHeight="805.0" prefWidth="956.0" spacing="20.0">
-                                       <styleClass>
-                                          <String fx:value="body" />
-                                          <String fx:value="white" />
-                                       </styleClass>
-                                       <children>
-                                          <VBox layoutX="40.0" layoutY="40.0" prefHeight="783.0" prefWidth="896.0" spacing="10.0" styleClass="table-container">
-                                             <children>
-                                                <TabPane prefHeight="648.0" prefWidth="854.0" styleClass="setting-tab" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
-                                                   <tabs>
-                                                      <Tab text="Genral">
-                                                         <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="586.0" prefWidth="854.0">
-                                                               <children>
-                                                                  <VBox layoutX="156.0" layoutY="396.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                                     <children>
-                                                                        <HBox prefHeight="466.0" prefWidth="854.0" spacing="40.0">
-                                                                           <children>
-                                                                              <VBox prefHeight="302.0" prefWidth="632.0" styleClass="upcoming-project-container">
-                                                                                 <children>
-                                                                                    <Label styleClass="sub-heading" text="Dark mode" />
-                                                                                    <CheckBox fx:id="darkModeCheckBox" mnemonicParsing="false" text="OFF">
-                                                                                       <font>
-                                                                                          <Font name="Hiragino Sans W6" size="13.0" />
-                                                                                       </font>
-                                                                                    </CheckBox>
-                                                                                 </children>
-                                                                              </VBox>
-                                                                           </children>
-                                                                        </HBox>
-                                                                     </children>
-                                                                  </VBox>
-                                                               </children>
-                                                               <padding>
-                                                                  <Insets bottom="10.0" top="30.0" />
-                                                               </padding>
-                                                            </AnchorPane>
-                                                         </content>
-                                                      </Tab>
-                                                      <Tab text="Admin">
-                                                         <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="586.0" prefWidth="854.0">
-                                                               <children>
-                                                                  <VBox layoutX="156.0" layoutY="396.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                                     <children>
-                                                                        <HBox prefHeight="466.0" prefWidth="854.0" spacing="40.0">
-                                                                           <children>
-                                                                              <VBox prefHeight="396.0" prefWidth="340.0">
-                                                                                 <children>
-                                                                                    <Label prefHeight="17.0" prefWidth="274.0" styleClass="sub-heading" text="Add admin" VBox.vgrow="ALWAYS">
-                                                                                       <font>
-                                                                                          <Font name="Hiragino Sans W7" size="15.0" />
-                                                                                       </font>
-                                                                                       <VBox.margin>
-                                                                                          <Insets bottom="10.0" />
-                                                                                       </VBox.margin>
-                                                                                    </Label>
-                                                                                    <VBox prefHeight="95.0" prefWidth="278.0" styleClass="form-content">
-                                                                                       <children>
-                                                                                          <Label text="Username" />
-                                                                                          <TextField fx:id="addAdminField" prefHeight="39.0" prefWidth="314.0">
-                                                                                             <VBox.margin>
-                                                                                                <Insets bottom="3.0" top="10.0" />
-                                                                                             </VBox.margin>
-                                                                                          </TextField>
-                                                                                          <Label fx:id="addAdminUsernameError" styleClass="error-message" text="Input field is empty" />
-                                                                                       </children>
-                                                                                    </VBox>
-                                                                                    <VBox prefHeight="86.0" prefWidth="278.0" styleClass="form-content">
-                                                                                       <children>
-                                                                                          <Label text="Password" />
-                                                                                          <TextField prefHeight="39.0" prefWidth="314.0">
-                                                                                             <VBox.margin>
-                                                                                                <Insets bottom="3.0" top="10.0" />
-                                                                                             </VBox.margin>
-                                                                                          </TextField>
-                                                                                          <Label fx:id="addAdminPasswordError" styleClass="error-message" text="Input field is empty" />
-                                                                                       </children>
-                                                                                    </VBox>
-                                                                                    <HBox prefHeight="100.0" prefWidth="200.0">
-                                                                                       <children>
-                                                                                          <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="567.0" styleClass="add-worker-btn" text="Add admin">
-                                                                                             <HBox.margin>
-                                                                                                <Insets top="10.0" />
-                                                                                             </HBox.margin>
-                                                                                             <font>
-                                                                                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                                                                                             </font>
-                                                                                          </Button>
-                                                                                       </children>
-                                                                                    </HBox>
-                                                                                 </children>
-                                                                                 <padding>
-                                                                                    <Insets top="20.0" />
-                                                                                 </padding>
-                                                                              </VBox>
-                                                                              <VBox prefHeight="302.0" prefWidth="632.0" styleClass="upcoming-project-container">
-                                                                                 <children>
-                                                                                    <Label styleClass="sub-heading" text="Admin" />
-                                                                                    <VBox prefHeight="381.0" prefWidth="513.0" spacing="10.0">
-                                                                                       <children>
-                                                                                          <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
-                                                                                             <children>
-                                                                                                <Label text="Johnsmith" />
-                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
-                                                                                                   <children>
-                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                   </children>
-                                                                                                </HBox>
-                                                                                             </children>
-                                                                                          </HBox>
-                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="15.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
-                                                                                             <children>
-                                                                                                <Label text="YoungJohn the wicked producer" />
-                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
-                                                                                                   <children>
-                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                   </children>
-                                                                                                </HBox>
-                                                                                             </children>
-                                                                                          </HBox>
-                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="65.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
-                                                                                             <children>
-                                                                                                <Label text="YoungJohn the wicked producer" />
-                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
-                                                                                                   <children>
-                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                   </children>
-                                                                                                </HBox>
-                                                                                             </children>
-                                                                                          </HBox>
-                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="115.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
-                                                                                             <children>
-                                                                                                <Label text="YoungJohn the wicked producer" />
-                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
-                                                                                                   <children>
-                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                   </children>
-                                                                                                </HBox>
-                                                                                             </children>
-                                                                                          </HBox>
-                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="165.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
-                                                                                             <children>
-                                                                                                <Label text="YoungJohn the wicked producer" />
-                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
-                                                                                                   <children>
-                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                   </children>
-                                                                                                </HBox>
-                                                                                             </children>
-                                                                                          </HBox>
-                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="196.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
-                                                                                             <children>
-                                                                                                <Label text="YoungJohn the wicked producer" />
-                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
-                                                                                                   <children>
-                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                   </children>
-                                                                                                </HBox>
-                                                                                             </children>
-                                                                                          </HBox>
-                                                                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="230.0" prefHeight="46.0" prefWidth="856.0" styleClass="upcoming-project-container-list">
-                                                                                             <children>
-                                                                                                <Label text="YoungJohn the wicked producer" />
-                                                                                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
-                                                                                                   <children>
-                                                                                                      <VBox alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                      <VBox alignment="CENTER" layoutX="423.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0">
-                                                                                                         <children>
-                                                                                                            <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                                                                                               <image>
-                                                                                                                  <Image url="@ICONS/icons8-gear.png" />
-                                                                                                               </image>
-                                                                                                            </ImageView>
-                                                                                                         </children>
-                                                                                                      </VBox>
-                                                                                                   </children>
-                                                                                                </HBox>
-                                                                                             </children>
-                                                                                          </HBox>
-                                                                                       </children>
-                                                                                       <padding>
-                                                                                          <Insets top="5.0" />
-                                                                                       </padding>
-                                                                                    </VBox>
-                                                                                 </children>
-                                                                              </VBox>
-                                                                           </children>
-                                                                        </HBox>
-                                                                     </children>
-                                                                  </VBox>
-                                                               </children>
-                                                               <padding>
-                                                                  <Insets bottom="10.0" top="30.0" />
-                                                               </padding>
-                                                            </AnchorPane>
-                                                         </content>
-                                                      </Tab>
-                                                      <Tab text="Security">
-                                                         <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <VBox layoutX="148.0" layoutY="90.0" prefHeight="565.0" prefWidth="854.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                                     <children>
-                                                                        <VBox fillWidth="false" prefHeight="410.0" prefWidth="421.0">
-                                                                           <children>
-                                                                              <Label prefHeight="17.0" prefWidth="274.0" styleClass="sub-heading" text="Change password" VBox.vgrow="ALWAYS">
-                                                                                 <font>
-                                                                                    <Font name="Hiragino Sans W7" size="15.0" />
-                                                                                 </font>
-                                                                                 <VBox.margin>
-                                                                                    <Insets bottom="20.0" />
-                                                                                 </VBox.margin>
-                                                                              </Label>
-                                                                              <VBox prefHeight="94.0" prefWidth="419.0" styleClass="form-content">
-                                                                                 <children>
-                                                                                    <Label text="Old password" />
-                                                                                    <PasswordField>
-                                                                                       <VBox.margin>
-                                                                                          <Insets bottom="3.0" top="10.0" />
-                                                                                       </VBox.margin>
-                                                                                    </PasswordField>
-                                                                                    <Label fx:id="oldPasswordError" styleClass="error-message" text="Input field is empty" />
-                                                                                 </children>
-                                                                              </VBox>
-                                                                              <VBox layoutX="10.0" layoutY="70.0" prefHeight="94.0" prefWidth="423.0" styleClass="form-content">
-                                                                                 <children>
-                                                                                    <Label text="New password" />
-                                                                                    <PasswordField>
-                                                                                       <VBox.margin>
-                                                                                          <Insets bottom="3.0" top="10.0" />
-                                                                                       </VBox.margin>
-                                                                                    </PasswordField>
-                                                                                    <Label fx:id="newPasswordError" styleClass="error-message" text="Input field is empty" />
-                                                                                 </children>
-                                                                              </VBox>
-                                                                              <VBox layoutX="10.0" layoutY="265.0" prefHeight="94.0" prefWidth="421.0" styleClass="form-content">
-                                                                                 <children>
-                                                                                    <Label text="Confirm new password" />
-                                                                                    <PasswordField prefWidth="379.0">
-                                                                                       <VBox.margin>
-                                                                                          <Insets bottom="3.0" top="10.0" />
-                                                                                       </VBox.margin>
-                                                                                    </PasswordField>
-                                                                                    <Label fx:id="confirmNewPasswordError" styleClass="error-message" text="Input field is empty" />
-                                                                                 </children>
-                                                                              </VBox>
-                                                                              <HBox prefHeight="63.0" prefWidth="421.0">
-                                                                                 <children>
-                                                                                    <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="421.0" styleClass="add-worker-btn" text="Change">
-                                                                                       <HBox.margin>
-                                                                                          <Insets top="10.0" />
-                                                                                       </HBox.margin>
-                                                                                       <font>
-                                                                                          <Font name="Arial Rounded MT Bold" size="17.0" />
-                                                                                       </font>
-                                                                                    </Button>
-                                                                                 </children>
-                                                                              </HBox>
-                                                                           </children>
-                                                                           <padding>
-                                                                              <Insets top="20.0" />
-                                                                           </padding>
-                                                                        </VBox>
-                                                                        <VBox prefHeight="190.0" prefWidth="854.0" styleClass="back-up-ads" VBox.vgrow="ALWAYS">
-                                                                           <children>
-                                                                              <ImageView fitHeight="86.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                                                                                 <image>
-                                                                                    <Image url="@ICONS/icons8-cloud_storage.png" />
-                                                                                 </image>
-                                                                              </ImageView>
-                                                                              <Label styleClass="back-up-ads-heading" text="Panda cloud" />
-                                                                              <Label styleClass="back-up-ads-sub-heading" text="Back up your data on the cloud">
-                                                                                 <VBox.margin>
-                                                                                    <Insets top="5.0" />
-                                                                                 </VBox.margin>
-                                                                              </Label>
-                                                                              <Label text="coming soon">
-                                                                                 <padding>
-                                                                                    <Insets top="30.0" />
-                                                                                 </padding>
-                                                                              </Label>
-                                                                              <VBox prefHeight="200.0" prefWidth="100.0" />
-                                                                           </children>
-                                                                        </VBox>
-                                                                     </children>
-                                                                  </VBox>
-                                                               </children>
-                                                               <padding>
-                                                                  <Insets bottom="10.0" top="30.0" />
-                                                               </padding>
-                                                            </AnchorPane>
-                                                         </content>
-                                                      </Tab>
-                                                   </tabs>
-                                                </TabPane>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </VBox>
-                                 </content>
-                              </ScrollPane>
-                           </content>
-                        </Tab>
                      </tabs>
                      <padding>
                         <Insets top="10.0" />
                      </padding>
                   </TabPane>
-                  <GridPane prefHeight="50.0" prefWidth="968.0" styleClass="top-bar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <GridPane prefHeight="50.0" prefWidth="968.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -1777,7 +1777,7 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label styleClass="heading" text="Home">
+                                    <Label fx:id="currentTabName" styleClass="heading" text="Home">
                                        <font>
                                           <Font name="Arial Italic" size="35.0" />
                                        </font>
@@ -1787,6 +1787,10 @@
                            </children>
                         </HBox>
                      </children>
+                     <styleClass>
+                        <String fx:value="top-bar" />
+                        <String fx:value="white" />
+                     </styleClass>
                   </GridPane>
                </children>
             </AnchorPane>

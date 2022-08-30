@@ -45,6 +45,8 @@
 .scroll-bar:horizontal,
 .scroll-bar:vertical {
     -fx-background-color: rgb(37, 38, 43);
+    -fx-background-color: rgb(26, 27, 30);
+
 }
 
 .scroll-bar:horizontal .thumb,
