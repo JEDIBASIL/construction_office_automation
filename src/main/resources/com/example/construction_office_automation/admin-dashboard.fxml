@@ -1759,13 +1759,5 @@
             </VBox>
          </children>
       </AnchorPane>
-      <VBox fx:id="toast" prefHeight="85.0" prefWidth="281.0" styleClass="toast" AnchorPane.rightAnchor="-400.0" AnchorPane.topAnchor="60.0">
-         <children>
-            <Label fx:id="toastTimerLabel" text="Label">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-         </children></VBox>
    </children>
 </AnchorPane>

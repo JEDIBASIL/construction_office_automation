@@ -39,12 +39,7 @@ public class HelloController extends Thread implements Initializable {
 //  CLOSE MODAL ICON
     private HBox closeModal;
 
-    @FXML
-//  TOAST CONTAINER
-    private VBox toast;
-     int toastTimer;
-     @FXML
-     private Label toastTimerLabel;
+
     @FXML
 //   TAB LINKS
     private HBox homeTabLink,projectsTabLink,workersTabLink,settingsTabLink;
@@ -201,8 +196,13 @@ public class HelloController extends Thread implements Initializable {
 
     Employees employees = new Employees();
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
+        HelloController helloController = new HelloController();
+        Thread appThread = new Thread(helloController);
+        appThread.start();
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
 
 //      SETTING THE MODAL CONTAINER INVISIBLE
@@ -224,6 +224,7 @@ public class HelloController extends Thread implements Initializable {
         settingsTabLink.setOnMouseClicked(event -> {
             switchPane(7);
             switchActiveLink(sideBarLinks,settingsTabLink);
+
         });
 //       >>>
 
@@ -309,30 +310,6 @@ public class HelloController extends Thread implements Initializable {
         }
     }
 
-//   FUNCTION TO DISPLAY TOAST
-    public void displayToast(boolean animate,String animationType){
-        TranslateTransition toastAnimation = new TranslateTransition();
-        toastAnimation.setNode(toast);
-        toastAnimation.setDuration(Duration.seconds(0.3));
-        if(animate){
-            toastAnimation.setByX(-430);
-            toastAnimation.setAutoReverse(true);
-            toastAnimation.setCycleCount(TranslateTransition.INDEFINITE-2);
-            toastAnimation.setAutoReverse(true);
-        }
-        if(!animate) {
-            toastAnimation.setDelay(Duration.seconds(3));
-            toastAnimation.setByX(430);
-
-        }
-
-        if(!animate && animationType != null && animationType.equals("CLOSE")) {
-            toastAnimation.setDelay(Duration.seconds(0));
-            toastAnimation.setByX(430);
-        }
-        toastAnimation.play();
-//        toastAnimation.stop();
-    }
 
 //  FUNCTION TO VALIDATE TEXT FIELD BASE ON ARGUMENTS
     public String validateTextFields(Label errorMessage,TextField field,String validationType,String fieldName,String extra){
@@ -404,11 +381,13 @@ public class HelloController extends Thread implements Initializable {
                 confirmationModal.setMinHeight(0);
                 confirmationModal.setVisible(false);
                 new BounceInDown(addCategoryModalForm).play();
+                addDepartmentField.requestFocus();
             } if(displayType.equals("OPTION")){
                 addCategoryModalForm.setMaxHeight(0);
                 addCategoryModalForm.setMinHeight(0);
                 addCategoryModalForm.setVisible(false);
                 new BounceInDown(confirmationModal).play();
+
             }
         }else{
             new BounceInDown(modalContainer).play();
@@ -428,7 +407,6 @@ public class HelloController extends Thread implements Initializable {
 
     @FXML
     protected void onAddDepartmentClicked(){
-
     }
 
 }
