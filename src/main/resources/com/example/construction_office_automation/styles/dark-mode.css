@@ -155,9 +155,11 @@
 }
 
 .modal-container{
-    -fx-background-color: rgba(25, 25, 25, 0.733);
+    /* -fx-background-color: rgba(25, 25, 25, 0.733); */
 }
 
 .modal,.toast{
     -fx-background-color: rgb(36, 38, 42);
-    -fx-border-color: rgb(74, 75, 76);}
+    -fx-border-color: rgb(74, 75, 76);
+}
+

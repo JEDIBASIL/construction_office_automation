@@ -224,6 +224,7 @@ public class HelloController extends Thread implements Initializable {
         settingsTabLink.setOnMouseClicked(event -> {
             switchPane(7);
             switchActiveLink(sideBarLinks,settingsTabLink);
+            displayModal("Hello world","it fells good to be on earth");
 
         });
 //       >>>
@@ -382,18 +383,25 @@ public class HelloController extends Thread implements Initializable {
                 confirmationModal.setVisible(false);
                 new BounceInDown(addCategoryModalForm).play();
                 addDepartmentField.requestFocus();
-            } if(displayType.equals("OPTION")){
-                addCategoryModalForm.setMaxHeight(0);
-                addCategoryModalForm.setMinHeight(0);
-                addCategoryModalForm.setVisible(false);
-                new BounceInDown(confirmationModal).play();
-
             }
         }else{
-            new BounceInDown(modalContainer).play();
-            new BounceInDown(confirmationModal).play();
+            confirmationModal.setMaxHeight(250);
+            confirmationModal.setMinHeight(250);
+            addCategoryModalForm.setMaxHeight(250);
+            addCategoryModalForm.setMinHeight(250);
+            confirmationModal.setVisible(true);
+            addCategoryModalForm.setVisible(true);
             modalContainer.setVisible(false);
         }
+    }
+    public void displayModal(String heading,String subHeading){
+        modalHeading.setText(heading);
+        modalSubHeading.setText(subHeading);
+        addCategoryModalForm.setMaxHeight(0);
+        addCategoryModalForm.setMinHeight(0);
+        addCategoryModalForm.setVisible(false);
+        new BounceInDown(confirmationModal).play();
+        modalContainer.setVisible(true);
     }
 
     @FXML
