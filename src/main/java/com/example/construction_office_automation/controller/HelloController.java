@@ -4,24 +4,24 @@ import animatefx.animation.*;
 import com.example.construction_office_automation.HelloApplication;
 import com.example.construction_office_automation.enums.Validation;
 import com.example.construction_office_automation.model.Employees;
-import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.util.Duration;
-
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import static com.example.construction_office_automation.enums.Validation.*;
+
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 public class HelloController extends Thread implements Initializable {
     @FXML
@@ -430,6 +430,17 @@ public class HelloController extends Thread implements Initializable {
 
     @FXML
     protected void onAddDepartmentClicked(){
+        Notifications notificationsBuilder =Notifications.create()
+                .title("Success")
+                .text("another department has been added ")
+                .graphic(null)
+                .hideAfter(Duration.seconds(3))
+                .position(Pos.TOP_LEFT)
+                .darkStyle()
+
+                ;
+        System.out.println(notificationsBuilder);
+        notificationsBuilder.showInformation();
     }
 
 }

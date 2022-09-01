@@ -1,8 +1,17 @@
+@font-face {
+    src: url("../fonts/static/Urbanist-Bold.ttf");
+}
+
 .side-bar {
     -fx-background-color: white;
     -fx-border-width: 0 1 0 0;
     -fx-border-color: rgb(234, 234, 234);
 }
+
+.root{
+    -fx-font-family:"Urbanist";
+}
+
 
 .button{
     -fx-alignment:CENTER;
@@ -14,8 +23,8 @@
 }
 
 .menu .label {
-    -fx-font-family: "Hiragino Sans W6";
-    -fx-font-size: 13;
+    -fx-font-size: 15;
+    -fx-font-weight: lighter;
     -fx-text-fill: rgb(96, 96, 96);
 }
 
@@ -94,7 +103,7 @@
 .top-bar .search-box .text-field {
     -fx-background-color: none;
     -fx-font-size: 16;
-    -fx-font-family: "Hiragino Sans W5";
+    /* -fx-font-family: "Hiragino Sans W5"; */
 }
 
 .top-bar-icon {
@@ -113,12 +122,12 @@
 }
 
 .heading {
-    -fx-font-family: "Arial Rounded MT Bold";
+    /* -fx-font-family: "Arial Rounded MT Bold"; */
     -fx-font-size: 20;
 }
 
 .sub-heading {
-    -fx-font-family: "Arial Rounded MT Bold";
+    /* -fx-font-family: "Arial Rounded MT Bold"; */
     -fx-font-size: 16;
 }
 
@@ -134,7 +143,7 @@
 .overview-container .overview-card {
     -fx-background-color: white;
     /* -fx-border-color: rgb(234, 234, 234); */
-    -fx-background-radius: 15;
+    -fx-background-radius: 10;
     -fx-border-radius: 10;
     -fx-padding: 10;
     -fx-spacing: 20;
@@ -148,10 +157,11 @@
 
 .overview-container .overview-card .details .label {
     -fx-text-fill: rgb(53, 53, 53);
-    -fx-font-family: "Hiragino Sans W8";
-    -fx-font-size: 25;
+    /* -fx-font-family: "Hiragino Sans W8"; */
+    -fx-font-size: 45;
 
 }
+
 
 .overview-container .overview-card .title {
     -fx-background-color: rgba(244, 246, 250, 0.467);
@@ -161,7 +171,7 @@
 }
 
 .overview-container .overview-card .title .label {
-    -fx-font-family: "Hiragino Sans W6";
+    /* -fx-font-family: "Hiragino Sans W6"; */
     -fx-font-size: 12;
 }
 
@@ -182,11 +192,12 @@
 
 .quick-action-container,.chart-container  {
     -fx-padding:20;
-    -fx-background-radius: 15;
+    -fx-background-radius: 10;
     -fx-background-color: rgb(255, 255, 255);
 }
 
 .quick-action-container .content {
+    -fx-background-radius: 10;
     -fx-padding:8;
     -fx-background-color: rgb(255, 255, 255);
 }
@@ -201,7 +212,7 @@
 }
 
 .quick-action-container .content .label {
-    -fx-font-family: "Hiragino Sans W6";
+    /* -fx-font-family: "Hiragino Sans W6"; */
     -fx-font-size: 10;
 }
 
@@ -222,14 +233,14 @@
 }
 
 .upcoming-project-container-list .label {
-    -fx-font-family: "Hiragino Sans W4";
+    /* -fx-font-family: "Hiragino Sans W4"; */
     -fx-font-size: 16;
 }
 
 .display_workers-details-card {
     -fx-background-color: white;
     -fx-padding: 20;
-    -fx-background-radius: 15;
+    -fx-background-radius: 10;
 }
 
 .form-container {
@@ -245,7 +256,7 @@
 }
 
 .form-content .label {
-    -fx-font-family: "Hiragino Sans W6";
+    /* -fx-font-family: "Hiragino Sans W6"; */
     -fx-font-size: 12;
 }
 
@@ -286,7 +297,7 @@
     -fx-padding: 8 10 8 10;
     -fx-cusor: pointer;
     -fx-background-color: rgb(84,84,208);
-    -fx-font-family: "Hiragino Sans W7";
+    /* -fx-font-family: "Hiragino Sans W7"; */
     -fx-font-size: 13;
 }
 
@@ -337,12 +348,12 @@
 }
 
 .project-title{
-    -fx-font-family: "Hiragino Sans W8";
+    /* -fx-font-family: "Hiragino Sans W8"; */
     -fx-font-size: 25;
 }
 
 .small-btn{
-    -fx-font-family: "Hiragino Sans W6";
+    /* -fx-font-family: "Hiragino Sans W6"; */
     -fx-font-size: 12;
     -fx-padding:5 20;
 }
@@ -375,7 +386,7 @@
 }
 
 .progress-bar-details .label{
-    -fx-font-family: "Hiragino Sans W6";
+    /* -fx-font-family: "Hiragino Sans W6"; */
     -fx-font-size: 12;
 }
 
@@ -402,14 +413,14 @@
 
 .setting-tab .tab{
     -fx-background-color:transparent !important;
-    -fx-font-family: "Hiragino Sans W6";
+    /* -fx-font-family: "Hiragino Sans W6"; */
     -fx-font-size: 12;
 }
 
 .setting-tab .tab:selected{
     -fx-border-color:rgb(84,84,208) !important;
     -fx-border-width: 0 0 3 0;
-    -fx-font-family: "Hiragino Sans W6";
+    /* -fx-font-family: "Hiragino Sans W6"; */
     -fx-font-size: 13;
 }
 
@@ -426,13 +437,13 @@
 }
 
 .back-up-ads-heading{ 
-    -fx-font-family: "Hiragino Sans W7";
+    /* -fx-font-family: "Hiragino Sans W7"; */
     -fx-font-size: 16;
     -fx-text-fill:white;
 }
 
 .back-up-ads-sub-heading{ 
-    -fx-font-family: "Hiragino Sans W6";
+    /* -fx-font-family: "Hiragino Sans W6"; */
     -fx-font-size: 12;
 }
 
@@ -453,13 +464,13 @@
 }
 
 .modal-heading{
-    -fx-font-family: "Hiragino Sans W8";
+    /* -fx-font-family: "Hiragino Sans W8"; */
     -fx-font-size: 18;
     -fx-padding:15;
 }
 
 .modal-sub-heading{
-    -fx-font-family: "Hiragino Sans W5";
+    /* -fx-font-family: "Hiragino Sans W5"; */
     -fx-font-size: 16;
 }
 
@@ -472,10 +483,23 @@
 }
 
 .date-picker > .arrow-button{
-    -fx-background-image: url("../ICONS/icons8_rescheduling_a_task_50px.png");
+    -fx-background-image: url("../ICONS/icons8_calendar_50px.png");
     -fx-background-size:70% 70%;
     -fx-background-repeat:no-repeat;
     -fx-background-position:center center;
     -fx-background-color: transparent;
-    -fx-background-size:contain;
+    -fx-background-size:20 22;
+;
+}
+
+.notification-container{
+    -fx-background-color: white;
+    -fx-border-color: rgb(234, 234, 234);
+    -fx-pref-height:600;
+    -fx-pref-width:400;
+}
+
+.notification-content{
+    -fx-background-color: white;
+
 }
