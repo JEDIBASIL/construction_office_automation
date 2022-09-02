@@ -134,6 +134,11 @@
     -fx-border-color: rgb(44, 46, 46);
 }
 
+.tree-table-view .tree-table-column {
+    -fx-background-color: rgb(30, 33, 35);
+}
+
+
 .search-input {
     -fx-border-color: rgb(74, 75, 76);
     -fx-text-fill: whitesmoke;

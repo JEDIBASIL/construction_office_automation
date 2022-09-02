@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import java.io.File;
@@ -185,7 +186,16 @@ public class HelloController extends Thread implements Initializable {
 
     private Label currentTabName;
 
-    private String departmentNameToBeAdded;
+    @FXML
+
+//  NOTIFICATION ICON
+
+    private VBox notificationIcon;
+    @FXML
+
+//  NOTIFICATION CONTAINER
+
+    private AnchorPane notificationContainer;
 
     final FileChooser fileChooser = new FileChooser();
 
@@ -206,9 +216,7 @@ public class HelloController extends Thread implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
-        HelloController helloController = new HelloController();
-        Thread appThread = new Thread(helloController);
-        appThread.start();
+        notificationContainer.setVisible(false);
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
 
 //      SETTING THE MODAL CONTAINER INVISIBLE
@@ -271,7 +279,7 @@ public class HelloController extends Thread implements Initializable {
         });
 
         addDepartmentFormShow.setOnAction(e->displayModal("FORM"));
-
+        notificationIcon.setOnMouseClicked(e->notificationContainer.setVisible(true));
     }
 
 //   FUNCTION TO SHOW FILE-CHOOSER

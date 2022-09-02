@@ -675,3 +675,203 @@ SELECT NOT INTERSECTS NAME FROM LOCATION [42122-214]
 2022-09-02 03:16:03 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CHARACTER VARYING to BOOLEAN"; SQL statement:
 SELECT NOT NAME FROM LOCATION [22018-214]
+2022-09-02 03:39:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM LOCATION\000d\000a\000d\000adrop [*]table location"; SQL statement:
+SELECT * FROM LOCATION
+
+drop table location [42000-214]
+2022-09-02 03:45:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "NAME" not found; SQL statement:
+SELECT * FROM LOCATION WHERE NAME IN(SELECT NAME FROM LOCATION GROUP BY NAME HAVING COUNT(*) =1) [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.expression.condition.PredicateWithSubquery.optimize(PredicateWithSubquery.java:37)
+	at org.h2.expression.condition.ConditionInQuery.optimize(ConditionInQuery.java:160)
+	at org.h2.expression.Expression.optimizeCondition(Expression.java:148)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1177)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:575)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-02 03:45:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "NAME" not found; SQL statement:
+SELECT * FROM LOCATION WHERE FIRST_NAME IN(SELECT NAME FROM LOCATION GROUP BY FIRST_NAME HAVING COUNT(*) =1) [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.expression.condition.PredicateWithSubquery.optimize(PredicateWithSubquery.java:37)
+	at org.h2.expression.condition.ConditionInQuery.optimize(ConditionInQuery.java:160)
+	at org.h2.expression.Expression.optimizeCondition(Expression.java:148)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1177)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:575)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-02 03:49:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM LOCATION \000d\000aWHERE FIRST_NAME \000d\000aIN(SELECT FIRST_NAME FROM LOCATION \000d\000aGROUP BY FIRST_NAME \000d\000aHAVING COUNT(*) =1)\000d\000a\000d\000a[*]ALTER TABLE LOCATION\000d\000aMODIFY COLUMN FIRSTNAME (name varchar(150))"; SQL statement:
+SELECT * FROM LOCATION 
+WHERE FIRST_NAME 
+IN(SELECT FIRST_NAME FROM LOCATION 
+GROUP BY FIRST_NAME 
+HAVING COUNT(*) =1)
+
+ALTER TABLE LOCATION
+MODIFY COLUMN FIRSTNAME (name varchar(150)) [42000-214]
+2022-09-02 03:49:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM LOCATION \000d\000aWHERE FIRST_NAME \000d\000aIN(SELECT FIRST_NAME FROM LOCATION \000d\000aGROUP BY FIRST_NAME \000d\000aHAVING COUNT(*) =1)\000d\000a\000d\000a[*]ALTER TABLE LOCATION\000d\000aMODIFY COLUMN FIRSTNAME (name varchar(150))"; SQL statement:
+SELECT * FROM LOCATION 
+WHERE FIRST_NAME 
+IN(SELECT FIRST_NAME FROM LOCATION 
+GROUP BY FIRST_NAME 
+HAVING COUNT(*) =1)
+
+ALTER TABLE LOCATION
+MODIFY COLUMN FIRSTNAME (name varchar(150)) [42000-214]
+2022-09-02 03:49:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM LOCATION \000d\000aWHERE FIRST_NAME \000d\000aIN(SELECT FIRST_NAME FROM LOCATION \000d\000aGROUP BY FIRST_NAME \000d\000aHAVING COUNT(*) =1)\000d\000a\000d\000a[*]ALTER TABLE LOCATION\000d\000aMODIFY COLUMN FIRSTNAME (name varchar(150))"; SQL statement:
+SELECT * FROM LOCATION 
+WHERE FIRST_NAME 
+IN(SELECT FIRST_NAME FROM LOCATION 
+GROUP BY FIRST_NAME 
+HAVING COUNT(*) =1)
+
+ALTER TABLE LOCATION
+MODIFY COLUMN FIRSTNAME (name varchar(150)) [42000-214]
+2022-09-02 03:52:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LOCATION\000d\000a[*]MODIFY COLUMN FIRSTNAME (name varchar(150))"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE LOCATION
+MODIFY COLUMN FIRSTNAME (name varchar(150)) [42001-214]
+2022-09-02 03:52:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LOCATION\000d\000aRENAME COLUMN FIRSTNAME [*](name varchar(150))"; expected "TO"; SQL statement:
+ALTER TABLE LOCATION
+RENAME COLUMN FIRSTNAME (name varchar(150)) [42001-214]
+2022-09-02 03:52:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LOCATION\000d\000aRENAME COLUMN FIRSTNAME [*]name varchar(150)"; expected "TO"; SQL statement:
+ALTER TABLE LOCATION
+RENAME COLUMN FIRSTNAME name varchar(150) [42001-214]
+2022-09-02 03:53:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LOCATION\000d\000aRENAME COLUMN FIRSTNAME [*]NAME varchar(150)"; expected "TO"; SQL statement:
+ALTER TABLE LOCATION
+RENAME COLUMN FIRSTNAME NAME varchar(150) [42001-214]
+2022-09-02 03:53:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE LOCATION\000d\000aRENAME COLUMN FIRST_NAME TO NAME [*]varchar(150)"; SQL statement:
+ALTER TABLE LOCATION
+RENAME COLUMN FIRST_NAME TO NAME varchar(150) [42000-214]
+2022-09-02 03:53:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "FIRST_NAME" not found; SQL statement:
+ALTER TABLE LOCATION
+RENAME COLUMN FIRST_NAME TO NAME [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:765)
+	at org.h2.command.ddl.AlterTableRenameColumn.update(AlterTableRenameColumn.java:45)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-02 03:56:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "FIRST_NAME" not found; SQL statement:
+SELECT FIRST_NAME FROM LOCATION 
+WHERE FIRST_NAME 
+IN(SELECT FIRST_NAME FROM LOCATION 
+GROUP BY FIRST_NAME 
+HAVING COUNT(*) =1) ORDER BY FIRST_NAME [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:575)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-02 03:56:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]HAVING COUNT(*) =1) ORDER BY NAME"; SQL statement:
+HAVING COUNT(*) =1) ORDER BY NAME [42000-214]
+2022-09-02 03:56:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "FIRST_NAME" not found; SQL statement:
+SELECT NAME FROM LOCATION 
+WHERE FIRST_NAME 
+IN(SELECT NAME FROM LOCATION 
+GROUP BY NAME 
+HAVING COUNT(*) =1) ORDER BY NAME [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.expression.condition.ConditionInQuery.optimize(ConditionInQuery.java:161)
+	at org.h2.expression.Expression.optimizeCondition(Expression.java:148)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1177)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:575)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
