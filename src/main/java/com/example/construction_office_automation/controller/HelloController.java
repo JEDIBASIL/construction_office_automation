@@ -21,6 +21,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -142,7 +143,10 @@ public class HelloController extends Thread implements Initializable {
 
 //         ADD DEPARTMENT ERROR LABEL
 
-            addDepartmentError
+            addDepartmentError,
+
+//         ADD WORKER GENDER ERROR LABEL
+            genderError;
     ;
 
     @FXML
@@ -225,6 +229,10 @@ public class HelloController extends Thread implements Initializable {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 
+//  ADD WORKER GENDER TOGGLE GROUP
+
+    private ToggleGroup addWorkerGenderGroup;
+
    Validation validation;
 
 
@@ -235,7 +243,7 @@ public class HelloController extends Thread implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
         pjLocationChoiceBox.getItems().addAll(getLocations());
-        ToggleGroup addWorkerGenderGroup = new ToggleGroup();
+        addWorkerGenderGroup = new ToggleGroup();
         addWorkerFemale.setToggleGroup(addWorkerGenderGroup);
         addWorkerMale.setToggleGroup(addWorkerGenderGroup);
 
@@ -436,7 +444,18 @@ public class HelloController extends Thread implements Initializable {
         return null;
     }
 
-
+//  FUNCTION TO VALIDATE RADIO BUTTONS
+    public String validateRadioButton(Label errorMessage,ToggleGroup toggleGroup,String radioButtonName){
+        String[] selected;
+        if (toggleGroup.selectedToggleProperty().getValue() != null) {
+            selected = toggleGroup.selectedToggleProperty().getValue().toString().split("'");
+            errorMessage.setText("");
+            return selected[selected.length -1];
+        }else{
+            errorMessage.setText(radioButtonName+" is not selected");
+        }
+        return null;
+    }
 
 
 
@@ -479,6 +498,7 @@ public class HelloController extends Thread implements Initializable {
 
     @FXML
     protected void onAddProjectClicked(){
+
     }
 
 
