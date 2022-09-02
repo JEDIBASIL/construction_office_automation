@@ -234,6 +234,8 @@ public class HelloController extends Thread implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
+        pjLocationChoiceBox.getItems().addAll(getLocations());
+
 
         notificationContainer.setVisible(false);
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
