@@ -1435,11 +1435,11 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="2">
                                                                <children>
                                                                   <Label text="Location" />
-                                                                  <TextField fx:id="pjDateField">
+                                                                  <ChoiceBox fx:id="pjLocationChoiceBox" prefHeight="22.0" prefWidth="334.0" styleClass="text-field">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
-                                                                  </TextField>
+                                                                  </ChoiceBox>
                                                                   <Label fx:id="pjLocationError" styleClass="error-message" text="Input field is empty" />
                                                                </children>
                                                             </VBox>
