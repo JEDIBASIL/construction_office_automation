@@ -22,4 +22,8 @@ public class DatabaseConnection {
             return false;
         }
     }
+
+    public static Connection getConnection(){
+        return connection;
+    }
 }

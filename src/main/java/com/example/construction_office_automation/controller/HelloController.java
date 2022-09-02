@@ -4,6 +4,7 @@ import animatefx.animation.*;
 import com.example.construction_office_automation.HelloApplication;
 import com.example.construction_office_automation.enums.Validation;
 import com.example.construction_office_automation.model.Employees;
+import com.example.construction_office_automation.model.database.DatabaseConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -16,6 +17,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import java.io.File;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,6 +29,8 @@ import static com.example.construction_office_automation.enums.Validation.*;
 
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+
+import javax.xml.transform.Result;
 
 public class HelloController extends Thread implements Initializable {
     @FXML
@@ -155,7 +163,6 @@ public class HelloController extends Thread implements Initializable {
 
             pjNameField,
             pjOwnerField,
-            pjDateField,
 
     //    EDIT WORKER TEXT FIELD
 
@@ -179,6 +186,17 @@ public class HelloController extends Thread implements Initializable {
 
            addDepartmentField
     ;
+
+    @FXML
+
+//  PROJECT LOCATION CHOICEBOX
+
+    private ChoiceBox pjLocationChoiceBox;
+
+    @FXML
+//  GENDER RADIO BUTTONS
+
+    private RadioButton addWorkerMale,addWorkerFemale,editWorkerFemale,editWorkerMale;
 
     @FXML
 
@@ -216,6 +234,7 @@ public class HelloController extends Thread implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
+
         notificationContainer.setVisible(false);
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
 
@@ -451,4 +470,30 @@ public class HelloController extends Thread implements Initializable {
         notificationsBuilder.showInformation();
     }
 
+
+
+
+
+//  DATABASE MANIPULATIONS
+
+    DatabaseConnection databaseConnection = new DatabaseConnection();
+
+    public List getLocations(){
+        ArrayList locationList = new ArrayList();
+        if(databaseConnection.dbConnect()){
+            String GET_LOCATIONS = "SELECT DISTINCT name FROM location";
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(GET_LOCATIONS);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()){
+                    String location = resultSet.getString("name");
+//                    System.out.println(location);
+                    locationList.add(location);
+                }
+            }catch (SecurityException | SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return locationList;
+    }
 }
