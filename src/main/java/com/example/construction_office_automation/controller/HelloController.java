@@ -358,6 +358,12 @@ public class HelloController extends Thread implements Initializable {
     }
 
 
+
+
+
+
+
+// VALIDATIONS
 //  FUNCTION TO VALIDATE TEXT FIELD BASE ON ARGUMENTS
     public String validateTextFields(Label errorMessage,TextField field,String validationType,String fieldName,String extra){
         String emailRegex = "^(.+)@(.+)$";
@@ -419,6 +425,23 @@ public class HelloController extends Thread implements Initializable {
         return null;
     }
 
+//  FUNCTION TO VALIDATE CHOICE BOXS
+    public String validateChoiceBox(Label errorMessage,ChoiceBox choiceBox,String choiceBoxName){
+        if(choiceBox.getSelectionModel().isEmpty()){
+            errorMessage.setText(choiceBoxName+" is required");
+        }else{
+            errorMessage.setText("");
+            return choiceBox.getSelectionModel().getSelectedItem()+"";
+        }
+        return null;
+    }
+
+
+
+
+
+
+
 //  FUNCTION TO DISPLAY MODAL
     public void displayModal(String displayType){
         if(displayType != null){
@@ -452,8 +475,14 @@ public class HelloController extends Thread implements Initializable {
 
     @FXML
     protected void onAddWorkerClicked(){
-        System.out.println("working");
     }
+
+    @FXML
+    protected void onAddProjectClicked(){
+    }
+
+
+
     @FXML
     protected void onModalClose(){
         displayModal(null);

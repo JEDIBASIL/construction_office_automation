@@ -1461,7 +1461,7 @@
                                                       </VBox>
                                                       <HBox prefHeight="82.0" prefWidth="654.0">
                                                          <children>
-                                                            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="287.0" styleClass="add-worker-btn" text="Add ">
+                                                            <Button mnemonicParsing="false" onAction="#onAddProjectClicked" prefHeight="45.0" prefWidth="287.0" styleClass="add-worker-btn" text="Add ">
                                                                <HBox.margin>
                                                                   <Insets />
                                                                </HBox.margin>
