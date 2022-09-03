@@ -42,13 +42,14 @@ public class Admin {
 
     public boolean validateFields(){
         if(
-                getUsername() == null
-                        &&  getEmail() == null
-                        && getRole() == null
-                        && getPassword()== null
+                getUsername() != null
+                        &&  getEmail() != null
+                        && getRole() != null
+                        && getPassword()!= null
 
-        ) return false;
+        ) return true;
 
-        return true;
+         return false;
+
     }
 }
