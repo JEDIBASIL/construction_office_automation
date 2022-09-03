@@ -5,11 +5,14 @@ public class EncryptPassword {
 
     String EncryptPassword(String password){
         encrypted="";
-        char[] passwordArray = password.toCharArray();
-        for(char passwordChar:passwordArray){
-            passwordChar += 200;
-           encrypted+=passwordChar;
+        if(password != null){
+            char[] passwordArray = password.toCharArray();
+            for(char passwordChar:passwordArray){
+                passwordChar += 200;
+                encrypted+=passwordChar;
+            }
+            return encrypted;
         }
-        return encrypted;
+        return null;
     }
 }

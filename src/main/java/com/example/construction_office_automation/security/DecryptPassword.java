@@ -6,12 +6,15 @@ public class DecryptPassword {
 
     String DecryptPassword(String password){
         decrypted="";
-        char[] passwordArray = password.toCharArray();
-        for(char passwordChar:passwordArray){
-            passwordChar -= 200;
-            decrypted+=passwordChar;
+        if(password != null){
+            char[] passwordArray = password.toCharArray();
+            for(char passwordChar:passwordArray){
+                passwordChar -= 200;
+                decrypted+=passwordChar;
+            }
+            return decrypted;
         }
-        return decrypted;
+        return null;
     }
 
 }
