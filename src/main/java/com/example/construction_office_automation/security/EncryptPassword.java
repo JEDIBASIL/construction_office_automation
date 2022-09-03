@@ -4,7 +4,7 @@ public class EncryptPassword {
     private String encrypted;
 
     String EncryptPassword(String password){
-        System.out.println("hello world");
+        encrypted="";
         char[] passwordArray = password.toCharArray();
         for(char passwordChar:passwordArray){
             passwordChar += 200;
@@ -12,5 +12,4 @@ public class EncryptPassword {
         }
         return encrypted;
     }
-
 }
