@@ -840,7 +840,7 @@
                                                                                     <VBox layoutX="10.0" layoutY="60.0" prefHeight="95.0" prefWidth="278.0" styleClass="form-content">
                                                                                        <children>
                                                                                           <Label text="Email" />
-                                                                                          <TextField fx:id="addAdminField1" prefHeight="39.0" prefWidth="314.0">
+                                                                                          <TextField fx:id="addAdminEmailField" prefHeight="39.0" prefWidth="314.0">
                                                                                              <VBox.margin>
                                                                                                 <Insets bottom="3.0" top="10.0" />
                                                                                              </VBox.margin>

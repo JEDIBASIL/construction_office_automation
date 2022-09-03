@@ -4,15 +4,15 @@ import animatefx.animation.*;
 import com.example.construction_office_automation.HelloApplication;
 import com.example.construction_office_automation.enums.Validation;
 import com.example.construction_office_automation.model.Employees;
+import com.example.construction_office_automation.model.Admin;
 import com.example.construction_office_automation.model.database.DatabaseConnection;
+import com.example.construction_office_automation.security.EncryptPassword;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import java.io.File;
@@ -21,17 +21,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import static com.example.construction_office_automation.enums.Validation.*;
-
-import javafx.util.Duration;
-import org.controlsfx.control.Notifications;
-
-import javax.xml.transform.Result;
 
 public class HelloController extends Thread implements Initializable {
     @FXML
@@ -133,6 +127,8 @@ public class HelloController extends Thread implements Initializable {
     //    ADD ADMIN ERROR LABEL
 
             addAdminUsernameError,
+            addAdminEmailError,
+            adminRoleError,
             addAdminPasswordError,
 
     //    CHANGE PASSWORD ERROR LABEL
@@ -185,11 +181,18 @@ public class HelloController extends Thread implements Initializable {
     //    ADD ADMIN TEXT FIELD
 
             addAdminField,
+            addAdminEmailField,
 
     //    ADD DEPARTMENT TEXT FIELD
 
            addDepartmentField
     ;
+
+    @FXML
+
+//   ADD ADMIN PASSWORD FILED
+
+    private PasswordField addAdminPasswordField;
 
     @FXML
 
@@ -202,6 +205,13 @@ public class HelloController extends Thread implements Initializable {
     //  PROJECT LOCATION CHOICEBOX
 
     private ChoiceBox departmentChoiceBox,editDepartmentChoiceBox;
+
+    @FXML
+
+//  ADD ADMIN ROLE CHOICEBOX
+
+    private ChoiceBox adminRoleChoiceBox;
+
 
     @FXML
 //  GENDER RADIO BUTTONS
@@ -251,6 +261,7 @@ public class HelloController extends Thread implements Initializable {
 
         setDepartmentChoiceBox();
         setLocationChoiceBox();
+        adminRoleChoiceBox.getItems().addAll("Admin","Super admin");
 
 //      ADDING GENDER TO A TOGGLE GROUP
 
@@ -456,7 +467,30 @@ public class HelloController extends Thread implements Initializable {
         return null;
     }
 
-//  FUNCTION TO VALIDATE CHOICE BOXS
+    public String validatePasswordFields(Label errorMessage,PasswordField field,PasswordField confirmationField,String fieldName,String extra){
+
+        if(extra == null && confirmationField == null){
+            if(field.getText().equals("") || field.getText().length() < 6) errorMessage.setText(fieldName+" should be at least 6 characters");
+            else{
+                errorMessage.setText("");
+                return field.getText();
+            }
+        }
+         if(extra == "CONFIRMATION" && confirmationField != null)
+            if(!confirmationField.getText().equals(field))
+                errorMessage.setText(fieldName+" do not match");
+        else {
+            errorMessage.setText("");
+            return field.getText();
+        }
+
+
+
+        return null;
+    }
+
+
+    //  FUNCTION TO VALIDATE CHOICE BOXS
     public String validateChoiceBox(Label errorMessage,ChoiceBox choiceBox,String choiceBoxName){
         if(choiceBox.getSelectionModel().isEmpty()){
             errorMessage.setText(choiceBoxName+" is required");
@@ -519,8 +553,15 @@ public class HelloController extends Thread implements Initializable {
     protected void onAddWorkerClicked(){
     }
 
+
+
     @FXML
     protected void onAddProjectClicked(){
+
+    }
+
+    @FXML
+    protected void onAddAdminClicked(){
 
     }
 
@@ -600,5 +641,24 @@ public class HelloController extends Thread implements Initializable {
             }
         }
         return departmentList;
+    }
+
+//    ADD ADMIN
+    public void addAdmin(Admin admin){
+        if(databaseConnection.dbConnect()){
+            String ADD_ADMIN = "INSERT INTO admin (username,email,role,password) VALUES(?,?,?,?)";
+            int upd =0;
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(ADD_ADMIN);
+                preparedStatement.setString(1,admin.getUsername());
+                preparedStatement.setString(2,admin.getEmail());
+                preparedStatement.setString(3,admin.getRole());
+                preparedStatement.setString(4,admin.getPassword());
+                upd = preparedStatement.executeUpdate();
+                if(upd != 0) System.out.println("admin added successfully");
+            }catch (SQLException | SecurityException se){
+                se.printStackTrace();
+            }
+        }
     }
 }
