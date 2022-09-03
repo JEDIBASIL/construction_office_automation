@@ -249,6 +249,11 @@ public class HelloController extends Thread implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
 
+        setDepartmentChoiceBox();
+        setLocationChoiceBox();
+
+//      ADDING GENDER TO A TOGGLE GROUP
+
         addWorkerGenderGroup = new ToggleGroup();
         addWorkerFemale.setToggleGroup(addWorkerGenderGroup);
         addWorkerMale.setToggleGroup(addWorkerGenderGroup);
