@@ -1,10 +1,8 @@
-package com.example.construction_office_automation.validator;
+package com.example.construction_office_automation.controller.validator;
 
 import javafx.scene.control.*;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import static com.example.construction_office_automation.enums.Validation.*;
 import static com.example.construction_office_automation.enums.Validation.CONFIRMATION;
 

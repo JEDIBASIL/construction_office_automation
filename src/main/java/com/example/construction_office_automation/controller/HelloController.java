@@ -403,7 +403,7 @@ public class HelloController extends Thread implements Initializable {
         pjLocationChoiceBox.getItems().addAll(getLocations());
     }
 
-
+// FUNCTION TO DISPLAY MODAL
     public void displayModal(String displayType){
         if(displayType != null){
             modalContainer.setVisible(true);
