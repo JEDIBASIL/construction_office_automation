@@ -1,9 +1,20 @@
-package com.example.construction_office_automation.model.database;
+package com.example.construction_office_automation.model;
 
 public class Admin {
     private String username;
     private String email;
     private String role;
+
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 
     public String getUsername() {
         return username;
@@ -27,5 +38,17 @@ public class Admin {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean validateFields(){
+        if(
+                getUsername() == null
+                        &&  getEmail() == null
+                        && getRole() == null
+                        && getPassword()== null
+
+        ) return false;
+
+        return true;
     }
 }
