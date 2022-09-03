@@ -1,0 +1,79 @@
+ errorMessage.setText(fieldName + " should be numbers");
+
+                 if (extra == "AGE" && Integer.parseInt(field.getText()) < 18)
+                    errorMessage.setText("workers " + fieldName + " should be above 18");
+
+                 if (extra == "AGE" && Integer.parseInt(field.getText()) > 55)
+                    errorMessage.setText("workers " + fieldName + " should not be above 55");
+
+                 if (extra == "PHONE_NUMBER" && field.getText().length() < 10 || field.getText().length() > 16)
+                    errorMessage.setText(fieldName + " is invalid");
+
+
+                    else{
+                    errorMessage.setText("");
+                    return field.getText();
+                }
+
+
+
+
+
+
+
+
+                //  THIS METHOD TRUE OR FALSE BASED ON THE BUTTON CLICKED
+    public boolean displayModal(String modalHeadingText,String modalSubHeadingText){
+            AtomicBoolean result = new AtomicBoolean(true);
+            modalHeading.setText(modalHeadingText);
+            modalSubHeading.setText(modalSubHeadingText);
+            modalContainer.setVisible(true);
+                addCategoryModalForm.setVisible(false);
+                modalYesOption.setOnAction(e-> result.set(true));
+                modalNoOption.setOnAction(e-> result.set(false));
+
+         return result.get();
+     }
+
+//  THIS METHOD HIDES THE MODAL
+    public void displayModal(){
+        modalContainer.setVisible(false);
+    }
+
+//  THIS METHOD RETURN THE TEXT IN THE TEXT FIELD TO ADD DEPARTMENT
+    public String displayModal(String displayType){
+        AtomicReference<String> result = new AtomicReference<>("");
+        modalContainer.setVisible(true);
+        if(displayType.equals("ADD_DEPARTMENT") && addDepartmentField.getText().equals("")){
+            confirmationModal.setVisible(false);
+            addDepartmentBtn.setOnAction(e-> {
+                System.out.println("working");
+                result.set(addDepartmentField.getText());
+                System.out.println("result "+result.get());
+            });
+            return "on that";
+        }else{
+            return "cool";
+        }
+
+    }
+
+
+
+
+
+        protected void onAddWorkerClicked(){
+        employees.setFirstName(validateTextFields(firstNameError,firstNameField,NAME.toString(),"First name",null));
+        employees.setSurname(validateTextFields(surnameError,surnameField,NAME.toString(),"Surname",null));
+        employees.setOtherNames(validateTextFields(otherNamesError,otherNamesField,NAME.toString(),"Other names",null));
+        employees.setEmail(validateTextFields(emailError,emailField,EMAIL.toString(),"Email",null));
+        employees.setAge(Integer.parseInt(validateTextFields(ageError,ageField,NUMBER.toString(),"Age",AGE.toString())));
+        employees.setPhoneNumber(Long.parseLong(validateTextFields(phoneNumberError,phoneNumberField,NUMBER.toString(),"Phone number",PHONE_NUMBER.toString())));
+
+        System.out.println("first name: "+employees.getFirstName());
+        System.out.println("surname: "+employees.getSurname());
+        System.out.println("other names: "+employees.getOtherNames());
+        System.out.println("email: "+employees.getEmail());
+        System.out.println("age: "+employees.getAge());
+        System.out.println("phone number: "+employees.getPhoneNumber());
+    }

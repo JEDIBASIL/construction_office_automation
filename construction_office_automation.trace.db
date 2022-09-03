@@ -917,3 +917,611 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/macbook/I
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 24 more
+2022-09-03 01:12:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE projects \000d\000a  [*]project_id INT AUTO_INCREMENT PRIMARY KEY,\000d\000a  project_name VARCHAR(100),\000d\000a  project_owner VARCHAR(50),\000d\000a  project_description VARCHAR(200),\000d\000a  status VARCHAR(20)\000d\000a  starting_date DATE,\000d\000a  finishing_date DATE,\000d\000a  date_added TIMESTAMP\000d\000a  \000d\000a "; SQL statement:
+CREATE TABLE projects 
+  project_id INT AUTO_INCREMENT PRIMARY KEY,
+  project_name VARCHAR(100),
+  project_owner VARCHAR(50),
+  project_description VARCHAR(200),
+  status VARCHAR(20)
+  starting_date DATE,
+  finishing_date DATE,
+  date_added TIMESTAMP
+  
+  [42000-214]
+2022-09-03 01:12:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE projects(\000d\000a  project_id INT AUTO_INCREMENT PRIMARY KEY,\000d\000a  project_name VARCHAR(100),\000d\000a  project_owner VARCHAR(50),\000d\000a  project_description VARCHAR(200),\000d\000a  status VARCHAR(20)\000d\000a  [*]starting_date DATE,\000d\000a  finishing_date DATE,\000d\000a  date_added TIMESTAMP\000d\000a  )"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, NULL, AS, DEFAULT, GENERATED, ON UPDATE, NOT NULL, NULL, AUTO_INCREMENT, DEFAULT ON NULL, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+CREATE TABLE projects(
+  project_id INT AUTO_INCREMENT PRIMARY KEY,
+  project_name VARCHAR(100),
+  project_owner VARCHAR(50),
+  project_description VARCHAR(200),
+  status VARCHAR(20)
+  starting_date DATE,
+  finishing_date DATE,
+  date_added TIMESTAMP
+  ) [42001-214]
+2022-09-03 01:13:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE projects(\000d\000a  project_id INT AUTO_INCREMENT PRIMARY KEY,\000d\000a  project_name VARCHAR(100),\000d\000a  project_owner VARCHAR(50),\000d\000a  project_description VARCHAR(200),\000d\000a  status VARCHAR(20),\000d\000a  project_progress INT[*](100)\000d\000a  starting_date DATE,\000d\000a  finishing_date DATE,\000d\000a  date_added TIMESTAMP\000d\000a  )"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, NULL, AS, DEFAULT, GENERATED, ON UPDATE, NOT NULL, NULL, AUTO_INCREMENT, DEFAULT ON NULL, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+CREATE TABLE projects(
+  project_id INT AUTO_INCREMENT PRIMARY KEY,
+  project_name VARCHAR(100),
+  project_owner VARCHAR(50),
+  project_description VARCHAR(200),
+  status VARCHAR(20),
+  project_progress INT(100)
+  starting_date DATE,
+  finishing_date DATE,
+  date_added TIMESTAMP
+  ) [42001-214]
+2022-09-03 01:13:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE projects(\000d\000a  project_id INT AUTO_INCREMENT PRIMARY KEY,\000d\000a  project_name VARCHAR(100),\000d\000a  project_owner VARCHAR(50),\000d\000a  project_description VARCHAR(200),\000d\000a  status VARCHAR(20),\000d\000a  project_progress INT[*](100),\000d\000a  starting_date DATE,\000d\000a  finishing_date DATE,\000d\000a  date_added TIMESTAMP\000d\000a  )"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, NULL, AS, DEFAULT, GENERATED, ON UPDATE, NOT NULL, NULL, AUTO_INCREMENT, DEFAULT ON NULL, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+CREATE TABLE projects(
+  project_id INT AUTO_INCREMENT PRIMARY KEY,
+  project_name VARCHAR(100),
+  project_owner VARCHAR(50),
+  project_description VARCHAR(200),
+  status VARCHAR(20),
+  project_progress INT(100),
+  starting_date DATE,
+  finishing_date DATE,
+  date_added TIMESTAMP
+  ) [42001-214]
+2022-09-03 01:13:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE projects(\000d\000a  project_id INT AUTO_INCREMENT PRIMARY KEY,\000d\000a  project_name VARCHAR(100),\000d\000a  project_owner VARCHAR(50),\000d\000a  project_description VARCHAR(200),\000d\000a  status VARCHAR(20),\000d\000a  project_progress INT[*](100),\000d\000a  starting_date DATE,\000d\000a  finishing_date DATE,\000d\000a  date_added TIMESTAMP\000d\000a  )"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, NULL, AS, DEFAULT, GENERATED, ON UPDATE, NOT NULL, NULL, AUTO_INCREMENT, DEFAULT ON NULL, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+CREATE TABLE projects(
+  project_id INT AUTO_INCREMENT PRIMARY KEY,
+  project_name VARCHAR(100),
+  project_owner VARCHAR(50),
+  project_description VARCHAR(200),
+  status VARCHAR(20),
+  project_progress INT(100),
+  starting_date DATE,
+  finishing_date DATE,
+  date_added TIMESTAMP
+  ) [42001-214]
+2022-09-03 01:14:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Unknown data type: "NOT"; SQL statement:
+CREATE TABLE projects(
+  project_id INT AUTO_INCREMENT PRIMARY KEY,
+  project_name NOT NULL VARCHAR(100),
+  project_owner NOT NULL VARCHAR(50),
+  project_description NOT NULL VARCHAR(200),
+  status NOT NULL VARCHAR(20),
+  project_progress INT,
+  starting_date DATE,
+  finishing_date DATE,
+  date_added TIMESTAMP
+  ) [50004-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.readIfDataType1(Parser.java:6249)
+	at org.h2.command.Parser.readIfDataType(Parser.java:6087)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:6069)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5948)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:9331)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:9271)
+	at org.h2.command.Parser.parseCreate(Parser.java:6784)
+	at org.h2.command.Parser.parsePrepared(Parser.java:763)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 01:15:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Unknown data type: "NOT"; SQL statement:
+CREATE TABLE projects(
+  project_id INT AUTO_INCREMENT PRIMARY KEY,
+  project_name VARCHAR(100),
+  project_owner  VARCHAR(50),
+  project_description  VARCHAR(200),
+  status NOT NULL VARCHAR(20),
+  project_progress INT,
+  starting_date DATE,
+  finishing_date DATE,
+  date_added TIMESTAMP
+  ) [50004-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.readIfDataType1(Parser.java:6249)
+	at org.h2.command.Parser.readIfDataType(Parser.java:6087)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:6069)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5948)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:9331)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:9271)
+	at org.h2.command.Parser.parseCreate(Parser.java:6784)
+	at org.h2.command.Parser.parsePrepared(Parser.java:763)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 01:21:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "TIMESTAMP" not found; SQL statement:
+CREATE TABLE projects(
+  project_id INT AUTO_INCREMENT PRIMARY KEY,
+  project_name VARCHAR(100) NOT NULL,
+  project_owner  VARCHAR(50) NOT NULL,
+  project_description  VARCHAR(200) NOT NULL,
+  status  VARCHAR(20) NOT NULL,
+  project_progress INT NOT NULL,
+  starting_date DATE NOT NULL,
+  finishing_date DATE NOT NULL,
+  date_added TIMESTAMP DEFAULT TIMESTAMP
+  ) [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.table.Column.setDefaultExpression(Column.java:249)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5965)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:9331)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:9271)
+	at org.h2.command.Parser.parseCreate(Parser.java:6784)
+	at org.h2.command.Parser.parsePrepared(Parser.java:763)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 01:22:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "TIMESTAMP" not found; SQL statement:
+CREATE TABLE projects(
+  project_id INT AUTO_INCREMENT PRIMARY KEY,
+  project_name VARCHAR(100) NOT NULL,
+  project_owner  VARCHAR(50) NOT NULL,
+  project_description  VARCHAR(200) NOT NULL,
+  status  VARCHAR(20) NOT NULL,
+  project_progress INT NOT NULL,
+  starting_date DATE NOT NULL,
+  finishing_date DATE NOT NULL,
+  date_added DATE DEFAULT TIMESTAMP
+  ) [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.table.Column.setDefaultExpression(Column.java:249)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5965)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:9331)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:9271)
+	at org.h2.command.Parser.parseCreate(Parser.java:6784)
+	at org.h2.command.Parser.parsePrepared(Parser.java:763)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 01:22:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function "GETDATE" not found; SQL statement:
+CREATE TABLE projects(
+  project_id INT AUTO_INCREMENT PRIMARY KEY,
+  project_name VARCHAR(100) NOT NULL,
+  project_owner  VARCHAR(50) NOT NULL,
+  project_description  VARCHAR(200) NOT NULL,
+  status  VARCHAR(20) NOT NULL,
+  project_progress INT NOT NULL,
+  starting_date DATE NOT NULL,
+  finishing_date DATE NOT NULL,
+  date_added date DEFAULT GETDATE()
+  ) [90022-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:632)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.readFunction(Parser.java:3847)
+	at org.h2.command.Parser.readTermWithIdentifier(Parser.java:5211)
+	at org.h2.command.Parser.readTerm(Parser.java:4901)
+	at org.h2.command.Parser.readFactor(Parser.java:3398)
+	at org.h2.command.Parser.readSum(Parser.java:3385)
+	at org.h2.command.Parser.readConcat(Parser.java:3350)
+	at org.h2.command.Parser.readCondition(Parser.java:3132)
+	at org.h2.command.Parser.readExpression(Parser.java:3053)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5965)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:9331)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:9271)
+	at org.h2.command.Parser.parseCreate(Parser.java:6784)
+	at org.h2.command.Parser.parsePrepared(Parser.java:763)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 01:55:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM DEPARTMENT\000d\000a\000d\000aALTER [*]TABLE department\000d\000aALTER date_create SET DEFAULT TIMESTAMP"; SQL statement:
+SELECT * FROM DEPARTMENT
+
+ALTER TABLE department
+ALTER date_create SET DEFAULT TIMESTAMP [42000-214]
+2022-09-03 01:55:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "TIMESTAMP" not found; SQL statement:
+ALTER TABLE department
+ALTER date_create SET DEFAULT TIMESTAMP [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.table.Column.setDefaultExpression(Column.java:249)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:165)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 01:56:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE department\000d\000aALTER date_create SET DEFAULT [*]TO TIMESTAMP"; expected "ON NULL, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+ALTER TABLE department
+ALTER date_create SET DEFAULT TO TIMESTAMP [42001-214]
+2022-09-03 01:56:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "TIMESTAMP" not found; SQL statement:
+ALTER TABLE department
+ALTER date_create SET DEFAULT TIMESTAMP [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.table.Column.setDefaultExpression(Column.java:249)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:165)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 01:56:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function "GET_DATE" not found; SQL statement:
+ALTER TABLE department
+ALTER date_create SET DEFAULT GET_DATE() [90022-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:632)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.readFunction(Parser.java:3847)
+	at org.h2.command.Parser.readTermWithIdentifier(Parser.java:5211)
+	at org.h2.command.Parser.readTerm(Parser.java:4901)
+	at org.h2.command.Parser.readFactor(Parser.java:3398)
+	at org.h2.command.Parser.readSum(Parser.java:3385)
+	at org.h2.command.Parser.readConcat(Parser.java:3350)
+	at org.h2.command.Parser.readCondition(Parser.java:3132)
+	at org.h2.command.Parser.readExpression(Parser.java:3053)
+	at org.h2.command.Parser.parseAlterTableAlterColumnSet(Parser.java:8651)
+	at org.h2.command.Parser.parseAlterTableAlter(Parser.java:8573)
+	at org.h2.command.Parser.parseAlterTable(Parser.java:8491)
+	at org.h2.command.Parser.parseAlter(Parser.java:7548)
+	at org.h2.command.Parser.parsePrepared(Parser.java:747)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 01:57:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "GET_DATE" not found; SQL statement:
+ALTER TABLE department
+ALTER date_create SET DEFAULT GET_DATE [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.table.Column.setDefaultExpression(Column.java:249)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:165)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 01:58:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]DESCRIBE department"; expected "DELETE, DROP, DECLARE, DEALLOCATE"; SQL statement:
+DESCRIBE department [42001-214]
+2022-09-03 01:59:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Function "GETDATE" not found; SQL statement:
+ALTER TABLE department
+ALTER date_create SET DEFAULT GETDATE() [90022-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:632)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.readFunction(Parser.java:3847)
+	at org.h2.command.Parser.readTermWithIdentifier(Parser.java:5211)
+	at org.h2.command.Parser.readTerm(Parser.java:4901)
+	at org.h2.command.Parser.readFactor(Parser.java:3398)
+	at org.h2.command.Parser.readSum(Parser.java:3385)
+	at org.h2.command.Parser.readConcat(Parser.java:3350)
+	at org.h2.command.Parser.readCondition(Parser.java:3132)
+	at org.h2.command.Parser.readExpression(Parser.java:3053)
+	at org.h2.command.Parser.parseAlterTableAlterColumnSet(Parser.java:8651)
+	at org.h2.command.Parser.parseAlterTableAlter(Parser.java:8573)
+	at org.h2.command.Parser.parseAlterTable(Parser.java:8491)
+	at org.h2.command.Parser.parseAlter(Parser.java:7548)
+	at org.h2.command.Parser.parsePrepared(Parser.java:747)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 02:01:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE department\000d\000a[*]MODIFY date_create DEFAULT GETDATE()"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE department
+MODIFY date_create DEFAULT GETDATE() [42001-214]
+2022-09-03 02:01:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Unknown data type: "DEFAULT"; SQL statement:
+ALTER TABLE department
+ALTER date_create DEFAULT GETDATE() [50004-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.readIfDataType1(Parser.java:6249)
+	at org.h2.command.Parser.readIfDataType(Parser.java:6087)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:6069)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5948)
+	at org.h2.command.Parser.parseAlterTableAlterColumnType(Parser.java:8932)
+	at org.h2.command.Parser.parseAlterTableAlter(Parser.java:8575)
+	at org.h2.command.Parser.parseAlterTable(Parser.java:8491)
+	at org.h2.command.Parser.parseAlter(Parser.java:7548)
+	at org.h2.command.Parser.parsePrepared(Parser.java:747)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 02:01:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Unknown data type: "DEFAULT"; SQL statement:
+ALTER TABLE department
+ALTER date_create DEFAULT "hello" [50004-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.readIfDataType1(Parser.java:6249)
+	at org.h2.command.Parser.readIfDataType(Parser.java:6087)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:6069)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5948)
+	at org.h2.command.Parser.parseAlterTableAlterColumnType(Parser.java:8932)
+	at org.h2.command.Parser.parseAlterTableAlter(Parser.java:8575)
+	at org.h2.command.Parser.parseAlterTable(Parser.java:8491)
+	at org.h2.command.Parser.parseAlter(Parser.java:7548)
+	at org.h2.command.Parser.parsePrepared(Parser.java:747)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 02:01:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "hello" not found; SQL statement:
+ALTER TABLE department
+ALTER date_create SET DEFAULT "hello" [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.table.Column.setDefaultExpression(Column.java:249)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:165)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 02:02:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ID" not found; SQL statement:
+ALTER TABLE department
+ALTER date_create SET DEFAULT id [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.table.Column.setDefaultExpression(Column.java:249)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:165)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 02:02:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ID" not found; SQL statement:
+ALTER TABLE department
+ALTER date_create SET DEFAULT id [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.table.Column.setDefaultExpression(Column.java:249)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:165)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 02:02:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "NAME" not found; SQL statement:
+ALTER TABLE department
+ALTER date_create SET DEFAULT name [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.table.Column.setDefaultExpression(Column.java:249)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:165)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-03 02:10:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE department(\000d\000a  id INT AUTO_INCREMENT PRIMARY KEY,\000d\000a  name VARCHAR(150),\000d\000aB VARCHAR(255) DEFAULT 'X'\000d\000a)\000d\000a\000d\000a\000d\000a[*]drop table department"; SQL statement:
+CREATE TABLE department(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150),
+B VARCHAR(255) DEFAULT 'X'
+)
+
+
+drop table department [42000-214]
+2022-09-03 02:10:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE department(\000d\000a  id INT AUTO_INCREMENT PRIMARY KEY,\000d\000a  name VARCHAR(150),\000d\000a[*])"; expected "identifier"; SQL statement:
+CREATE TABLE department(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150),
+) [42001-214]

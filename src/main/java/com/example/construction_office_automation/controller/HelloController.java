@@ -510,17 +510,6 @@ public class HelloController extends Thread implements Initializable {
 
     @FXML
     protected void onAddDepartmentClicked(){
-        Notifications notificationsBuilder =Notifications.create()
-                .title("Success")
-                .text("another department has been added ")
-                .graphic(null)
-                .hideAfter(Duration.seconds(3))
-                .position(Pos.TOP_LEFT)
-                .darkStyle()
-
-                ;
-        System.out.println(notificationsBuilder);
-        notificationsBuilder.showInformation();
     }
 
 
@@ -548,5 +537,22 @@ public class HelloController extends Thread implements Initializable {
             }
         }
         return locationList;
+    }
+
+    public void addDepartment(Employees employees){
+        if(databaseConnection.dbConnect()){
+            String ADD_DEPARTMENT = "INSERT INTO department (name) VALUES(?)";
+            try{
+                int upd =0;
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(ADD_DEPARTMENT);
+                preparedStatement.setString(1,employees.getDepartment());
+                upd = preparedStatement.executeUpdate();
+                if(upd !=0){
+                    System.out.println("department added successfully");
+                }
+            }catch (SecurityException | SQLException se){
+                se.printStackTrace();
+            }
+        }
     }
 }
