@@ -6,4 +6,5 @@ public enum Validation {
     NUMBER,
     AGE,
     PHONE_NUMBER,
+    CONFIRMATION,
 }

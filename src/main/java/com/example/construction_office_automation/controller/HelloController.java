@@ -476,7 +476,7 @@ public class HelloController extends Thread implements Initializable {
                 return field.getText();
             }
         }
-         if(extra == "CONFIRMATION" && confirmationField != null)
+         if(extra == CONFIRMATION.toString() && confirmationField != null)
             if(!confirmationField.getText().equals(field))
                 errorMessage.setText(fieldName+" do not match");
         else {
