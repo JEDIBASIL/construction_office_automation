@@ -198,6 +198,12 @@ public class HelloController extends Thread implements Initializable {
     private ChoiceBox pjLocationChoiceBox;
 
     @FXML
+
+    //  PROJECT LOCATION CHOICEBOX
+
+    private ChoiceBox departmentChoiceBox,editDepartmentChoiceBox;
+
+    @FXML
 //  GENDER RADIO BUTTONS
 
     private RadioButton addWorkerMale,addWorkerFemale,editWorkerFemale,editWorkerMale;
@@ -242,7 +248,7 @@ public class HelloController extends Thread implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
-        pjLocationChoiceBox.getItems().addAll(getLocations());
+
         addWorkerGenderGroup = new ToggleGroup();
         addWorkerFemale.setToggleGroup(addWorkerGenderGroup);
         addWorkerMale.setToggleGroup(addWorkerGenderGroup);
@@ -322,6 +328,8 @@ public class HelloController extends Thread implements Initializable {
            return file;
      }
 
+
+
 //   METHOD TO SWITCH APP TABPANE
      public void switchPane(int tab){
         appTabPane.getSelectionModel().select(tab);
@@ -368,6 +376,16 @@ public class HelloController extends Thread implements Initializable {
 
 
 
+// FUNCTION TO ADD DATA TO DEPARTMENT CHOICEBOX
+    public void setDepartmentChoiceBox(){
+        departmentChoiceBox.getItems().addAll(getDepartments());
+    }
+
+
+    // FUNCTION TO ADD DATA TO DEPARTMENT CHOICEBOX
+    public void setLocationChoiceBox(){
+        pjLocationChoiceBox.getItems().addAll(getLocations());
+    }
 
 
 
@@ -520,6 +538,7 @@ public class HelloController extends Thread implements Initializable {
 
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
+//  RETRIEVE LOCATIONS FROM DATABASE
     public List getLocations(){
         ArrayList locationList = new ArrayList();
         if(databaseConnection.dbConnect()){
@@ -539,6 +558,8 @@ public class HelloController extends Thread implements Initializable {
         return locationList;
     }
 
+//  ADD NEW DEPARTMENT TO DATABASE
+
     public void addDepartment(Employees employees){
         if(databaseConnection.dbConnect()){
             String ADD_DEPARTMENT = "INSERT INTO department (name) VALUES(?)";
@@ -554,5 +575,25 @@ public class HelloController extends Thread implements Initializable {
                 se.printStackTrace();
             }
         }
+    }
+
+    //  RETRIEVE DEPARTMENTS FROM DATABASE
+    public List getDepartments(){
+        ArrayList departmentList = new ArrayList();
+        if(databaseConnection.dbConnect()){
+            String GET_LOCATIONS = "SELECT name FROM department";
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(GET_LOCATIONS);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()){
+                    String location = resultSet.getString("name");
+//                    System.out.println(location);
+                    departmentList.add(location);
+                }
+            }catch (SecurityException | SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return departmentList;
     }
 }

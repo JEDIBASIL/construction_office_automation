@@ -1100,7 +1100,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="2">
                                                                <children>
                                                                   <Label text="Department" />
-                                                                  <ChoiceBox prefHeight="22.0" prefWidth="293.0" styleClass="text-field" VBox.vgrow="ALWAYS">
+                                                                  <ChoiceBox fx:id="departmentChoiceBox" prefHeight="22.0" prefWidth="293.0" styleClass="text-field" VBox.vgrow="ALWAYS">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
@@ -1402,7 +1402,7 @@
                                                             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-content" GridPane.rowIndex="2">
                                                                <children>
                                                                   <Label text="Department" />
-                                                                  <ChoiceBox prefHeight="22.0" prefWidth="335.0" styleClass="text-field">
+                                                                  <ChoiceBox fx:id="editDepartmentChoiceBox" prefHeight="22.0" prefWidth="335.0" styleClass="text-field">
                                                                      <VBox.margin>
                                                                         <Insets bottom="3.0" top="10.0" />
                                                                      </VBox.margin>
