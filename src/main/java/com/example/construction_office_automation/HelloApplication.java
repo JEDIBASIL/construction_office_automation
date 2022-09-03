@@ -1,7 +1,6 @@
 package com.example.construction_office_automation;
 
 
-import com.example.construction_office_automation.controller.HelloController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

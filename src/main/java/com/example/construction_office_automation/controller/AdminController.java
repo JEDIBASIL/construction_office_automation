@@ -6,7 +6,6 @@ import com.example.construction_office_automation.enums.Validation;
 import com.example.construction_office_automation.model.Employees;
 import com.example.construction_office_automation.model.Admin;
 import com.example.construction_office_automation.model.database.DatabaseConnection;
-import com.example.construction_office_automation.security.EncryptPassword;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -23,11 +22,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import static com.example.construction_office_automation.enums.Validation.*;
 
-public class HelloController extends Thread implements Initializable {
+public class AdminController extends Thread implements Initializable {
     @FXML
     private Label welcomeText;
 
@@ -237,7 +233,7 @@ public class HelloController extends Thread implements Initializable {
 
     final FileChooser fileChooser = new FileChooser();
 
-    public HelloController() {
+    public AdminController() {
     }
 
     @FXML
@@ -463,8 +459,6 @@ public class HelloController extends Thread implements Initializable {
 
 
 
-
-
 //  DATABASE MANIPULATIONS
 
     DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -546,4 +540,6 @@ public class HelloController extends Thread implements Initializable {
             }
         }
     }
+
+
 }
