@@ -398,8 +398,13 @@
     -fx-padding:15 10;
 }
 
+
 .setting-tab{
     -fx-background-color:transparent;
+}
+
+.setting-tab .tab{
+    -fx-padding:0 20;
 }
 
 .setting-tab:focused .tab{

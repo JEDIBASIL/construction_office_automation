@@ -1,3 +1,12 @@
+.logo{
+    -fx-text-fill: rgb(84,84,208) !important;
+}
+
+.heading {
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 20;
+}
+
 .form-container {
     -fx-background-color: white;
 }
