@@ -214,11 +214,6 @@ public class AdminController extends Thread implements Initializable {
 
     private RadioButton addWorkerMale,addWorkerFemale,editWorkerFemale,editWorkerMale;
 
-    @FXML
-
-//  CURRENT TAB NAME
-
-    private Label currentTabName;
 
     @FXML
 
@@ -349,10 +344,7 @@ public class AdminController extends Thread implements Initializable {
 
 //   FUNCTION TO CHANGE THE NAME OF THE CURRENT TAB
 
-    public  void changeCurrentTabName(String name){
-        currentTabName.setText(name);
 
-    }
 
 
 
@@ -374,10 +366,6 @@ public class AdminController extends Thread implements Initializable {
                 link.getStyleClass().remove("active");
             }
         }else{
-            if(appTabPane.getSelectionModel().getSelectedIndex() == 0)changeCurrentTabName("Home");
-            else if(appTabPane.getSelectionModel().getSelectedIndex() == 1)changeCurrentTabName("Projects");
-            else if(appTabPane.getSelectionModel().getSelectedIndex() == 2)changeCurrentTabName("Workers");
-            else if(appTabPane.getSelectionModel().getSelectedIndex() == 3)changeCurrentTabName("Settings");
             for(HBox link:links){
                 link.getStyleClass().remove("active");
             }
