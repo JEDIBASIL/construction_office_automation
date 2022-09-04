@@ -85,7 +85,7 @@
     -fx-background-color: white;
     -fx-border-width: 0 0 1 0;
     -fx-border-color: rgb(234, 234, 234);
-    -fx-padding: 0 30;
+    -fx-padding: 0 10;
 }
 
 .top-bar .search-box {
@@ -109,7 +109,8 @@
 }
 
 .white {
-    -fx-background-color: rgb(243,243,243);
+    -fx-background-color: rgb(248,248,248);
+
 }
 
 .scroll-pane {
@@ -174,7 +175,9 @@
 .total-project {
     -fx-background-color: rgb(84,84,208) !important;
 }
-
+.total-project .label{
+    -fx-text-fill: white !important;
+}
 .total-project .details .label,
 .total-project .title .label {
     /* -fx-font-size: 30 !important; */
@@ -189,7 +192,9 @@
 .quick-action-container,.chart-container  {
     -fx-padding:20;
     -fx-background-radius: 10;
+    -fx-border-radius: 10;
     -fx-background-color: rgb(255, 255, 255);
+    -fx-border-color: rgb(235, 235, 235);
 }
 
 .quick-action-container .content {
@@ -204,7 +209,7 @@
 
 .quick-action-container .content .card {
     -fx-background-radius: 15;
-    -fx-background-color: rgb(50, 201, 175);
+    -fx-background-color:rgb(84,84,208) !important ;
 }
 
 .quick-action-container .content .label {
@@ -237,6 +242,10 @@
     -fx-background-color: white;
     -fx-padding: 20;
     -fx-background-radius: 10;
+}
+
+.display_workers-details-card .label{
+    -fx-font-family: "Hiragino Sans W6";
 }
 
 .workers-count{
@@ -404,7 +413,7 @@
 }
 
 .setting-tab .tab{
-    -fx-padding:0 20;
+    -fx-padding:0 15;
 }
 
 .setting-tab:focused .tab{
@@ -527,4 +536,22 @@
 .notification-content{
     -fx-background-color: white;
 
+}
+
+.details-container{
+    -fx-padding:10;
+    -fx-spacing:5;
+    -fx-background-radius:10;
+}
+
+.details-container .label{
+    -fx-font-family: "Hiragino Sans W6";
+}
+
+.details-container .name{
+    -fx-font-size: 18;
+}
+
+.details-container .email{
+    -fx-font-size: 12;
 }

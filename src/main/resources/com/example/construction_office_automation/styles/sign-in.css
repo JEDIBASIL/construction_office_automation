@@ -49,7 +49,6 @@
 
 .form-content .error-message {
     -fx-text-fill: crimson;
-    -fx-text-fill: white;
     -fx-font-size: 10;
 }
 
