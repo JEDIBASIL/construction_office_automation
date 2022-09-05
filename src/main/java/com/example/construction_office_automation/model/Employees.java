@@ -10,6 +10,7 @@ public class Employees {
     private long PhoneNumber;
     private int Age;
     private String gender;
+    private String role;
 
     public int getId() {
         return id;
@@ -83,20 +84,29 @@ public class Employees {
         this.gender = gender;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public boolean validateFields(){
         if(
-               getFirstName() == null
-               &&  getEmail() == null
-               && getSurname() == null
-               && getOtherNames()== null
-               && getDepartment() == null
-               && getGender() == null
-               && getAge() == 0
-               && getPhoneNumber() == 0
+               getFirstName() != null
+               &&  getEmail() != null
+               && getSurname() != null
+               && getOtherNames()!= null
+               && getDepartment() != null
+               && getGender() != null
+               && getRole() != null
+                && getAge() != 0
+               && getPhoneNumber() != 0
 
-        ) return false;
+        ) return true;
 
-        return true;
+        return false;
     }
 
 
