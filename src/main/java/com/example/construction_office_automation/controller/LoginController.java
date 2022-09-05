@@ -1,6 +1,8 @@
 package com.example.construction_office_automation.controller;
 
 import com.example.construction_office_automation.HelloApplication;
+import com.example.construction_office_automation.controller.validator.Validator;
+import com.example.construction_office_automation.utils.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,20 +18,22 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-
+import static com.example.construction_office_automation.enums.Validation.NAME;
 
 
 public class LoginController implements Initializable {
 
     private Stage stage;
+
     private Scene scene;
+
+    AdminController adminController = new AdminController();
 
     @FXML
 
 //    LOGIN USERNAME TEXT FIELD
 
-    private TextField LoginusernamField;
+    private TextField loginusernamField;
 
     @FXML
 
@@ -47,11 +51,11 @@ public class LoginController implements Initializable {
 
 //   ERROR LABELS
 
-    private Label loginUsernameError,loginRoleError,LoginPasswordError;
+    private Label loginUsernameError,loginRoleError,loginPasswordError;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        loginRole.getItems().addAll("Project manager","Project director","Project  executive");
     }
 
     public  void switchSence(ActionEvent event, String fxml){
@@ -59,7 +63,7 @@ public class LoginController implements Initializable {
         try{
             Parent pane = FXMLLoader.load(HelloApplication.class.getResource(fxml));
             stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(pane, 900, 700);
+            Scene scene = new Scene(pane, 1200, 700);
             stage.setScene(scene);
             if(fxml.equals("admin-dashboard.fxml")){
                 stage.setResizable(true);
@@ -67,6 +71,23 @@ public class LoginController implements Initializable {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+
+    protected  void onLoginClicked(ActionEvent event){
+        System.out.println("clicked");
+        Validator validator = new Validator();
+        Session session = new Session();
+        session.setUsername(validator.validateTextFields(loginUsernameError,loginusernamField,NAME.toString(),"Username",null));
+        session.setRole(validator.validateChoiceBox(loginRoleError,loginRole,"Role"));
+        session.setPassword(validator.validatePasswordFields(loginPasswordError,loginPasswordField,null,"Password",null));
+
+        if(session.isLoggedIn()){
+            if(session.getRole() != null && session.getRole().equals("Project director")) switchSence(event,"admin-dashboard.fxml");
+            if(session.getRole() != null && session.getRole().equals("Project manager")) switchSence(event,"project-manger.fxml");
+        }
+
     }
 
 }

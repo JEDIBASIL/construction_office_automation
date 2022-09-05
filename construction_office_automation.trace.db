@@ -3044,3 +3044,79 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/macbook/I
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 25 more
+2022-09-05 01:35:33 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: /Users/macbook/IdeaProjects/construction_office_automation/construction_office_automation.mv.db [2.1.214/7]" [50000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:395)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3318)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:593)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:469)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
+	at org.h2.mvstore.db.Store.<init>(Store.java:136)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:288)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:808)
+	at org.h2.server.web.WebApp.login(WebApp.java:1033)
+	at org.h2.server.web.WebApp.process(WebApp.java:226)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebThread.process(WebThread.java:152)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: /Users/macbook/IdeaProjects/construction_office_automation/construction_office_automation.mv.db [2.1.214/7]" [50000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 22 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/macbook/IdeaProjects/construction_office_automation/construction_office_automation.mv.db [2.1.214/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:178)
+	at org.h2.mvstore.FileStore.open(FileStore.java:128)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
+	... 16 more
+2022-09-05 01:39:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE wokers(\000d\000aid INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\000d\000afirst_name VARCHAR(45) NOT NULL,\000d\000asurname VARCHAR(45) NOT NULL,\000d\000aother_name VARCHAR(45) NOT NULL,\000d\000aemail VARCHAR(45) NOT NULL,\000d\000adepartment VARCHAR(45) NOT NULL,\000d\000aphone_number VARCHAR(45) NOT NULL,\000d\000aage INT NOT NULL,\000d\000agender VARCHAR(20) NOT NULL,\000d\000arole VARCHAR(45) NOT NULL,\000d\000a[*])"; expected "identifier"; SQL statement:
+CREATE TABLE wokers(
+id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+first_name VARCHAR(45) NOT NULL,
+surname VARCHAR(45) NOT NULL,
+other_name VARCHAR(45) NOT NULL,
+email VARCHAR(45) NOT NULL,
+department VARCHAR(45) NOT NULL,
+phone_number VARCHAR(45) NOT NULL,
+age INT NOT NULL,
+gender VARCHAR(20) NOT NULL,
+role VARCHAR(45) NOT NULL,
+) [42001-214]
+2022-09-05 01:40:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE wokers(\000d\000aid INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\000d\000afirst_name VARCHAR(45) NOT NULL,\000d\000asurname VARCHAR(45) NOT NULL,\000d\000aother_name VARCHAR(45) NOT NULL,\000d\000aemail VARCHAR(45) NOT NULL,\000d\000adepartment VARCHAR(45) NOT NULL,\000d\000aphone_number VARCHAR(45) NOT NULL,\000d\000aage INT NOT NULL,\000d\000agender VARCHAR(20) NOT NULL,\000d\000arole VARCHAR(45) NOT NULL\000d\000a)\000d\000a\000d\000a[*]DELETE * FORM WORKERS"; SQL statement:
+CREATE TABLE wokers(
+id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+first_name VARCHAR(45) NOT NULL,
+surname VARCHAR(45) NOT NULL,
+other_name VARCHAR(45) NOT NULL,
+email VARCHAR(45) NOT NULL,
+department VARCHAR(45) NOT NULL,
+phone_number VARCHAR(45) NOT NULL,
+age INT NOT NULL,
+gender VARCHAR(20) NOT NULL,
+role VARCHAR(45) NOT NULL
+)
+
+DELETE * FORM WORKERS [42000-214]
+2022-09-05 01:40:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FORM WORKERS"; expected "identifier"; SQL statement:
+DELETE * FORM WORKERS [42001-214]
+2022-09-05 01:41:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FROM WORKERS"; expected "identifier"; SQL statement:
+DELETE * FROM WORKERS [42001-214]
+2022-09-05 01:41:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WORKERS" not found; SQL statement:
+DELETE  WORKERS [42102-214]
+2022-09-05 01:42:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE WOKERS [*]TO WORKERS"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE WOKERS TO WORKERS [42001-214]

@@ -6,6 +6,7 @@ import com.example.construction_office_automation.enums.Validation;
 import com.example.construction_office_automation.model.Employees;
 import com.example.construction_office_automation.model.Admin;
 import com.example.construction_office_automation.model.database.DatabaseConnection;
+import com.example.construction_office_automation.utils.Session;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -79,6 +80,13 @@ public class AdminController extends Thread implements Initializable {
     @FXML
 //  QUICK ACTION TAB LINKS
     private VBox addProjectQuickLink,addWorkerQuickLink,viewProjectsQuickLink;
+
+    @FXML
+
+//   ADMIN DETAILS
+
+    private Label loggedInUsername;
+
     @FXML
 //  ERROR LABELS
     private Label
@@ -123,7 +131,7 @@ public class AdminController extends Thread implements Initializable {
     //    ADD ADMIN ERROR LABEL
 
             addAdminUsernameError,
-            addAdminEmailError,
+
             adminRoleError,
             addAdminPasswordError,
 
@@ -177,7 +185,6 @@ public class AdminController extends Thread implements Initializable {
     //    ADD ADMIN TEXT FIELD
 
             addAdminField,
-            addAdminEmailField,
 
     //    ADD DEPARTMENT TEXT FIELD
 
@@ -244,6 +251,7 @@ public class AdminController extends Thread implements Initializable {
 
 
     Employees employees = new Employees();
+    Session session = new Session();
 
 
 
@@ -252,7 +260,7 @@ public class AdminController extends Thread implements Initializable {
 
         setDepartmentChoiceBox();
         setLocationChoiceBox();
-        adminRoleChoiceBox.getItems().addAll("Admin","Super admin");
+
 
 //      ADDING GENDER TO A TOGGLE GROUP
 
@@ -343,7 +351,6 @@ public class AdminController extends Thread implements Initializable {
      }
 
 //   FUNCTION TO CHANGE THE NAME OF THE CURRENT TAB
-
 
 
 

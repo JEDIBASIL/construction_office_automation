@@ -145,6 +145,7 @@
     -fx-padding: 10;
     -fx-spacing: 20;
     -fx-pref-height: 200;
+    -fx-border-color: rgb(235, 235, 235);
 }
 
 .overview-container .overview-card .details {
@@ -174,6 +175,7 @@
 
 .total-project {
     -fx-background-color: rgb(84,84,208) !important;
+    -fx-border-color:none !important;
 }
 .total-project .label{
     -fx-text-fill: white !important;
@@ -222,6 +224,8 @@
     -fx-background-radius:10;
     -fx-padding: 20;
     -fx-background-color: white;
+    -fx-border-radius: 10;
+    -fx-border-color: rgb(235, 235, 235);
 }
 
 .upcoming-project-container-list {
@@ -242,6 +246,8 @@
     -fx-background-color: white;
     -fx-padding: 20;
     -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgb(235, 235, 235);
 }
 
 .display_workers-details-card .label{
