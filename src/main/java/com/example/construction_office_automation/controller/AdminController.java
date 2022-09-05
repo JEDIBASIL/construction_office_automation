@@ -2,6 +2,7 @@ package com.example.construction_office_automation.controller;
 
 import animatefx.animation.*;
 import com.example.construction_office_automation.HelloApplication;
+import com.example.construction_office_automation.controller.validator.Validator;
 import com.example.construction_office_automation.enums.Validation;
 import com.example.construction_office_automation.model.Employees;
 import com.example.construction_office_automation.model.Admin;
@@ -10,6 +11,8 @@ import com.example.construction_office_automation.utils.Session;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -23,6 +26,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static com.example.construction_office_automation.enums.Validation.*;
 
 public class AdminController extends Thread implements Initializable {
     @FXML
@@ -99,6 +104,7 @@ public class AdminController extends Thread implements Initializable {
             departmentError,
             phoneNumberError,
             ageError,
+            staffRoleError,
 
 //    ADD PROJECT ERROR LABEL
 
@@ -207,7 +213,7 @@ public class AdminController extends Thread implements Initializable {
 
     //  PROJECT LOCATION CHOICEBOX
 
-    private ChoiceBox departmentChoiceBox,editDepartmentChoiceBox;
+    private ChoiceBox staffRoleChoiceBox, departmentChoiceBox,editDepartmentChoiceBox;
 
     @FXML
 
@@ -227,10 +233,26 @@ public class AdminController extends Thread implements Initializable {
 //  NOTIFICATION ICON
 
     private VBox notificationIcon;
+
     @FXML
+
+//  ADD WORKER IMAGE CONTAINER
+
+    private VBox addWorkerImgContainer;
+    @FXML
+
+//  ADD WORKER IMAGE VIEW
+
+    private ImageView addWorkerImg;
+
+
+
+
+
 
 //  NOTIFICATION CONTAINER
 
+    @FXML
     private AnchorPane notificationContainer;
 
     final FileChooser fileChooser = new FileChooser();
@@ -247,11 +269,13 @@ public class AdminController extends Thread implements Initializable {
 
     private ToggleGroup addWorkerGenderGroup;
 
-   Validation validation;
+   private Validation validation;
 
 
     Employees employees = new Employees();
     Session session = new Session();
+    Validator validator = new Validator();
+
 
 
 
@@ -260,6 +284,8 @@ public class AdminController extends Thread implements Initializable {
 
         setDepartmentChoiceBox();
         setLocationChoiceBox();
+        staffRoleChoiceBox.getItems().addAll("Project manager","Project monitor");
+
 
 
 //      ADDING GENDER TO A TOGGLE GROUP
@@ -332,15 +358,20 @@ public class AdminController extends Thread implements Initializable {
 
         addDepartmentFormShow.setOnAction(e->displayModal("FORM"));
         notificationIcon.setOnMouseClicked(e->notificationContainer.setVisible(true));
+
+        addWorkerImgContainer.setOnMouseClicked(e->{
+            addWorkerImg.setImage(new Image(displayFileChooser("Add worker image")));
+            System.out.println(addWorkerImg.getImage().getUrl().toString());
+        });
     }
 
 //   FUNCTION TO SHOW FILE-CHOOSER
 
-     public  File displayFileChooser(String title){
+     public  String displayFileChooser(String title){
          fileChooser.setTitle(title);
          fileChooser.getExtensionFilters().addAll(new ExtensionFilter("All Images","*.png","*.jpg","*.jpeg"));
            File file = fileChooser.showOpenDialog(null);
-           return file;
+           return file.toURI().toString();
      }
 
 
@@ -427,7 +458,18 @@ public class AdminController extends Thread implements Initializable {
 
     @FXML
     protected void onAddWorkerClicked(){
-
+        employees.setFirstName(validator.validateTextFields(firstNameError,firstNameField,NAME.toString(),"First name",null));
+        employees.setSurname(validator.validateTextFields(surnameError,surnameField,NAME.toString(),"Surname",null));
+        employees.setOtherNames(validator.validateTextFields(otherNamesError,otherNamesField,NAME.toString(),"Other names",null));
+        employees.setEmail(validator.validateTextFields(emailError,emailField,EMAIL.toString(),"Email",null));
+        employees.setDepartment(validator.validateChoiceBox(departmentError,departmentChoiceBox,"Department"));
+        employees.setAge(Integer.parseInt(validator.validateTextFields(ageError,ageField,NUMBER.toString(),"Age",AGE.toString())));
+        employees.setPhoneNumber(Long.parseLong(validator.validateTextFields(phoneNumberError,phoneNumberField,NUMBER.toString(),"Phone number",PHONE_NUMBER.toString())));
+        employees.setGender(validator.validateRadioButton(genderError,addWorkerGenderGroup,"Gender"));
+        employees.setRole(validator.validateChoiceBox(staffRoleError,staffRoleChoiceBox,"Role"));
+        if(employees.validateFields()){
+            System.out.println("ready to send");
+        }
     }
 
 

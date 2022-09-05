@@ -1384,9 +1384,9 @@
                                                       </GridPane>
                                                    </children>
                                                 </VBox>
-                                                <VBox prefHeight="237.0" prefWidth="252.0" styleClass="img-container">
+                                                <VBox fx:id="addWorkerImgContainer" prefHeight="237.0" prefWidth="252.0" styleClass="img-container">
                                                    <children>
-                                                      <ImageView fitHeight="270.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true" />
+                                                      <ImageView fx:id="addWorkerImg" fitHeight="270.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true" />
                                                    </children>
                                                    <HBox.margin>
                                                       <Insets top="70.0" />
