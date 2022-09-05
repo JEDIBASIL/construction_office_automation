@@ -487,7 +487,6 @@ public class AdminController extends Thread implements Initializable {
 
     @FXML
     protected void onAddAdminClicked(){
-
     }
 
 
@@ -566,10 +565,31 @@ public class AdminController extends Thread implements Initializable {
         return departmentList;
     }
 
+//    SEARCH WORKER TABLE
+
+    public void searchWorker(Integer id){
+        if(databaseConnection.dbConnect()){
+            String SEARCH_WORKER = "SELECT * FROM workers WHERE id = ?";
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(SEARCH_WORKER);
+                preparedStatement.setInt(1, id);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if(resultSet.next()){
+                    System.out.println("Found");
+                }else{
+                    System.out.println("not found");
+                }
+
+            }catch (SQLException | SecurityException se){
+                se.printStackTrace();
+            }
+        }
+    }
+
 //    ADD ADMIN
     public void addAdmin(Admin admin){
         if(databaseConnection.dbConnect()){
-            String ADD_ADMIN = "INSERT INTO admin (username,email,role,password) VALUES(?,?,?,?)";
+            String ADD_ADMIN = "INSERT INTO admin (username,email,id,password) VALUES(?,?,?,?)";
             int upd =0;
             try{
                 PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(ADD_ADMIN);
