@@ -10,6 +10,7 @@ import com.example.construction_office_automation.model.database.DatabaseConnect
 import com.example.construction_office_automation.utils.Session;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -318,7 +319,7 @@ public class AdminController extends Thread implements Initializable {
         settingsTabLink.setOnMouseClicked(event -> {
             switchPane(3);
             switchActiveLink(sideBarLinks,settingsTabLink);
-            displayModal("Hello world","it fells good to be on earth");
+            displayModal("Hello world","it fells good to be on earth",null);
 
         });
 //       >>>
@@ -450,7 +451,7 @@ public class AdminController extends Thread implements Initializable {
             modalContainer.setVisible(false);
         }
     }
-    public void displayModal(String heading,String subHeading){
+    public void displayModal(String heading,String subHeading,String type){
         modalHeading.setText(heading);
         modalSubHeading.setText(subHeading);
         addCategoryModalForm.setMaxHeight(0);
@@ -458,6 +459,13 @@ public class AdminController extends Thread implements Initializable {
         addCategoryModalForm.setVisible(false);
         new BounceInDown(confirmationModal).play();
         modalContainer.setVisible(true);
+        if(type == null) {
+            modalYesOption.setMaxWidth(0);
+            modalYesOption.setPadding(new Insets(0,0,0,0));
+            modalYesOption.setVisible(false);
+        }else{
+            modalYesOption.setMaxWidth(150);
+        }
     }
 
     @FXML
@@ -474,7 +482,8 @@ public class AdminController extends Thread implements Initializable {
         employees.setImgUrl(validator.validateImageView(addWorkerImgError,addWorkerImg,"Image"));
         if(employees.validateFields()){
             System.out.println("ready to send");
-            addWorker(employees);
+            if(!searchWorker(employees.getEmail())) addWorker(employees);
+            else displayModal("Error","Worker with "+employees.getEmail()+" already exist",null);
         }
     }
 
@@ -482,7 +491,7 @@ public class AdminController extends Thread implements Initializable {
 
     @FXML
     protected void onAddProjectClicked(){
-
+        searchWorker("jedidiahbasil@gmail.com ");
     }
 
     @FXML
@@ -567,23 +576,38 @@ public class AdminController extends Thread implements Initializable {
 
 //    SEARCH WORKER TABLE
 
-    public void searchWorker(Integer id){
+//    SEARCH WORKER TABLE BASE ON ID
+    public boolean searchWorker(Integer id){
         if(databaseConnection.dbConnect()){
             String SEARCH_WORKER = "SELECT * FROM workers WHERE id = ?";
             try{
                 PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(SEARCH_WORKER);
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                if(resultSet.next()){
-                    System.out.println("Found");
-                }else{
-                    System.out.println("not found");
-                }
+                if(resultSet.next()) return true;
 
             }catch (SQLException | SecurityException se){
                 se.printStackTrace();
             }
         }
+        return false;
+    }
+
+    //    SEARCH WORKER TABLE BASE ON EMAIL
+    public boolean searchWorker(String email){
+        if(databaseConnection.dbConnect()){
+            String SEARCH_WORKER = "SELECT * FROM workers WHERE email = ?";
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(SEARCH_WORKER);
+                preparedStatement.setString(1, email);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if(resultSet.next()) return true;
+
+            }catch (SQLException | SecurityException se){
+                se.printStackTrace();
+            }
+        }
+        return false;
     }
 
 //    ADD ADMIN
