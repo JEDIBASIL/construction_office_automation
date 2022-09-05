@@ -11,6 +11,7 @@ import com.example.construction_office_automation.utils.Session;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,6 +20,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
+
 import java.io.File;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -451,6 +455,7 @@ public class AdminController extends Thread implements Initializable {
             modalContainer.setVisible(false);
         }
     }
+
     public void displayModal(String heading,String subHeading,String type){
         modalHeading.setText(heading);
         modalSubHeading.setText(subHeading);
@@ -466,6 +471,20 @@ public class AdminController extends Thread implements Initializable {
         }else{
             modalYesOption.setMaxWidth(150);
         }
+    }
+
+//   FUNCTION TO DISPLAY TOAST
+
+    public  void  toast(String title,String message){
+        Notifications notificationsBuilder =Notifications.create()
+                .title(title)
+                .text(message)
+                .graphic(null)
+                .hideAfter(Duration.seconds(3))
+                .position(Pos.TOP_LEFT)
+                .darkStyle()
+                ;
+        notificationsBuilder.showInformation();
     }
 
     @FXML
