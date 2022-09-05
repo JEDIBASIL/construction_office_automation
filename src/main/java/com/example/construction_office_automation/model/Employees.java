@@ -11,6 +11,7 @@ public class Employees {
     private int Age;
     private String gender;
     private String role;
+    private String imgUrl;
 
     public int getId() {
         return id;
@@ -92,6 +93,14 @@ public class Employees {
         this.role = role;
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
     public boolean validateFields(){
         if(
                getFirstName() != null
@@ -101,6 +110,7 @@ public class Employees {
                && getDepartment() != null
                && getGender() != null
                && getRole() != null
+               && getImgUrl() != null
                 && getAge() != 0
                && getPhoneNumber() != 0
 
