@@ -362,20 +362,20 @@ public class AdminController extends Thread implements Initializable {
         notificationIcon.setOnMouseClicked(e->notificationContainer.setVisible(true));
 
         addWorkerImgContainer.setOnMouseClicked(e->{
-            addWorkerImg.setImage(new Image(displayFileChooser("Add worker image")));
-            employees.setImgUrl(addWorkerImg.getImage().getUrl());
+            if(displayFileChooser("Add worker image") != null){
+                addWorkerImg.setImage(new Image(displayFileChooser("Add worker image").toURI().toString()));
+                employees.setImgUrl(addWorkerImg.getImage().getUrl());
+            }
         });
     }
 
 //   FUNCTION TO SHOW FILE-CHOOSER
 
-     public  String displayFileChooser(String title){
+     public  File displayFileChooser(String title){
          fileChooser.setTitle(title);
          fileChooser.getExtensionFilters().addAll(new ExtensionFilter("All Images","*.png","*.jpg","*.jpeg"));
            File file = fileChooser.showOpenDialog(null);
-           if(file !=null) return file.toURI().toString();
-
-           return "gold";
+           return file;
      }
 
 
@@ -474,6 +474,7 @@ public class AdminController extends Thread implements Initializable {
         employees.setImgUrl(validator.validateImageView(addWorkerImgError,addWorkerImg,"Image"));
         if(employees.validateFields()){
             System.out.println("ready to send");
+            addWorker(employees);
         }
     }
 
@@ -584,5 +585,31 @@ public class AdminController extends Thread implements Initializable {
         }
     }
 
+    public void addWorker(Employees employees){
+        if(databaseConnection.dbConnect()){
+            String ADD_WORKER = "INSERT INTO WORKERS(first_name,surname,other_name,email,department,phone_number,age,gender,role,photo) VALUES(?,?,?,?,?,?,?,?,?,?)";
+            try{
+                int upd = 0;
+
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(ADD_WORKER);
+                preparedStatement.setString(1,employees.getFirstName());
+                preparedStatement.setString(2,employees.getSurname());
+                preparedStatement.setString(3,employees.getOtherNames());
+                preparedStatement.setString(4,employees.getEmail());
+                preparedStatement.setString(5,employees.getDepartment());
+                preparedStatement.setString(6,employees.getPhoneNumber()+"");
+                preparedStatement.setInt(7,employees.getAge());
+                preparedStatement.setString(8,employees.getGender());
+                preparedStatement.setString(9,employees.getRole());
+                preparedStatement.setString(10,employees.getImgUrl());
+
+                upd = preparedStatement.executeUpdate();
+
+                if(upd != 0) System.out.println("worker added");
+            }catch (SecurityException | SQLException se ){
+                se.printStackTrace();
+            }
+        }
+    }
 
 }
