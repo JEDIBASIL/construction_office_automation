@@ -1384,13 +1384,19 @@
                                                       </GridPane>
                                                    </children>
                                                 </VBox>
-                                                <VBox fx:id="addWorkerImgContainer" prefHeight="237.0" prefWidth="252.0" styleClass="img-container">
+                                                <VBox prefHeight="610.0" prefWidth="266.0">
                                                    <children>
-                                                      <ImageView fx:id="addWorkerImg" fitHeight="270.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true" />
+                                                      <VBox fx:id="addWorkerImgContainer" prefHeight="237.0" prefWidth="252.0" styleClass="img-container">
+                                                         <children>
+                                                            <ImageView fx:id="addWorkerImg" fitHeight="270.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true" />
+                                                         </children>
+                                                      </VBox>
+                                                      <Label fx:id="addWorkerImgError" prefHeight="17.0" prefWidth="189.0" styleClass="error-message">
+                                                         <VBox.margin>
+                                                            <Insets left="5.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </Label>
                                                    </children>
-                                                   <HBox.margin>
-                                                      <Insets top="70.0" />
-                                                   </HBox.margin>
                                                 </VBox>
                                              </children>
                                           </HBox>

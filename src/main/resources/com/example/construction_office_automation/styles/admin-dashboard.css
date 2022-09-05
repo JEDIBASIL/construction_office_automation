@@ -302,10 +302,10 @@
     -fx-border-width: 2;
 }
 
-.form-content .error-message {
+ .error-message {
     -fx-text-fill: crimson;
-    /* -fx-text-fill:transparent !important; */
-    -fx-font-size: 10;
+    -fx-font-family: "Hiragino Sans W6";
+    -fx-font-size: 10 !important;
 }
 
 .add-worker-btn {

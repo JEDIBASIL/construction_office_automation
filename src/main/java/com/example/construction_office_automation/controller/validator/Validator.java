@@ -122,7 +122,7 @@ public class Validator {
 // FUNCTION TO VALIDATE IMAGE VIEW
 
     public String validateImageView(Label errorMessage, ImageView imageView,String image){
-        if(imageView.getImage().getUrl() == null || imageView.getImage().getUrl().isEmpty()){
+        if(imageView.getImage() == null || imageView.getImage().equals("")){
             errorMessage.setText(image+ " is required");
         }else{
             errorMessage.setText("");

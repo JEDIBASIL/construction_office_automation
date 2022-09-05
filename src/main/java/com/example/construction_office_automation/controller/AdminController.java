@@ -105,6 +105,7 @@ public class AdminController extends Thread implements Initializable {
             phoneNumberError,
             ageError,
             staffRoleError,
+            addWorkerImgError,
 
 //    ADD PROJECT ERROR LABEL
 
@@ -168,6 +169,7 @@ public class AdminController extends Thread implements Initializable {
             emailField,
             phoneNumberField,
             ageField,
+
 
     //    ADD PROJECT TEXT FIELD
 
@@ -371,7 +373,9 @@ public class AdminController extends Thread implements Initializable {
          fileChooser.setTitle(title);
          fileChooser.getExtensionFilters().addAll(new ExtensionFilter("All Images","*.png","*.jpg","*.jpeg"));
            File file = fileChooser.showOpenDialog(null);
-           return file.toURI().toString();
+           if(file !=null) return file.toURI().toString();
+
+           return "gold";
      }
 
 
@@ -467,6 +471,7 @@ public class AdminController extends Thread implements Initializable {
         employees.setPhoneNumber(Long.parseLong(validator.validateTextFields(phoneNumberError,phoneNumberField,NUMBER.toString(),"Phone number",PHONE_NUMBER.toString())));
         employees.setGender(validator.validateRadioButton(genderError,addWorkerGenderGroup,"Gender"));
         employees.setRole(validator.validateChoiceBox(staffRoleError,staffRoleChoiceBox,"Role"));
+        employees.setImgUrl(validator.validateImageView(addWorkerImgError,addWorkerImg,"Image"));
         if(employees.validateFields()){
             System.out.println("ready to send");
         }
