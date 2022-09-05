@@ -1,6 +1,8 @@
 package com.example.construction_office_automation.controller.validator;
 
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import static com.example.construction_office_automation.enums.Validation.*;
@@ -117,5 +119,15 @@ public class Validator {
         return null;
     }
 
+// FUNCTION TO VALIDATE IMAGE VIEW
 
+    public String validateImageView(Label errorMessage, ImageView imageView,String image){
+        if(imageView.getImage().getUrl() == null || imageView.getImage().getUrl().isEmpty()){
+            errorMessage.setText(image+ " is required");
+        }else{
+            errorMessage.setText("");
+            return imageView.getImage().getUrl();
+        }
+        return null;
+    }
 }

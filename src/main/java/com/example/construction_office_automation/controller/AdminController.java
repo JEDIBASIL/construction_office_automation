@@ -361,7 +361,7 @@ public class AdminController extends Thread implements Initializable {
 
         addWorkerImgContainer.setOnMouseClicked(e->{
             addWorkerImg.setImage(new Image(displayFileChooser("Add worker image")));
-            System.out.println(addWorkerImg.getImage().getUrl().toString());
+            employees.setImgUrl(addWorkerImg.getImage().getUrl());
         });
     }
 
