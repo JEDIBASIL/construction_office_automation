@@ -369,8 +369,9 @@ public class AdminController extends Thread implements Initializable {
         notificationIcon.setOnMouseClicked(e->notificationContainer.setVisible(true));
 
         addWorkerImgContainer.setOnMouseClicked(e->{
-            if(displayFileChooser("Add worker image") != null){
-                addWorkerImg.setImage(new Image(displayFileChooser("Add worker image").toURI().toString()));
+            File file = displayFileChooser("Add worker image");
+            if(file != null){
+                addWorkerImg.setImage(new Image(file.toURI().toString()));
                 employees.setImgUrl(addWorkerImg.getImage().getUrl());
             }
         });

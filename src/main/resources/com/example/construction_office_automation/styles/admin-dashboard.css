@@ -11,6 +11,7 @@
 
 .button{
     -fx-alignment:CENTER;
+    -fx-cursor:HAND;
 }
 
 .menu {

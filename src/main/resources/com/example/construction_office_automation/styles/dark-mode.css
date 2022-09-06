@@ -57,6 +57,7 @@
 
 .overview-container .overview-card {
     -fx-background-color: rgb(37, 38, 43);
+    -fx-border-color: rgb(44, 46, 46);
 }
 
 .overview-container .overview-card .details .label {
@@ -69,10 +70,13 @@
 
 .quick-action-container,.chart-container {
     -fx-background-color: rgb(37, 38, 43);
+    -fx-border-color: rgb(44, 46, 46);
 }
 .quick-action-container .content {
     -fx-background-color: rgb(37, 38, 43);
+  
 }
+
 
 .quick-action-container .content:hover {
     -fx-background-color: rgb(52, 54, 61);
@@ -87,6 +91,7 @@
 
 .upcoming-project-container {
     -fx-background-color: rgb(37, 38, 43);
+    -fx-border-color: rgb(44, 46, 46);
 }
 
 .upcoming-project-container-list {
@@ -98,6 +103,7 @@
 
 .display_workers-details-card {
     -fx-background-color: rgb(37, 38, 43);
+    -fx-border-color: rgb(44, 46, 46);
 }
 
 .form-container {
