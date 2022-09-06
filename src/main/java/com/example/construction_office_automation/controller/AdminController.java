@@ -146,6 +146,7 @@ public class AdminController extends Thread implements Initializable {
 
             adminRoleError,
             addAdminPasswordError,
+            addAdminIdError,
 
     //    CHANGE PASSWORD ERROR LABEL
 
@@ -198,6 +199,7 @@ public class AdminController extends Thread implements Initializable {
     //    ADD ADMIN TEXT FIELD
 
             addAdminField,
+            addAdminIdField,
 
     //    ADD DEPARTMENT TEXT FIELD
 
@@ -279,9 +281,10 @@ public class AdminController extends Thread implements Initializable {
    private Validation validation;
 
 
-    Employees employees = new Employees();
-    Session session = new Session();
-    Validator validator = new Validator();
+   Employees employees = new Employees();
+   Session session = new Session();
+   Validator validator = new Validator();
+   Admin admin = new Admin();
 
 
 
@@ -292,8 +295,7 @@ public class AdminController extends Thread implements Initializable {
         setDepartmentChoiceBox();
         setLocationChoiceBox();
         staffRoleChoiceBox.getItems().addAll("Project manager","Project monitor");
-
-
+        adminRoleChoiceBox.getItems().addAll("Project manager","Project monitor");
 
 //      ADDING GENDER TO A TOGGLE GROUP
 
@@ -482,7 +484,6 @@ public class AdminController extends Thread implements Initializable {
                 .graphic(null)
                 .hideAfter(Duration.seconds(3))
                 .position(Pos.TOP_LEFT)
-                .darkStyle()
                 ;
         notificationsBuilder.showInformation();
     }
@@ -501,7 +502,10 @@ public class AdminController extends Thread implements Initializable {
         employees.setImgUrl(validator.validateImageView(addWorkerImgError,addWorkerImg,"Image"));
         if(employees.validateFields()){
             System.out.println("ready to send");
-            if(!searchWorker(employees.getEmail())) addWorker(employees);
+            if(!searchWorker(employees.getEmail())) {
+                if(addWorker(employees)) toast("Success","worker is added");
+                else  toast("Error","something went wrong");
+            }
             else displayModal("Error","Worker with "+employees.getEmail()+" already exist",null);
         }
     }
@@ -515,6 +519,18 @@ public class AdminController extends Thread implements Initializable {
 
     @FXML
     protected void onAddAdminClicked(){
+        admin.setId(validator.validateTextFields(addAdminIdError,addAdminIdField,NAME.toString(),"Employee id",null));
+        admin.setUsername(validator.validateTextFields(addAdminUsernameError,addAdminField,NAME.toString(),"Username",null));
+        admin.setRole(validator.validateChoiceBox(adminRoleError,adminRoleChoiceBox,"Role"));
+        admin.setPassword(validator.validatePasswordFields(addAdminPasswordError,addAdminPasswordField,null,"Password",null));
+        admin.setEmail("");
+       if(admin.validateFields()){
+           admin.setId(admin.getId().toLowerCase().replace("pj",""));
+           if(!searchWorker(Integer.parseInt(admin.getId()))) displayModal("Error","Worker with id "+admin.getId()+" does not exist",null);
+           else if(searchAdmin(Integer.parseInt(admin.getId()))) displayModal("Error","Administrator with id "+admin.getId()+" already exist",null);
+           else if(searchAdmin(admin.getUsername(),"USERNAME")) displayModal("Error","Worker with username "+admin.getUsername()+" already  exist",null);
+           else addAdmin(admin);
+       }
     }
 
 
@@ -595,7 +611,55 @@ public class AdminController extends Thread implements Initializable {
 
 //    SEARCH WORKER TABLE
 
-//    SEARCH WORKER TABLE BASE ON ID
+//    SEARCH ADMIN TABLE BASE ON EMPLOYEE ID
+    public boolean searchAdmin(Integer id){
+        if(databaseConnection.dbConnect()){
+            String SEARCH_ADMIN = "SELECT * FROM admin WHERE employee_id = ?";
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(SEARCH_ADMIN);
+                preparedStatement.setInt(1, id);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if(resultSet.next()) return true;
+            }catch (SQLException | SecurityException se){
+                se.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    //    SEARCH WORKER TABLE BASE ON EMAIL
+    public boolean searchAdmin(String query,String type){
+        if(databaseConnection.dbConnect()){
+            String SEARCH_ADMIN;
+           if(type.equals("EMAIL")){
+                SEARCH_ADMIN = "SELECT * FROM workers WHERE email = ?";
+               try{
+                   PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(SEARCH_ADMIN);
+                   preparedStatement.setString(1, query);
+                   ResultSet resultSet = preparedStatement.executeQuery();
+                   if(resultSet.next()) return true;
+
+               }catch (SQLException | SecurityException se){
+                   se.printStackTrace();
+               }
+           }
+           if(type.equals("USERNAME")){
+                SEARCH_ADMIN = "SELECT * FROM admin WHERE username = ?";
+                try{
+                    PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(SEARCH_ADMIN);
+                    preparedStatement.setString(1, query);
+                    ResultSet resultSet = preparedStatement.executeQuery();
+                    if(resultSet.next()) return true;
+
+                }catch (SQLException | SecurityException se){
+                    se.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+
+    //    SEARCH WORKER TABLE BASE ON ID
     public boolean searchWorker(Integer id){
         if(databaseConnection.dbConnect()){
             String SEARCH_WORKER = "SELECT * FROM workers WHERE id = ?";
@@ -603,7 +667,10 @@ public class AdminController extends Thread implements Initializable {
                 PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(SEARCH_WORKER);
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                if(resultSet.next()) return true;
+                if(resultSet.next()) {
+                    admin.setEmail(resultSet.getString("email"));
+                    return true;
+                }
 
             }catch (SQLException | SecurityException se){
                 se.printStackTrace();
@@ -632,14 +699,15 @@ public class AdminController extends Thread implements Initializable {
 //    ADD ADMIN
     public void addAdmin(Admin admin){
         if(databaseConnection.dbConnect()){
-            String ADD_ADMIN = "INSERT INTO admin (username,email,id,password) VALUES(?,?,?,?)";
+            String ADD_ADMIN = "INSERT INTO admin (username,email,employee_id,role,password) VALUES(?,?,?,?,?)";
             int upd =0;
             try{
                 PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(ADD_ADMIN);
                 preparedStatement.setString(1,admin.getUsername());
                 preparedStatement.setString(2,admin.getEmail());
-                preparedStatement.setString(3,admin.getRole());
-                preparedStatement.setString(4,admin.getPassword());
+                preparedStatement.setString(3,admin.getId());
+                preparedStatement.setString(4,admin.getRole());
+                preparedStatement.setString(5,admin.getPassword());
                 upd = preparedStatement.executeUpdate();
                 if(upd != 0) System.out.println("admin added successfully");
             }catch (SQLException | SecurityException se){
@@ -648,7 +716,7 @@ public class AdminController extends Thread implements Initializable {
         }
     }
 
-    public void addWorker(Employees employees){
+    public boolean addWorker(Employees employees){
         if(databaseConnection.dbConnect()){
             String ADD_WORKER = "INSERT INTO WORKERS(first_name,surname,other_name,email,department,phone_number,age,gender,role,photo) VALUES(?,?,?,?,?,?,?,?,?,?)";
             try{
@@ -668,11 +736,11 @@ public class AdminController extends Thread implements Initializable {
 
                 upd = preparedStatement.executeUpdate();
 
-                if(upd != 0) System.out.println("worker added");
+                if(upd != 0) return true;
             }catch (SecurityException | SQLException se ){
                 se.printStackTrace();
             }
         }
+        return false;
     }
-
 }

@@ -1,6 +1,7 @@
 package com.example.construction_office_automation.model;
 
 public class Admin {
+    private String id;
     private String username;
     private String email;
     private String role;
@@ -38,6 +39,14 @@ public class Admin {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public boolean validateFields(){
