@@ -81,13 +81,15 @@ public class Validator {
                 return field.getText();
             }
         }
-        if(extra == CONFIRMATION.toString() && confirmationField != null)
-            if(!confirmationField.getText().equals(field))
-                errorMessage.setText(fieldName+" do not match");
+        if(extra == CONFIRMATION.toString() && confirmationField != null && field != null) {
+            if (confirmationField.getText().equals("") || confirmationField.getText().length() < 6) errorMessage.setText(fieldName+" should be at least 6 characters");
+            else if (!confirmationField.getText().equals(field.getText()))
+                errorMessage.setText(fieldName + " do not match");
             else {
                 errorMessage.setText("");
                 return field.getText();
             }
+        }
 
 
 
