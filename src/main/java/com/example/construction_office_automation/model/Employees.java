@@ -15,7 +15,9 @@ public class Employees {
 
 
     public Employees(){};
-    public Employees(String firstName, String surname, String otherNames, String email, String department, long phoneNumber, int age, String gender) {
+
+    public Employees(int id, String firstName, String surname, String otherNames, String email, String department, long phoneNumber, int age, String gender) {
+        this.id = id;
         this.firstName = firstName;
         this.surname = surname;
         this.otherNames = otherNames;
