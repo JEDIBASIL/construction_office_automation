@@ -7,12 +7,16 @@ import com.example.construction_office_automation.enums.Validation;
 import com.example.construction_office_automation.model.Employees;
 import com.example.construction_office_automation.model.Admin;
 import com.example.construction_office_automation.model.database.DatabaseConnection;
+import com.example.construction_office_automation.security.EncryptPassword;
 import com.example.construction_office_automation.utils.Session;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -29,6 +33,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -161,6 +166,29 @@ public class AdminController extends Thread implements Initializable {
 //         ADD WORKER GENDER ERROR LABEL
             genderError;
     ;
+
+
+    @FXML
+
+//  WORKERS TABLE
+
+    private TableView<Employees> workersTable;
+
+    @FXML
+
+//    WORKERS TABLE COLUMN
+
+    private TableColumn<Employees,String>
+            tableFirstName,
+            tableSurname,
+            tableOtherNames,
+            tableEmail,
+            tablePhoneNumber,
+            tableDepartment,
+            tableAge,
+            tableGender;
+
+    ObservableList<Employees> employeesList = FXCollections.observableArrayList();
 
     @FXML
 //   TEXT FIELDS
@@ -296,6 +324,8 @@ public class AdminController extends Thread implements Initializable {
         setLocationChoiceBox();
         staffRoleChoiceBox.getItems().addAll("Project manager","Project monitor");
         adminRoleChoiceBox.getItems().addAll("Project manager","Project monitor");
+
+        displayWorkers();
 
 //      ADDING GENDER TO A TOGGLE GROUP
 
@@ -700,6 +730,7 @@ public class AdminController extends Thread implements Initializable {
 //    ADD ADMIN
     public void addAdmin(Admin admin){
         if(databaseConnection.dbConnect()){
+            EncryptPassword encryptPassword = new EncryptPassword();
             String ADD_ADMIN = "INSERT INTO admin (username,email,employee_id,role,password) VALUES(?,?,?,?,?)";
             int upd =0;
             try{
@@ -708,7 +739,7 @@ public class AdminController extends Thread implements Initializable {
                 preparedStatement.setString(2,admin.getEmail());
                 preparedStatement.setString(3,admin.getId());
                 preparedStatement.setString(4,admin.getRole());
-                preparedStatement.setString(5,admin.getPassword());
+                preparedStatement.setString(5,encryptPassword.EncryptPassword(admin.getPassword()));
                 upd = preparedStatement.executeUpdate();
                 if(upd != 0) System.out.println("admin added successfully");
             }catch (SQLException | SecurityException se){
@@ -743,5 +774,40 @@ public class AdminController extends Thread implements Initializable {
             }
         }
         return false;
+    }
+
+    public void  displayWorkers(){
+        if(databaseConnection.dbConnect()){
+            String GET_ALL_WORKERS = "SELECT * FROM WORKERS";
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(GET_ALL_WORKERS);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while(resultSet.next()){
+                  employeesList.add(new Employees(
+                          resultSet.getString("first_name"),
+                          resultSet.getString("surname"),
+                          resultSet.getString("other_name"),
+                          resultSet.getString("email"),
+                          resultSet.getString("department"),
+                          resultSet.getLong("phone_number"),
+                          resultSet.getInt("age"),
+                          resultSet.getString("gender")
+                  ));
+                    System.out.println(Arrays.deepToString(employeesList.toArray()));
+                }
+            }catch (SQLException | SecurityException se){
+                se.printStackTrace();
+            }
+            tableFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+            tableSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
+            tableOtherNames.setCellValueFactory(new PropertyValueFactory<>("otherNames"));
+            tableEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+            tablePhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Department"));
+            tableDepartment.setCellValueFactory(new PropertyValueFactory<>("PhoneNumber"));
+            tableAge.setCellValueFactory(new PropertyValueFactory<>("Age"));
+            tableGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+
+            workersTable.setItems(employeesList);
+        }
     }
 }

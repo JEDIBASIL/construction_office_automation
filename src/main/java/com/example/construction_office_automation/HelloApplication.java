@@ -8,13 +8,20 @@ import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("sign-in.fxml"));
+        File file = new File(".panda.txt");
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+
+        if(file.exists()) fxmlLoader.setLocation(HelloApplication.class.getResource("sign-in.fxml"));
+        else fxmlLoader.setLocation(HelloApplication.class.getResource("sign-up.fxml"));
+
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
         stage.setTitle("Hello!");
         System.out.println(scene.getRoot());

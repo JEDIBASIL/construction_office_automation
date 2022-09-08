@@ -3,7 +3,6 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -56,17 +55,6 @@
                      </VBox.margin>
                   </TextField>
                   <Label fx:id="loginUsernameError" styleClass="error-message" />
-               </children>
-            </VBox>
-            <VBox prefHeight="92.0" prefWidth="334.0" styleClass="form-content">
-               <children>
-                  <Label text="Role" />
-                  <ChoiceBox fx:id="loginRole" prefWidth="800.0" styleClass="text-field">
-                     <VBox.margin>
-                        <Insets bottom="3.0" top="10.0" />
-                     </VBox.margin>
-                  </ChoiceBox>
-                  <Label fx:id="loginRoleError" styleClass="error-message" />
                </children>
             </VBox>
             <VBox layoutX="10.0" layoutY="10.0" prefHeight="92.0" prefWidth="334.0" styleClass="form-content">

@@ -10,4 +10,6 @@ module com.example.construction_office_automation {
     exports com.example.construction_office_automation;
     exports com.example.construction_office_automation.controller;
     opens com.example.construction_office_automation.controller to javafx.fxml;
+    opens com.example.construction_office_automation.model to javafx.fxml;
+    exports com.example.construction_office_automation.model;
 }

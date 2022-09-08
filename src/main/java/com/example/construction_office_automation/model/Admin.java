@@ -51,7 +51,8 @@ public class Admin {
 
     public boolean validateFields(){
         if(
-                getUsername() != null
+                getId() != null
+                && getUsername() != null
                         &&  getEmail() != null
                         && getRole() != null
                         && getPassword()!= null
