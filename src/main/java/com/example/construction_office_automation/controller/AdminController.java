@@ -412,8 +412,10 @@ public class AdminController extends Thread implements Initializable {
         });
 
         workersTable.setOnMouseClicked(e->{
-            switchPane(6);
-            displayWorker(workersTable.getSelectionModel().getSelectedItem().getId());
+            if(workersTable.getSelectionModel().getSelectedItem() !=null) {
+                switchPane(6);
+                displayWorker(workersTable.getSelectionModel().getSelectedItem().getId());
+            }
         });
 
 
@@ -575,6 +577,9 @@ public class AdminController extends Thread implements Initializable {
            else addAdmin(admin);
        }
     }
+
+
+
 
 
 
