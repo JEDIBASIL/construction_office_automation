@@ -8,10 +8,23 @@ public class Employees {
     private String email;
     private String Department;
     private long PhoneNumber;
-    private int Age;
+    private int age;
     private String gender;
     private String role;
     private String imgUrl;
+
+
+    public Employees(){};
+    public Employees(String firstName, String surname, String otherNames, String email, String department, long phoneNumber, int age, String gender) {
+        this.firstName = firstName;
+        this.surname = surname;
+        this.otherNames = otherNames;
+        this.email = email;
+        Department = department;
+        PhoneNumber = phoneNumber;
+        this.age = age;
+        this.gender = gender;
+    }
 
     public int getId() {
         return id;
@@ -70,11 +83,11 @@ public class Employees {
     }
 
     public int getAge() {
-        return Age;
+        return age;
     }
 
     public void setAge(int age) {
-        Age = age;
+        this.age = age;
     }
 
     public String getGender() {
