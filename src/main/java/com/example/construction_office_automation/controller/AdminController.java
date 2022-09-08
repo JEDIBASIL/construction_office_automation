@@ -179,6 +179,7 @@ public class AdminController extends Thread implements Initializable {
 //    WORKERS TABLE COLUMN
 
     private TableColumn<Employees,String>
+            workerId,
             tableFirstName,
             tableSurname,
             tableOtherNames,
@@ -280,7 +281,7 @@ public class AdminController extends Thread implements Initializable {
 
 //  ADD WORKER IMAGE VIEW
 
-    private ImageView addWorkerImg;
+    private ImageView addWorkerImg,editWorkerImage;
 
 
 
@@ -304,7 +305,7 @@ public class AdminController extends Thread implements Initializable {
 
 //  ADD WORKER GENDER TOGGLE GROUP
 
-    private ToggleGroup addWorkerGenderGroup;
+    private ToggleGroup addWorkerGenderGroup,editWorkerGenderGroup;
 
    private Validation validation;
 
@@ -332,6 +333,10 @@ public class AdminController extends Thread implements Initializable {
         addWorkerGenderGroup = new ToggleGroup();
         addWorkerFemale.setToggleGroup(addWorkerGenderGroup);
         addWorkerMale.setToggleGroup(addWorkerGenderGroup);
+
+        editWorkerGenderGroup = new ToggleGroup();
+        editWorkerFemale.setToggleGroup(editWorkerGenderGroup);
+        editWorkerMale.setToggleGroup(editWorkerGenderGroup);
 
         notificationContainer.setVisible(false);
         HBox[] sideBarLinks = {homeTabLink,projectsTabLink,workersTabLink,settingsTabLink};
@@ -405,6 +410,13 @@ public class AdminController extends Thread implements Initializable {
                 employees.setImgUrl(addWorkerImg.getImage().getUrl());
             }
         });
+
+        workersTable.setOnMouseClicked(e->{
+            switchPane(6);
+            displayWorker(workersTable.getSelectionModel().getSelectedItem().getId());
+        });
+
+
     }
 
 //   FUNCTION TO SHOW FILE-CHOOSER
@@ -563,6 +575,8 @@ public class AdminController extends Thread implements Initializable {
            else addAdmin(admin);
        }
     }
+
+
 
 
 
@@ -784,6 +798,7 @@ public class AdminController extends Thread implements Initializable {
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while(resultSet.next()){
                   employeesList.add(new Employees(
+                          resultSet.getInt("id"),
                           resultSet.getString("first_name"),
                           resultSet.getString("surname"),
                           resultSet.getString("other_name"),
@@ -793,11 +808,11 @@ public class AdminController extends Thread implements Initializable {
                           resultSet.getInt("age"),
                           resultSet.getString("gender")
                   ));
-                    System.out.println(Arrays.deepToString(employeesList.toArray()));
                 }
             }catch (SQLException | SecurityException se){
                 se.printStackTrace();
             }
+            workerId.setCellValueFactory(new PropertyValueFactory<>("id"));
             tableFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
             tableSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
             tableOtherNames.setCellValueFactory(new PropertyValueFactory<>("otherNames"));
@@ -808,6 +823,44 @@ public class AdminController extends Thread implements Initializable {
             tableGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
 
             workersTable.setItems(employeesList);
+        }
+    }
+
+    public void displayWorker(Integer id){
+        Employees employees = new Employees();
+        if(databaseConnection.dbConnect()){
+            String GET_WORKER = "SELECT * FROM workers WHERE id = ?";
+            try {
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(GET_WORKER);
+                preparedStatement.setInt(1,id);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if(resultSet.next()){
+                    employees.setId(resultSet.getInt("id"));
+                    employees.setFirstName( resultSet.getString("first_name"));
+                    employees.setSurname( resultSet.getString("surname"));
+                    employees.setOtherNames( resultSet.getString("other_name"));
+                    employees.setEmail(resultSet.getString("email"));
+                    employees.setDepartment(resultSet.getString("department"));
+                    employees.setPhoneNumber((resultSet.getLong("phone_number")));
+                    employees.setAge(resultSet.getInt("age"));
+                    employees.setGender(resultSet.getString("gender"));
+                    employees.setImgUrl(resultSet.getString("photo"));
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            editFirstNameField.setText(employees.getFirstName());
+            editSurnameField.setText(employees.getSurname());
+            editOtherNamesField.setText(employees.getOtherNames());
+            editEmailField.setText(employees.getEmail());
+            editAgeField.setText(employees.getAge()+"");
+            editPhoneNumberField.setText(employees.getPhoneNumber()+"");
+            editFirstNameField.setText(employees.getFirstName());
+            editDepartmentChoiceBox.setValue(employees.getDepartment());
+            editWorkerImage.setImage(new Image(employees.getImgUrl()));
+            if(employees.getGender().equalsIgnoreCase("male")) editWorkerMale.setSelected(true);
+            if(employees.getGender().equalsIgnoreCase("female")) editWorkerFemale.setSelected(true);
+
         }
     }
 }
