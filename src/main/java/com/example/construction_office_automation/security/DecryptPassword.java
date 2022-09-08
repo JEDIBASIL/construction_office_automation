@@ -4,7 +4,7 @@ public class DecryptPassword {
 
     private String decrypted;
 
-    String DecryptPassword(String password){
+    public String DecryptPassword(String password){
         decrypted="";
         if(password != null){
             char[] passwordArray = password.toCharArray();
