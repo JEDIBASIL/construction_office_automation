@@ -27,6 +27,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
+import javax.xml.transform.Result;
 import java.io.File;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -579,7 +580,17 @@ public class AdminController extends Thread implements Initializable {
     }
 
 
-
+    @FXML
+    protected  void  onDeleteWorker(){
+        if(workersTable.getSelectionModel().getSelectedItem() !=null){
+            if(deleteWorker(workersTable.getSelectionModel().getSelectedItem().getId())) {
+                System.out.println("deleted");
+                employeesList.setAll(new Employees[]{});
+                displayWorkers();
+                switchPane(2);
+            }
+        }
+    }
 
 
 
@@ -817,6 +828,7 @@ public class AdminController extends Thread implements Initializable {
             }catch (SQLException | SecurityException se){
                 se.printStackTrace();
             }
+
             workerId.setCellValueFactory(new PropertyValueFactory<>("id"));
             tableFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
             tableSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
@@ -867,5 +879,21 @@ public class AdminController extends Thread implements Initializable {
             if(employees.getGender().equalsIgnoreCase("female")) editWorkerFemale.setSelected(true);
 
         }
+    }
+
+    public boolean deleteWorker(Integer id){
+        if(databaseConnection.dbConnect()){
+            String DELETE_WORKER = "DELETE FROM workers WHERE id =?";
+            try {
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(DELETE_WORKER);
+                preparedStatement.setInt(1,id);
+                int delete = preparedStatement.executeUpdate();
+                if(delete !=0) return true;
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
     }
 }
