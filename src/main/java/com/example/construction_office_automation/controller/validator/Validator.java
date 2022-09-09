@@ -3,6 +3,7 @@ package com.example.construction_office_automation.controller.validator;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
+import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import static com.example.construction_office_automation.enums.Validation.*;
@@ -129,6 +130,21 @@ public class Validator {
         }else{
             errorMessage.setText("");
             return imageView.getImage().getUrl();
+        }
+        return null;
+    }
+
+//  FUNCTION TO VALIDATE DATE PICKER
+
+    public LocalDate validateDatePicker (Label errorMessage,DatePicker datePicker,String datePickerName){
+        final String dateRegex = "/serer/";
+        Pattern datePattern = Pattern.compile(dateRegex);
+        Matcher dateMatcher= datePattern.matcher(datePicker.getValue().toString());
+        if(datePicker.getValue() ==null) errorMessage.setText(datePickerName+" is required");
+        else if(!dateMatcher.matches()) errorMessage.setText("invalid date format");
+        else{
+            errorMessage.setText("");
+            return datePicker.getValue();
         }
         return null;
     }
