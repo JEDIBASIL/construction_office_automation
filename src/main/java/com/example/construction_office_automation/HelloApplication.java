@@ -19,7 +19,7 @@ public class HelloApplication extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
 
-        if(file.exists()) fxmlLoader.setLocation(HelloApplication.class.getResource("sign-in.fxml"));
+        if(file.exists()) fxmlLoader.setLocation(HelloApplication.class.getResource("admin-dashboard.fxml"));
         else fxmlLoader.setLocation(HelloApplication.class.getResource("sign-up.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
