@@ -137,7 +137,7 @@ public class Validator {
 //  FUNCTION TO VALIDATE DATE PICKER
 
     public LocalDate validateDatePicker (Label errorMessage,DatePicker datePicker,String datePickerName){
-        final String dateRegex = "/serer/";
+        final String dateRegex = "^\\\\d{4}-\\\\d{2}-\\\\d{2}$";
         Pattern datePattern = Pattern.compile(dateRegex);
         Matcher dateMatcher= datePattern.matcher(datePicker.getValue().toString());
         if(datePicker.getValue() ==null) errorMessage.setText(datePickerName+" is required");
