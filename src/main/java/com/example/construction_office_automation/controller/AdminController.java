@@ -6,6 +6,7 @@ import com.example.construction_office_automation.controller.validator.Validator
 import com.example.construction_office_automation.enums.Validation;
 import com.example.construction_office_automation.model.Employees;
 import com.example.construction_office_automation.model.Admin;
+import com.example.construction_office_automation.model.Project;
 import com.example.construction_office_automation.model.database.DatabaseConnection;
 import com.example.construction_office_automation.security.EncryptPassword;
 import com.example.construction_office_automation.utils.Session;
@@ -286,6 +287,9 @@ public class AdminController extends Thread implements Initializable {
 
 
 
+    @FXML
+
+    private DatePicker pjFinishingDatePicker,pjStartingDatePicker;
 
 
 
@@ -312,6 +316,7 @@ public class AdminController extends Thread implements Initializable {
 
 
    Employees employees = new Employees();
+   Project project = new Project();
    Session session = new Session();
    Validator validator = new Validator();
    Admin admin = new Admin();
@@ -549,7 +554,11 @@ public class AdminController extends Thread implements Initializable {
         if(employees.validateFields()){
             System.out.println("ready to send");
             if(!searchWorker(employees.getEmail())) {
-                if(addWorker(employees)) toast("Success","worker is added");
+                if(addWorker(employees)) {
+                    toast("Success", "worker is added");
+                    employeesList.setAll(new Employees[]{});
+                    displayWorkers();
+                }
                 else  toast("Error","something went wrong");
             }
             else displayModal("Error","Worker with "+employees.getEmail()+" already exist",null);
@@ -557,11 +566,14 @@ public class AdminController extends Thread implements Initializable {
     }
 
 
-
     @FXML
     protected void onAddProjectClicked(){
-        searchWorker("jedidiahbasil@gmail.com ");
+        project.setProjectName(validator.validateTextFields(pjNameError,pjNameField,NAME.toString(),"Project name",null));
+        project.setProjectOwner(validator.validateTextFields(pjNameError,pjNameField,NAME.toString(),"Project owner",null));
+        project.setStartingDate(validator.validateDatePicker(pjStartingDateError,pjStartingDatePicker,"Starting date"));
+        project.setStartingDate(validator.validateDatePicker(pjFinishingDateError,pjFinishingDatePicker,"Finishing date"));
     }
+
 
     @FXML
     protected void onAddAdminClicked(){
@@ -575,7 +587,9 @@ public class AdminController extends Thread implements Initializable {
            if(!searchWorker(Integer.parseInt(admin.getId()))) displayModal("Error","Worker with id "+admin.getId()+" does not exist",null);
            else if(searchAdmin(Integer.parseInt(admin.getId()))) displayModal("Error","Administrator with id "+admin.getId()+" already exist",null);
            else if(searchAdmin(admin.getUsername(),"USERNAME")) displayModal("Error","Worker with username "+admin.getUsername()+" already  exist",null);
-           else addAdmin(admin);
+           else {
+               addAdmin(admin);
+           };
        }
     }
 
