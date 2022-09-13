@@ -7,12 +7,16 @@ public class Project {
     private String projectName;
     private String projectOwner;
     private String projectLocation;
-    private LocalDate startingDate;
-    private LocalDate finishingDate;
-    private String projectDescription;
-    private int projectProgress;
+
     private String projectManager;
     private String projectMonitor;
+    private String projectDescription;
+    private String projectStatus;
+    private int projectProgress;
+
+    private LocalDate startingDate;
+    private LocalDate finishingDate;
+
 
     public long getProjectId() {
         return projectId;
@@ -92,5 +96,13 @@ public class Project {
 
     public void setProjectMonitor(String projectMonitor) {
         this.projectMonitor = projectMonitor;
+    }
+
+    public String getProjectStatus() {
+        return projectStatus;
+    }
+
+    public void setProjectStatus(String projectStatus) {
+        this.projectStatus = projectStatus;
     }
 }
