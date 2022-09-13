@@ -19,16 +19,16 @@ public class Project {
 
     public boolean checkFields(){
         if(
-            this.projectName !=null&&
-            this.projectOwner !=null&&
-            this.projectLocation !=null&&
-            this.projectManager !=null&&
-            this.projectMonitor !=null&&
-            this.projectDescription !=null&&
-            this.projectStatus !=null&&
-            this.projectProgress !=0&&
-            this.startingDate !=null&&
-            this.finishingDate !=null
+            getProjectName() !=null &&
+            getProjectOwner() !=null &&
+            getProjectLocation() !=null &&
+            getProjectManager() !=null &&
+            getProjectMonitor() !=null &&
+            getProjectDescription() !=null &&
+            getProjectStatus() !=null &&
+            getProjectProgress() !=0 &&
+            getStartingDate() !=null &&
+            getFinishingDate() !=null
         )return true;
 
         return false;
