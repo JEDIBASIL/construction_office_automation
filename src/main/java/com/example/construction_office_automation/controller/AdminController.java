@@ -418,10 +418,10 @@ public class AdminController extends Thread implements Initializable {
         });
 
         workersTable.setOnMouseClicked(e->{
-            if(workersTable.getSelectionModel().getSelectedItem() !=null) {
-                switchPane(6);
-                displayWorker(workersTable.getSelectionModel().getSelectedItem().getId());
-            }
+            if(workersTable.getSelectionModel().getSelectedIndex() != -1) {
+                    switchPane(6);
+                    displayWorker(workersTable.getSelectionModel().getSelectedItem().getId());
+            }else workersTable.getSelectionModel().clearSelection();
         });
 
 
@@ -523,6 +523,8 @@ public class AdminController extends Thread implements Initializable {
             modalYesOption.setVisible(false);
         }else{
             modalYesOption.setMaxWidth(150);
+            modalYesOption.setVisible(true);
+            modalYesOption.setText(type);
         }
     }
 
@@ -597,8 +599,23 @@ public class AdminController extends Thread implements Initializable {
     @FXML
     protected  void  onDeleteWorker(){
         if(workersTable.getSelectionModel().getSelectedItem() !=null){
+            displayModal("Risky","are you sure you want to delete PAN"+workersTable.getSelectionModel().getSelectedItem().getId(),"DELETE");
+//            if(deleteWorker(workersTable.getSelectionModel().getSelectedItem().getId())) {
+//                System.out.println("deleted");
+//                employeesList.setAll(new Employees[]{});
+//                displayWorkers();
+//                switchPane(2);
+//            }
+        }
+    }
+
+    @FXML
+
+    protected void onTerminateBtnClick(){
+        displayModal(null);
+        if(modalYesOption.getText().equals("DELETE")){
             if(deleteWorker(workersTable.getSelectionModel().getSelectedItem().getId())) {
-                System.out.println("deleted");
+                toast("Success", "worker deleted");
                 employeesList.setAll(new Employees[]{});
                 displayWorkers();
                 switchPane(2);
