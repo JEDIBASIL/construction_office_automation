@@ -17,6 +17,22 @@ public class Project {
     private LocalDate startingDate;
     private LocalDate finishingDate;
 
+    public boolean checkFields(){
+        if(
+            this.projectName !=null&&
+            this.projectOwner !=null&&
+            this.projectLocation !=null&&
+            this.projectManager !=null&&
+            this.projectMonitor !=null&&
+            this.projectDescription !=null&&
+            this.projectStatus !=null&&
+            this.projectProgress !=0&&
+            this.startingDate !=null&&
+            this.finishingDate !=null
+        )return true;
+
+        return false;
+    }
 
     public long getProjectId() {
         return projectId;
@@ -105,4 +121,6 @@ public class Project {
     public void setProjectStatus(String projectStatus) {
         this.projectStatus = projectStatus;
     }
+
+
 }
