@@ -1885,7 +1885,7 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button fx:id="modalYesOption" mnemonicParsing="false" prefHeight="29.0" prefWidth="111.0" style="-fx-background-color: crimson;" text="Terminate">
+                                          <Button fx:id="modalYesOption" mnemonicParsing="false" onAction="#onTerminateBtnClick" prefHeight="29.0" prefWidth="111.0" style="-fx-background-color: crimson;" text="Terminate">
                                              <font>
                                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                                              </font>
