@@ -4,6 +4,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import static com.example.construction_office_automation.enums.Validation.*;
@@ -137,11 +138,9 @@ public class Validator {
 //  FUNCTION TO VALIDATE DATE PICKER
 
     public LocalDate validateDatePicker (Label errorMessage,DatePicker datePicker,String datePickerName){
-        final String dateRegex = "^\\\\d{4}-\\\\d{2}-\\\\d{2}$";
-        Pattern datePattern = Pattern.compile(dateRegex);
-        Matcher dateMatcher= datePattern.matcher(datePicker.getValue().toString());
+        datePicker.setEditable(false);
         if(datePicker.getValue() ==null) errorMessage.setText(datePickerName+" is required");
-        else if(!dateMatcher.matches()) errorMessage.setText("invalid date format");
+        else if(datePicker.getValue() != null && datePicker.getValue().toString().length() != 10) errorMessage.setText("invalid date format");
         else{
             errorMessage.setText("");
             return datePicker.getValue();
