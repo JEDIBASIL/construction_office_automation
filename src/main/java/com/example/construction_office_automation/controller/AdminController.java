@@ -405,6 +405,7 @@ public class AdminController extends Thread implements Initializable {
 
         setDepartmentChoiceBox();
         setLocationChoiceBox();
+        setProjectsChart();
         staffRoleChoiceBox.getItems().addAll("Project manager","Project monitor");
         adminRoleChoiceBox.getItems().addAll("Project manager","Project monitor");
         pjMangerChoiceBox.getItems().addAll(getProjectManager());
@@ -673,14 +674,19 @@ public class AdminController extends Thread implements Initializable {
         if(project.checkFields()) {
             if(addProject(project)){
                 toast("Success","Project added successfully");
+                projectList.setAll(new Project[]{});
                 displayProjects();
                 switchPane(1);
+                projectsChart.getData().clear();
+                setProjectsChart();
             }else{
                 toast("Error","an error occured");
             }
         }
 
     }
+
+
 
 
     @FXML
@@ -730,6 +736,7 @@ public class AdminController extends Thread implements Initializable {
                 projectList.setAll(new Project[]{});
                 displayProjects();
                 switchPane(1);
+                setProjectsChart();
             }
         }
     }
@@ -1176,7 +1183,7 @@ public class AdminController extends Thread implements Initializable {
             pjName.setText(project.getProjectName());
             pjStatus.setText(project.getProjectStatus());
             editPjNameField.setText(project.getProjectName());
-            editPjOwnerField.setText(project.getProjectName());
+            editPjOwnerField.setText(project.getProjectOwner());
             projectProgress.setText(project.getProjectProgress()+"%");
             editPjLocationChoiceBox.setValue(project.getProjectLocation());
             editPjStartingDatePicker.setValue(project.getStartingDate());
@@ -1219,7 +1226,7 @@ public class AdminController extends Thread implements Initializable {
         return result;
     }
 
-    public boolean updateProjectDetails(int projectId){
+    public boolean updateProjectDetails(Project project,int projectId){
         if(databaseConnection.dbConnect()){
             int upd =0;
             String UPDATE_PROJECT_DETAILS = "UPDATE projects " +
@@ -1268,5 +1275,26 @@ public class AdminController extends Thread implements Initializable {
         }
         return false;
     }
+
+    public void setProjectsChart(){
+        if(databaseConnection.dbConnect()) {
+            String GET_CHART_DATA = "SELECT DISTINCT MONTH(starting_date) AS total_month ,COUNT(*) AS total_project  from projects  GROUP BY total_month";
+            final String[] month = {"","January","February","March","April","May","June","July",
+                    "August","September","October","November","December"};
+
+            try {
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(GET_CHART_DATA);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                XYChart.Series projectSeries = new XYChart.Series();
+                while (resultSet.next()){
+                    projectSeries.getData().add(new XYChart.Data(month[resultSet.getInt("total_month")], resultSet.getInt("total_project")));
+                }
+                projectsChart.getData().add(projectSeries);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
 
 }

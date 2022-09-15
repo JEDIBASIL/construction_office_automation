@@ -1,8 +1,8 @@
 .side-bar {
-    -fx-background-color: rgb(37, 38, 43);
-    /* -fx-background-color: rgb(20, 21, 23); */
-    -fx-border-color: rgb(44, 46, 46);
-    -fx-border-color: rgb(44, 46, 46);
+    /* -fx-background-color: rgb(52, 54, 61); */
+    -fx-background-color: rgb(52, 54, 61);
+    /*  -fx-border-color: rgb(53, 55, 55); */
+    -fx-border-color: rgb(53, 55, 55);
 }
 
 .label,.check-box {
@@ -10,10 +10,9 @@
 }
 
 
-
 .menu:hover {
-    -fx-background-color: rgba(249, 249, 249, 0.053);
-}
+    -fx-background-color: rgba(255, 255, 255, 0.092);
+  }
 
 .menu .label {
     -fx-text-fill:gainsboro;
@@ -21,9 +20,9 @@
 
 .top-bar {
     /* -fx-background-color: rgb(244, 246, 250); */
-    -fx-background-color: rgb(37, 38, 43);
-    -fx-border-color: rgb(44, 46, 46);
-    -fx-border-color: rgb(44, 46, 46);
+    -fx-background-color: rgb(52, 54, 61);
+     -fx-border-color: rgb(53, 55, 55);
+     -fx-border-color: rgb(53, 55, 55);
     /*  */
 }
 
@@ -39,12 +38,12 @@
 }
 
 .white {
-    -fx-background-color: rgb(26, 27, 30);
+    -fx-background-color: rgb(33, 37, 42);
 }
 
 .scroll-bar:horizontal,
 .scroll-bar:vertical {
-    -fx-background-color: rgb(37, 38, 43);
+    -fx-background-color: rgb(52, 54, 61);
     -fx-background-color: rgb(26, 27, 30);
 
 }
@@ -56,8 +55,8 @@
 }
 
 .overview-container .overview-card {
-    -fx-background-color: rgb(37, 38, 43);
-    -fx-border-color: rgb(44, 46, 46);
+    -fx-background-color: rgb(52, 54, 61);
+     -fx-border-color: rgb(53, 55, 55);
 }
 
 .overview-container .overview-card .details .label {
@@ -69,11 +68,11 @@
 }
 
 .quick-action-container,.chart-container {
-    -fx-background-color: rgb(37, 38, 43);
-    -fx-border-color: rgb(44, 46, 46);
+    -fx-background-color: rgb(52, 54, 61);
+     -fx-border-color: rgb(53, 55, 55);
 }
 .quick-action-container .content {
-    -fx-background-color: rgb(37, 38, 43);
+    -fx-background-color: rgb(52, 54, 61);
   
 }
 
@@ -90,8 +89,8 @@
 
 
 .upcoming-project-container {
-    -fx-background-color: rgb(37, 38, 43);
-    -fx-border-color: rgb(44, 46, 46);
+    -fx-background-color: rgb(52, 54, 61);
+     -fx-border-color: rgb(53, 55, 55);
 }
 
 .upcoming-project-container-list {
@@ -102,13 +101,13 @@
 
 
 .display_workers-details-card {
-    -fx-background-color: rgb(37, 38, 43);
-    -fx-border-color: rgb(44, 46, 46);
+    -fx-background-color: rgb(52, 54, 61);
+     -fx-border-color: rgb(53, 55, 55);
 }
 
 .form-container {
-    -fx-background-color: rgb(37, 38, 43);
-    -fx-border-color: rgb(44, 46, 46);
+    -fx-background-color: rgb(52, 54, 61);
+     -fx-border-color: rgb(53, 55, 55);
 }
 
 .form-content {
@@ -136,8 +135,8 @@
 }
 
 .table-container {
-    -fx-background-color: rgb(37, 38, 43);
-    -fx-border-color: rgb(44, 46, 46);
+    -fx-background-color: rgb(52, 54, 61);
+     -fx-border-color: rgb(53, 55, 55);
 }
 
 .tree-table-view .tree-table-column {
@@ -176,3 +175,14 @@
     -fx-border-color: rgb(74, 75, 76);
 }
 
+
+.chart-plot-background {
+    -fx-background-color: rgb(52, 54, 61);
+  }
+
+.chart-vertical-grid-lines {
+  -fx-stroke: gray;
+}
+.chart-horizontal-grid-lines {
+  -fx-stroke: gray;
+}
