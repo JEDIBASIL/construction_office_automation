@@ -26,7 +26,6 @@ public class Project {
             getProjectMonitor() !=null &&
             getProjectDescription() !=null &&
             getProjectStatus() !=null &&
-            getProjectProgress() !=0 &&
             getStartingDate() !=null &&
             getFinishingDate() !=null
         )return true;
