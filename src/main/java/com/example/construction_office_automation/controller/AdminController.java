@@ -31,6 +31,7 @@ import org.controlsfx.control.Notifications;
 import javax.xml.transform.Result;
 import java.io.File;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -191,6 +192,25 @@ public class AdminController extends Thread implements Initializable {
             tableAge,
             tableGender;
 
+    @FXML
+
+    private TableView<Project> projectTable;
+
+    @FXML
+
+//    PROJECTS TABLE COLUMN
+
+    private TableColumn<Project, String>
+            pjIdCol,
+            pjNameCol,
+            pjOwnerCol,
+            pjStartingCol,
+            pjFinishingCol,
+            pjLocationCol,
+            pjManagerCol,
+            pjStatusCol,
+            pjProgressCol;
+
     ObservableList<Employees> employeesList = FXCollections.observableArrayList();
 
     @FXML
@@ -253,7 +273,7 @@ public class AdminController extends Thread implements Initializable {
 
     //  PROJECT LOCATION CHOICEBOX
 
-    private ChoiceBox staffRoleChoiceBox, departmentChoiceBox,editDepartmentChoiceBox;
+    private ChoiceBox staffRoleChoiceBox, pjMangerChoiceBox, departmentChoiceBox,editDepartmentChoiceBox;
 
     @FXML
 
@@ -290,6 +310,10 @@ public class AdminController extends Thread implements Initializable {
     @FXML
 
     private DatePicker pjFinishingDatePicker,pjStartingDatePicker;
+
+    @FXML
+
+    private TextArea pjDescription;
 
 
 
@@ -331,6 +355,7 @@ public class AdminController extends Thread implements Initializable {
         setLocationChoiceBox();
         staffRoleChoiceBox.getItems().addAll("Project manager","Project monitor");
         adminRoleChoiceBox.getItems().addAll("Project manager","Project monitor");
+        pjMangerChoiceBox.getItems().addAll(getProjectManager());
 
         displayWorkers();
 
@@ -571,9 +596,24 @@ public class AdminController extends Thread implements Initializable {
     @FXML
     protected void onAddProjectClicked(){
         project.setProjectName(validator.validateTextFields(pjNameError,pjNameField,NAME.toString(),"Project name",null));
-        project.setProjectOwner(validator.validateTextFields(pjNameError,pjNameField,NAME.toString(),"Project owner",null));
+        project.setProjectOwner(validator.validateTextFields(pjOwnerError,pjOwnerField,NAME.toString(),"Project owner",null));
         project.setStartingDate(validator.validateDatePicker(pjStartingDateError,pjStartingDatePicker,"Starting date"));
-        project.setStartingDate(validator.validateDatePicker(pjFinishingDateError,pjFinishingDatePicker,"Finishing date"));
+        project.setFinishingDate(validator.validateDatePicker(pjFinishingDateError,pjFinishingDatePicker,"Finishing date"));
+        project.setProjectLocation(validator.validateChoiceBox(pjLocationError,pjLocationChoiceBox,"Location"));
+        project.setProjectManager(validator.validateChoiceBox(pjDirectorError,pjMangerChoiceBox,"Project manager"));
+        project.setProjectDescription(validator.validateTextArea(pjDescriptionError,pjDescription,"Project Description"));
+        project.setProjectMonitor("NONE");
+        project.setProjectStatus("Pending");
+        project.setProjectProgress(0);
+
+        if(project.checkFields()) {
+            if(addProject(project)){
+                toast("Success","Project added successfully");
+            }else{
+                toast("Error","an error occured");
+            }
+        }
+
     }
 
 
@@ -598,15 +638,7 @@ public class AdminController extends Thread implements Initializable {
 
     @FXML
     protected  void  onDeleteWorker(){
-        if(workersTable.getSelectionModel().getSelectedItem() !=null){
-            displayModal("Risky","are you sure you want to delete PAN"+workersTable.getSelectionModel().getSelectedItem().getId(),"DELETE");
-//            if(deleteWorker(workersTable.getSelectionModel().getSelectedItem().getId())) {
-//                System.out.println("deleted");
-//                employeesList.setAll(new Employees[]{});
-//                displayWorkers();
-//                switchPane(2);
-//            }
-        }
+        if(workersTable.getSelectionModel().getSelectedItem() !=null) displayModal("Risky","are you sure you want to delete PAN"+workersTable.getSelectionModel().getSelectedItem().getId(),"DELETE");
     }
 
     @FXML
@@ -874,6 +906,48 @@ public class AdminController extends Thread implements Initializable {
         }
     }
 
+    public boolean addProject(Project project){
+        if(databaseConnection.dbConnect()){
+            String ADD_PROJECT = "INSERT INTO projects(" +
+                    "project_name," +
+                    "project_owner," +
+                    "project_location," +
+                    "project_manger," +
+                    "project_monitor," +
+                    "project_description," +
+                    "project_status," +
+                    "project_progress," +
+                    "starting_date," +
+                    "finishing_date" +
+                    ") VALUES(?,?,?,?,?,?,?,?,?,?)";
+
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(ADD_PROJECT);
+                preparedStatement.setString(1,project.getProjectName());
+                preparedStatement.setString(2,project.getProjectOwner());
+                preparedStatement.setString(3,project.getProjectLocation());
+                preparedStatement.setString(4,project.getProjectManager());
+                preparedStatement.setString(5,project.getProjectMonitor());
+                preparedStatement.setString(6,project.getProjectDescription());
+                preparedStatement.setString(7,project.getProjectStatus());
+                preparedStatement.setInt(8,project.getProjectProgress());
+                preparedStatement.setDate(9, Date.valueOf(project.getStartingDate()));
+                preparedStatement.setDate(10, Date.valueOf(project.getFinishingDate()));
+
+
+                int upd =0;
+                upd = preparedStatement.executeUpdate();
+                if(upd !=0) {
+                    System.out.println("Project added successfully");
+                    return true;
+                }
+            }catch (SecurityException | SQLException se){
+                se.printStackTrace();
+            }
+        }
+
+        return false;
+    }
     public void displayWorker(Integer id){
         Employees employees = new Employees();
         if(databaseConnection.dbConnect()){
@@ -926,5 +1000,25 @@ public class AdminController extends Thread implements Initializable {
             }
         }
         return false;
+    }
+
+    public List getProjectManager(){
+        ArrayList projectMangerList = new ArrayList();
+        if(databaseConnection.dbConnect()){
+            String GET_PROJECT_MANAGERS = "SELECT id FROM workers WHERE role = ?";
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(GET_PROJECT_MANAGERS);
+                preparedStatement.setString(1,"Project manager");
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()){
+                    Integer manager = resultSet.getInt("id");
+                    projectMangerList.add("PAN"+manager);
+                    System.out.println(manager);
+                }
+            }catch (SecurityException | SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return projectMangerList;
     }
 }
