@@ -1219,6 +1219,37 @@ public class AdminController extends Thread implements Initializable {
         return result;
     }
 
+    public boolean updateProjectDetails(int projectId){
+        if(databaseConnection.dbConnect()){
+            int upd =0;
+            String UPDATE_PROJECT_DETAILS = "UPDATE projects " +
+                    "SET project_name = ?," +
+                    "project_owner = ?," +
+                    "project_location = ?," +
+                    "project_manger = ?," +
+                    "project_description = ?," +
+                    "starting_date = ?," +
+                    "finishing_date = ?, " +
+                    " WHERE  PROJECT_ID  = ?";
+            try {
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(UPDATE_PROJECT_DETAILS);
+                preparedStatement.setString(1,project.getProjectName());
+                preparedStatement.setString(2,project.getProjectOwner());
+                preparedStatement.setString(3,project.getProjectLocation());
+                preparedStatement.setString(4,project.getProjectManager());
+                preparedStatement.setString(5,project.getProjectDescription());
+                preparedStatement.setDate(6, Date.valueOf(project.getStartingDate()));
+                preparedStatement.setDate(7, Date.valueOf(project.getFinishingDate()));
+                preparedStatement.setInt(8,projectId);
+                upd = preparedStatement.executeUpdate();
+                if(upd !=0) return true;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
+    }
+
 
 
 }
