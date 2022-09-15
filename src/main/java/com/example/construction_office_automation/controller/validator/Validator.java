@@ -147,4 +147,15 @@ public class Validator {
         }
         return null;
     }
+
+//   FUNCTION TO VALIDATE TEXTAREA
+
+    public String validateTextArea (Label errorMessage,TextArea textArea,String textAreaName){
+        if(textArea.getText().trim().length() < 20) errorMessage.setText(textAreaName+" must be at least 20 characters");
+        else{
+            errorMessage.setText("");
+            return textArea.getText();
+        }
+        return null;
+    }
 }
