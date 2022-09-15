@@ -16,6 +16,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -171,6 +175,13 @@ public class AdminController extends Thread implements Initializable {
             genderError;
     ;
 
+    @FXML
+
+    private Label
+            pjName,
+            pjStatus,
+            projectProgress;
+
 
     @FXML
 
@@ -320,12 +331,26 @@ public class AdminController extends Thread implements Initializable {
 
     private TextArea pjDescription;
 
+    @FXML
+
+    private ProgressBar projectProgressBar;
 
 
 //  NOTIFICATION CONTAINER
 
     @FXML
     private AnchorPane notificationContainer;
+
+    @FXML
+
+    private LineChart projectsChart;
+
+    @FXML
+    private CategoryAxis  projectMonthAxis;
+
+    @FXML
+    private NumberAxis projectMonthNumberAxis;
+
 
     final FileChooser fileChooser = new FileChooser();
 
@@ -453,6 +478,12 @@ public class AdminController extends Thread implements Initializable {
                     switchPane(6);
                     displayWorker(workersTable.getSelectionModel().getSelectedItem().getId());
             }else workersTable.getSelectionModel().clearSelection();
+        });
+        projectTable.setOnMouseClicked(e->{
+            if(projectTable.getSelectionModel().getSelectedIndex() != -1) {
+                switchPane(7);
+                displayProject((int) projectTable.getSelectionModel().getSelectedItem().getProjectId());
+            }else projectTable.getSelectionModel().clearSelection();
         });
 
 
@@ -1064,5 +1095,47 @@ public class AdminController extends Thread implements Initializable {
 
             projectTable.setItems(projectList);
         }
+    }
+    public void displayProject(int id){
+        if(databaseConnection.dbConnect()){
+            String GET_PROJECT = "SELECT * FROM projects WHERE project_id = ?";
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(GET_PROJECT);
+                preparedStatement.setInt(1,id);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if(resultSet.next()){
+                    project.setProjectName(resultSet.getString("project_name"));
+                    project.setProjectOwner(resultSet.getString("project_owner"));
+                    project.setProjectLocation(resultSet.getString("project_location"));
+                    project.setProjectManager(resultSet.getString("project_manger"));
+                    project.setProjectDescription(resultSet.getString("project_description"));
+                    project.setProjectStatus(resultSet.getString("project_status"));
+                    project.setStartingDate(LocalDate.parse(resultSet.getDate("starting_date").toString()));
+                    project.setFinishingDate(LocalDate.parse(resultSet.getDate("finishing_date").toString()));
+                    project.setProjectProgress(resultSet.getInt("project_progress"));
+                }
+            }catch (SQLException e) {
+            throw new RuntimeException(e);
+            }
+            System.out.println(project.getStartingDate().getMonth());
+            pjName.setText(project.getProjectName());
+                    pjStatus.setText(project.getProjectStatus());
+                    projectProgress.setText(project.getProjectProgress()+"%");
+        }
+    }
+
+    public Long getTotalPorject(){
+        long result =0L;
+        if(databaseConnection.dbConnect()){
+            String COUNT_WORKERS = "SELECT COUNT(*) as toal FROM projects";
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(COUNT_WORKERS);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if(resultSet.next()) result = resultSet.getInt("total");
+            }catch (SQLException | SecurityException se){
+                se.printStackTrace();
+            }
+        }
+        return result;
     }
 }
