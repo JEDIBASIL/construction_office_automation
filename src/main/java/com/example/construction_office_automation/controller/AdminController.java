@@ -35,6 +35,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -192,6 +193,8 @@ public class AdminController extends Thread implements Initializable {
             tableAge,
             tableGender;
 
+    ObservableList<Employees> employeesList = FXCollections.observableArrayList();
+
     @FXML
 
     private TableView<Project> projectTable;
@@ -211,7 +214,9 @@ public class AdminController extends Thread implements Initializable {
             pjStatusCol,
             pjProgressCol;
 
-    ObservableList<Employees> employeesList = FXCollections.observableArrayList();
+    ObservableList<Project> projectList = FXCollections.observableArrayList();
+
+
 
     @FXML
 //   TEXT FIELDS
@@ -358,6 +363,7 @@ public class AdminController extends Thread implements Initializable {
         pjMangerChoiceBox.getItems().addAll(getProjectManager());
 
         displayWorkers();
+        displayProjects();
 
 //      ADDING GENDER TO A TOGGLE GROUP
 
@@ -609,6 +615,8 @@ public class AdminController extends Thread implements Initializable {
         if(project.checkFields()) {
             if(addProject(project)){
                 toast("Success","Project added successfully");
+                displayProjects();
+                switchPane(1);
             }else{
                 toast("Error","an error occured");
             }
@@ -1013,12 +1021,48 @@ public class AdminController extends Thread implements Initializable {
                 while (resultSet.next()){
                     Integer manager = resultSet.getInt("id");
                     projectMangerList.add("PAN"+manager);
-                    System.out.println(manager);
                 }
             }catch (SecurityException | SQLException se){
                 se.printStackTrace();
             }
         }
         return projectMangerList;
+    }
+
+    public void displayProjects(){
+        if(databaseConnection.dbConnect()){
+            String GET_ALL_PROJECTS = "SELECT * FROM projects";
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(GET_ALL_PROJECTS);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while(resultSet.next()){
+                    projectList.add(new Project(
+                            resultSet.getInt("project_id"),
+                            resultSet.getString("project_name"),
+                            resultSet.getString("project_owner"),
+                            LocalDate.parse(resultSet.getDate("starting_date").toString()),
+                            LocalDate.parse(resultSet.getDate("finishing_date").toString()),
+                            resultSet.getString("project_location"),
+                            resultSet.getString("project_manger"),
+                            resultSet.getString("project_status"),
+                            resultSet.getInt("project_progress")
+                    ));
+                }
+            }catch (SQLException | SecurityException se){
+                se.printStackTrace();
+            }
+
+            pjIdCol.setCellValueFactory(new PropertyValueFactory<>("projectId"));
+            pjNameCol.setCellValueFactory(new PropertyValueFactory<>("projectName"));
+            pjOwnerCol.setCellValueFactory(new PropertyValueFactory<>("projectOwner"));
+            pjStartingCol.setCellValueFactory(new PropertyValueFactory<>("startingDate"));
+            pjFinishingCol.setCellValueFactory(new PropertyValueFactory<>("finishingDate"));
+            pjLocationCol.setCellValueFactory(new PropertyValueFactory<>("projectLocation"));
+            pjManagerCol.setCellValueFactory(new PropertyValueFactory<>("projectManager"));
+            pjStatusCol.setCellValueFactory(new PropertyValueFactory<>("projectStatus"));
+            pjProgressCol.setCellValueFactory(new PropertyValueFactory<>("projectProgress"));
+
+            projectTable.setItems(projectList);
+        }
     }
 }

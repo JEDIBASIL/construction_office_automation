@@ -17,6 +17,20 @@ public class Project {
     private LocalDate startingDate;
     private LocalDate finishingDate;
 
+    public  Project(){}
+
+    public Project(long projectId,String projectName,String projectOwner,LocalDate startingDate,LocalDate finishingDate,String projectLocation,String projectManager,String projectStatus,int projectProgress){
+        this.projectId =projectId;
+        this.projectName = projectName;
+        this.projectOwner = projectOwner;
+        this.startingDate = startingDate;
+        this.finishingDate = finishingDate;
+        this.projectLocation = projectLocation;
+        this.projectManager = projectManager;
+        this.projectStatus = projectStatus;
+        this.projectProgress = projectProgress;
+    }
+
     public boolean checkFields(){
         if(
             getProjectName() !=null &&
