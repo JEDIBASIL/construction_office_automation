@@ -176,12 +176,21 @@ public class AdminController extends Thread implements Initializable {
     ;
 
     @FXML
-
+//  PROJECT LABEL
     private Label
             pjName,
             pjStatus,
             projectProgress;
 
+    @FXML
+
+//  STATICSTICS LABEL
+
+    private Label
+            totalProjects,
+            completedProject,
+            ongoingProject,
+            pendingProject;
 
     @FXML
 
@@ -289,13 +298,21 @@ public class AdminController extends Thread implements Initializable {
 
     //  PROJECT LOCATION CHOICEBOX
 
-    private ChoiceBox staffRoleChoiceBox, pjMangerChoiceBox, departmentChoiceBox,editDepartmentChoiceBox;
+    private ChoiceBox
+            staffRoleChoiceBox,
+            pjMangerChoiceBox,
+            departmentChoiceBox,
+            editDepartmentChoiceBox,
+            editPjLocationChoiceBox,
+            editPjManager
+                    ;
 
     @FXML
 
 //  ADD ADMIN ROLE CHOICEBOX
 
-    private ChoiceBox adminRoleChoiceBox;
+    private ChoiceBox
+            adminRoleChoiceBox;
 
 
     @FXML
@@ -325,7 +342,12 @@ public class AdminController extends Thread implements Initializable {
 
     @FXML
 
-    private DatePicker pjFinishingDatePicker,pjStartingDatePicker;
+    private DatePicker
+            pjFinishingDatePicker,
+            pjStartingDatePicker,
+            editPjStartingDatePicker,
+            editPjFinishingDatePicker
+    ;
 
     @FXML
 
@@ -386,6 +408,12 @@ public class AdminController extends Thread implements Initializable {
         staffRoleChoiceBox.getItems().addAll("Project manager","Project monitor");
         adminRoleChoiceBox.getItems().addAll("Project manager","Project monitor");
         pjMangerChoiceBox.getItems().addAll(getProjectManager());
+        editPjManager.getItems().addAll(getProjectManager());
+
+        totalProjects.setText(getTotalPorject()+"");
+        completedProject.setText(getTotalPorject("Completed")+"");
+        ongoingProject.setText(getTotalPorject("Ongoing")+"");
+        pendingProject.setText(getTotalPorject("Pending")+"");
 
         displayWorkers();
         displayProjects();
@@ -422,8 +450,6 @@ public class AdminController extends Thread implements Initializable {
         settingsTabLink.setOnMouseClicked(event -> {
             switchPane(3);
             switchActiveLink(sideBarLinks,settingsTabLink);
-            displayModal("Hello world","it fells good to be on earth",null);
-
         });
 //       >>>
 
@@ -547,6 +573,7 @@ public class AdminController extends Thread implements Initializable {
     // FUNCTION TO ADD DATA TO DEPARTMENT CHOICEBOX
     public void setLocationChoiceBox(){
         pjLocationChoiceBox.getItems().addAll(getLocations());
+        editPjLocationChoiceBox.getItems().addAll(getLocations());
     }
 
 // FUNCTION TO DISPLAY MODAL
@@ -586,7 +613,7 @@ public class AdminController extends Thread implements Initializable {
         }else{
             modalYesOption.setMaxWidth(150);
             modalYesOption.setVisible(true);
-            modalYesOption.setText(type);
+            modalYesOption.setText(type.toLowerCase());
         }
     }
 
@@ -600,7 +627,7 @@ public class AdminController extends Thread implements Initializable {
                 .hideAfter(Duration.seconds(3))
                 .position(Pos.TOP_LEFT)
                 ;
-        notificationsBuilder.showInformation();
+        notificationsBuilder.showConfirm();
     }
 
     @FXML
@@ -681,15 +708,28 @@ public class AdminController extends Thread implements Initializable {
     }
 
     @FXML
+    protected void  onTerminateProject(){
+        if(projectTable.getSelectionModel().getSelectedItem() !=null) displayModal("Risky","are you sure you want to terminate "+projectTable.getSelectionModel().getSelectedItem().getProjectName(),"TERMINATE");
+
+    }
+
+    @FXML
 
     protected void onTerminateBtnClick(){
         displayModal(null);
-        if(modalYesOption.getText().equals("DELETE")){
+        if(modalYesOption.getText().equals("DELETE".toLowerCase())){
             if(deleteWorker(workersTable.getSelectionModel().getSelectedItem().getId())) {
                 toast("Success", "worker deleted");
                 employeesList.setAll(new Employees[]{});
                 displayWorkers();
                 switchPane(2);
+            }
+        } else if(modalYesOption.getText().equals("TERMINATE".toLowerCase())){
+            if(terminateProject((int) projectTable.getSelectionModel().getSelectedItem().getProjectId())) {
+                toast("Success", "project terminated");
+                projectList.setAll(new Project[]{});
+                displayProjects();
+                switchPane(1);
             }
         }
     }
@@ -1096,6 +1136,22 @@ public class AdminController extends Thread implements Initializable {
             projectTable.setItems(projectList);
         }
     }
+
+    public boolean terminateProject(Integer id){
+        if(databaseConnection.dbConnect()){
+            String TERMINATE_PROJECT = "DELETE FROM projects WHERE project_id =?";
+            try {
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(TERMINATE_PROJECT);
+                preparedStatement.setInt(1,id);
+                int terminate = preparedStatement.executeUpdate();
+                if(terminate !=0) return true;
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
+    }
     public void displayProject(int id){
         if(databaseConnection.dbConnect()){
             String GET_PROJECT = "SELECT * FROM projects WHERE project_id = ?";
@@ -1117,17 +1173,26 @@ public class AdminController extends Thread implements Initializable {
             }catch (SQLException e) {
             throw new RuntimeException(e);
             }
-            System.out.println(project.getStartingDate().getMonth());
             pjName.setText(project.getProjectName());
-                    pjStatus.setText(project.getProjectStatus());
-                    projectProgress.setText(project.getProjectProgress()+"%");
+            pjStatus.setText(project.getProjectStatus());
+            editPjNameField.setText(project.getProjectName());
+            editPjOwnerField.setText(project.getProjectName());
+            projectProgress.setText(project.getProjectProgress()+"%");
+            editPjLocationChoiceBox.setValue(project.getProjectLocation());
+            editPjStartingDatePicker.setValue(project.getStartingDate());
+            editPjFinishingDatePicker.setValue(project.getFinishingDate());
+            editPjManager.setValue(project.getProjectManager());
+            projectProgressBar.setProgress(Double.parseDouble("0."+project.getProjectProgress()));
+            if(!project.getProjectStatus().equals("Pending")){
+                editPjStartingDatePicker.setDisable(true);
+            }
         }
     }
 
     public Long getTotalPorject(){
         long result =0L;
         if(databaseConnection.dbConnect()){
-            String COUNT_WORKERS = "SELECT COUNT(*) as toal FROM projects";
+            String COUNT_WORKERS = "SELECT COUNT(*) as total FROM projects";
             try{
                 PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(COUNT_WORKERS);
                 ResultSet resultSet = preparedStatement.executeQuery();
@@ -1138,4 +1203,22 @@ public class AdminController extends Thread implements Initializable {
         }
         return result;
     }
+    public Long getTotalPorject(String status){
+        long result =0L;
+        if(databaseConnection.dbConnect()){
+            String COUNT_WORKERS = "SELECT COUNT(*) as total FROM projects WHERE project_status = ?";
+            try{
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(COUNT_WORKERS);
+                preparedStatement.setString(1,status);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if(resultSet.next()) result = resultSet.getInt("total");
+            }catch (SQLException | SecurityException se){
+                se.printStackTrace();
+            }
+        }
+        return result;
+    }
+
+
+
 }
