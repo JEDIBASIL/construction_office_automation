@@ -13,10 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +30,8 @@ public class LoginController implements Initializable {
     private Stage stage;
 
     private Scene scene;
+    @FXML
+    private VBox loginAlert;
 
     AdminController adminController = new AdminController();
 
@@ -53,8 +53,10 @@ public class LoginController implements Initializable {
 
 //   ERROR LABELS
 
-    private Label loginUsernameError,loginPasswordError;
+    private Label loginUsernameError,loginPasswordError,alertText;
 
+    @FXML
+     private Button loginBtn;
 
     DatabaseConnection databaseConnection = new DatabaseConnection();
     Session session = new Session();
@@ -63,14 +65,21 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        loginAlert.setVisible(false);
+        loginBtn.setOnAction(e->{
+           onLogin(e);
+        });
     }
 
-    public  void switchSence(ActionEvent event, String fxml){
+    public  void switchSence(ActionEvent event, String fxml,Session session1){
 
         try{
-            Parent pane = FXMLLoader.load(HelloApplication.class.getResource(fxml));
+            FXMLLoader pane = new FXMLLoader(HelloApplication.class.getResource(fxml));
             stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(pane, 1200, 700);
+            Scene scene = new Scene(pane.load(), 1200, 700);
+            AdminController adminController1 = pane.getController();
+            adminController1.getLoggedUser(session1);
             stage.setScene(scene);
             if(fxml.equals("admin-dashboard.fxml")){
                 stage.setResizable(true);
@@ -82,26 +91,28 @@ public class LoginController implements Initializable {
 
     @FXML
 
-    protected  void onLoginClicked(ActionEvent event){
-        System.out.println("clicked");
-        System.out.println(decryptPassword.DecryptPassword("ĐĉĘĘġĕč"));
+    protected  boolean onLogin(ActionEvent event){
         Validator validator = new Validator();
         Session session = new Session();
         session.setUsername(validator.validateTextFields(loginUsernameError,loginusernamField,NAME.toString(),"Username",null));
         session.setPassword(validator.validatePasswordFields(loginPasswordError,loginPasswordField,null,"Password",null));
 
         if(session.isLoggedIn()){
-            System.out.println(session.getUsername());
-            System.out.println(session.getPassword());
            if(confirmUsername(session)){
-               System.out.println("Found");
-               System.out.println(session.getRole());
-               if(session.getRole() != null && session.getRole().equals("Project executive")) switchSence(event,"admin-dashboard.fxml");
-               if(session.getRole() != null && session.getRole().equals("Project director")) switchSence(event,"project-manager.fxml");
-               if(session.getRole() != null && session.getRole().equals("Project manager")) switchSence(event,"project-manger.fxml");
-           }else System.out.println("Not found");
+               loginAlert.setVisible(true);
+               loginAlert.setVisible(true);
+               alertText.setText("Verified");
+               if(session.getRole() != null) switchSence(event,"admin-dashboard.fxml",session);
+               return true;
+           }else {
+               loginAlert.setVisible(true);
+               alertText.setText("Password or Username is incorrect");
+               loginAlert.getStyleClass().add("error-alert");
+               return false;
+           }
         }
 
+        return false;
     }
 
     public boolean confirmUsername(Session session){
@@ -114,6 +125,8 @@ public class LoginController implements Initializable {
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if(resultSet.next()) {
                    session.setRole( resultSet.getString("role"));
+                   session.setId(resultSet.getString("employee_id"));
+                   session.setEmail(resultSet.getString("email"));
                     return true;
                 }
             }catch (SecurityException | SQLException se){

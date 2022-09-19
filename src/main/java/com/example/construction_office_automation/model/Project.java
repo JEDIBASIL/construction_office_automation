@@ -31,21 +31,51 @@ public class Project {
         this.projectProgress = projectProgress;
     }
 
-    public boolean checkFields(){
+    @Override
+    public String toString() {
+        return "Project{" +
+                "projectId=" + projectId +
+                ", projectName='" + projectName + '\'' +
+                ", projectOwner='" + projectOwner + '\'' +
+                ", projectLocation='" + projectLocation + '\'' +
+                ", projectManager='" + projectManager + '\'' +
+                ", projectMonitor='" + projectMonitor + '\'' +
+                ", projectDescription='" + projectDescription + '\'' +
+                ", projectStatus='" + projectStatus + '\'' +
+                ", projectProgress=" + projectProgress +
+                ", startingDate=" + startingDate +
+                ", finishingDate=" + finishingDate +
+                '}';
+    }
+
+    public boolean checkFields() {
+        if (
+                getProjectName() != null &&
+                        getProjectOwner() != null &&
+                        getProjectLocation() != null &&
+                        getProjectManager() != null &&
+                        getProjectMonitor() != null &&
+                        getProjectDescription() != null &&
+                        getProjectStatus() != null &&
+                        getStartingDate() != null &&
+                        getFinishingDate() != null
+        ) return true;
+    return false;
+    }
+
+    public boolean checkFields(String checkType){
         if(
             getProjectName() !=null &&
             getProjectOwner() !=null &&
             getProjectLocation() !=null &&
             getProjectManager() !=null &&
-            getProjectMonitor() !=null &&
-            getProjectDescription() !=null &&
-            getProjectStatus() !=null &&
             getStartingDate() !=null &&
             getFinishingDate() !=null
         )return true;
 
         return false;
     }
+
 
     public long getProjectId() {
         return projectId;

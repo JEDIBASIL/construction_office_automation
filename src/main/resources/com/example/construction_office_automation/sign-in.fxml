@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="519.0" styleClass="form-container" stylesheets="@styles/sign-in.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.construction_office_automation.controller.LoginController">
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="520.0" styleClass="form-container" stylesheets="@styles/sign-in.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.construction_office_automation.controller.LoginController">
    <children>
       <VBox alignment="CENTER" prefHeight="91.0" prefWidth="356.0" spacing="10.0">
          <children>
@@ -44,7 +44,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox prefHeight="347.0" prefWidth="334.0" spacing="10.0">
+      <VBox prefHeight="391.0" prefWidth="334.0" spacing="10.0">
          <children>
             <VBox prefHeight="92.0" prefWidth="334.0" styleClass="form-content">
                <children>
@@ -70,7 +70,16 @@
             </VBox>
             <VBox layoutX="10.0" layoutY="112.0" prefHeight="56.0" prefWidth="334.0" styleClass="form-content">
                <children>
-                  <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#onLoginClicked" prefHeight="42.0" prefWidth="334.0" text="Sign in" VBox.vgrow="ALWAYS" />
+                  <Button fx:id="loginBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="334.0" text="Sign in" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <VBox fx:id="loginAlert" alignment="CENTER" fillWidth="false" prefHeight="91.0" prefWidth="334.0" styleClass="success-alert">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="321.0">
+                     <children>
+                        <Label fx:id="alertText" text="Verified" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>

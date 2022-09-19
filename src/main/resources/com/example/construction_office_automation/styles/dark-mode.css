@@ -1,6 +1,6 @@
 .side-bar {
-    /* -fx-background-color: rgb(52, 54, 61); */
-    -fx-background-color: rgb(52, 54, 61);
+    /* -fx-background-color: rgb(20,21,23); */
+    -fx-background-color: rgb(20,21,23);
     /*  -fx-border-color: rgb(53, 55, 55); */
     -fx-border-color: rgb(53, 55, 55);
 }
@@ -15,12 +15,12 @@
   }
 
 .menu .label {
-    -fx-text-fill:gainsboro;
+    -fx-text-fill:rgb(247, 247, 247);
 }
 
 .top-bar {
     /* -fx-background-color: rgb(244, 246, 250); */
-    -fx-background-color: rgb(52, 54, 61);
+    -fx-background-color: rgb(20,21,23);
      -fx-border-color: rgb(53, 55, 55);
      -fx-border-color: rgb(53, 55, 55);
     /*  */
@@ -38,13 +38,13 @@
 }
 
 .white {
-    -fx-background-color: rgb(33, 37, 42);
+    -fx-background-color: rgb(31,32,38);
 }
 
 .scroll-bar:horizontal,
 .scroll-bar:vertical {
-    -fx-background-color: rgb(52, 54, 61);
-    -fx-background-color: rgb(26, 27, 30);
+    -fx-background-color: rgb(20,21,23);
+    -fx-background-color: rgb(31,32,38);
 
 }
 
@@ -55,7 +55,7 @@
 }
 
 .overview-container .overview-card {
-    -fx-background-color: rgb(52, 54, 61);
+    -fx-background-color: rgb(20,21,23);
      -fx-border-color: rgb(53, 55, 55);
 }
 
@@ -68,17 +68,17 @@
 }
 
 .quick-action-container,.chart-container {
-    -fx-background-color: rgb(52, 54, 61);
+    -fx-background-color: rgb(20,21,23);
      -fx-border-color: rgb(53, 55, 55);
 }
 .quick-action-container .content {
-    -fx-background-color: rgb(52, 54, 61);
+    -fx-background-color: rgb(20,21,23);
   
 }
 
 
 .quick-action-container .content:hover {
-    -fx-background-color: rgb(52, 54, 61);
+    -fx-background-color: rgb(20,21,23);
 }
 
 .quick-action-container .content .card {
@@ -89,7 +89,7 @@
 
 
 .upcoming-project-container {
-    -fx-background-color: rgb(52, 54, 61);
+    -fx-background-color: rgb(20,21,23);
      -fx-border-color: rgb(53, 55, 55);
 }
 
@@ -101,12 +101,12 @@
 
 
 .display_workers-details-card {
-    -fx-background-color: rgb(52, 54, 61);
+    -fx-background-color: rgb(20,21,23);
      -fx-border-color: rgb(53, 55, 55);
 }
 
 .form-container {
-    -fx-background-color: rgb(52, 54, 61);
+    -fx-background-color: rgb(20,21,23);
      -fx-border-color: rgb(53, 55, 55);
 }
 
@@ -135,7 +135,7 @@
 }
 
 .table-container {
-    -fx-background-color: rgb(52, 54, 61);
+    -fx-background-color: rgb(20,21,23);
      -fx-border-color: rgb(53, 55, 55);
 }
 
@@ -177,7 +177,7 @@
 
 
 .chart-plot-background {
-    -fx-background-color: rgb(52, 54, 61);
+    -fx-background-color: rgb(20,21,23);
   }
 
 .chart-vertical-grid-lines {

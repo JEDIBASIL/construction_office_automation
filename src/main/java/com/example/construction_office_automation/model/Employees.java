@@ -116,6 +116,23 @@ public class Employees {
         this.imgUrl = imgUrl;
     }
 
+    @Override
+    public String toString() {
+        return "Employees{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", otherNames='" + otherNames + '\'' +
+                ", email='" + email + '\'' +
+                ", Department='" + Department + '\'' +
+                ", PhoneNumber=" + PhoneNumber +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", role='" + role + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                '}';
+    }
+
     public boolean validateFields(){
         if(
                getFirstName() != null
@@ -130,6 +147,8 @@ public class Employees {
                && getPhoneNumber() != 0
 
         ) return true;
+
+
 
         return false;
     }

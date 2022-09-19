@@ -15,7 +15,6 @@ public class DatabaseConnection {
     public boolean dbConnect(){
         try{
             connection = DriverManager.getConnection(jdbcUrl,"","panda");
-            System.out.println("connecting to database...");
             return true;
         }catch (SQLException se){
             se.printStackTrace();

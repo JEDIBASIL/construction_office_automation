@@ -1,6 +1,11 @@
 .logo{
     -fx-text-fill: rgb(84,84,208) !important;
 }
+.button {
+    -fx-alignment: CENTER;
+    -fx-cursor: HAND;
+    -fx-background-radius: 8 !important;
+  }
 
 .heading {
     -fx-font-family: "Arial Rounded MT Bold";
@@ -32,25 +37,43 @@
     -fx-text-fill: white;
 }
 
-.form-content .text-field {
+
+.form-content .label {
+    -fx-font-family: "Hiragino Sans W6";
+    -fx-font-size: 13;
+  }
+  
+  .form-content .text-field {
     -fx-background-color: transparent;
-    -fx-border-color: gainsboro;
-    -fx-border-radius: 3;
+    -fx-border-color: rgb(177, 177, 177);
+    -fx-border-radius: 8;
     -fx-border-width: 1;
     -fx-font-size: 14;
     -fx-pref-height: 42;
     -fx-effect: none;
-}
-
-.form-content .text-field:focused {
-    -fx-border-color: rgb(84,84,208);
+  }
+  
+  .form-content .text-area {
+    -fx-background-color: transparent;
+    -fx-border-color: rgb(177, 177, 177);
+    -fx-border-radius: 3;
+    -fx-border-width: 1;
+    -fx-font-size: 14;
+    -fx-pref-height: 120;
+    -fx-effect: none;
+  }
+  
+  .form-content .text-field:focused,
+  .form-content .text-area:focused {
+    -fx-border-color: rgb(74,72,150);
     -fx-border-width: 2;
-}
-
-.form-content .error-message {
+  }
+  
+  .error-message {
     -fx-text-fill: crimson;
-    -fx-font-size: 10;
-}
+    -fx-font-family: "Hiragino Sans W7";
+    -fx-font-size: 11 !important;
+  }
 
 .button {
     -fx-text-fill: white;
@@ -64,4 +87,22 @@
 .img-container{
     -fx-background-color: rgb(84,84,208);
     /* -fx-background-color: whitesmoke; */
+}
+
+
+
+.success-alert .label{
+    -fx-text-fill: white;
+    -fx-font-family: "Hiragino Sans W7";
+    -fx-font-size: 16 !important;
+}
+
+.success-alert{
+    -fx-background-color:rgba(20, 220, 40, 0.604);
+    -fx-background-radius:5;
+    -fx-padding:20;
+}
+
+.error-alert{
+    -fx-background-color:rgba(220, 20, 60, 0.353);
 }

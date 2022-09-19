@@ -19,18 +19,16 @@ public class HelloApplication extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
 
-        if(file.exists()) fxmlLoader.setLocation(HelloApplication.class.getResource("admin-dashboard.fxml"));
+        if(file.exists()) fxmlLoader.setLocation(HelloApplication.class.getResource("sign-in.fxml"));
         else fxmlLoader.setLocation(HelloApplication.class.getResource("sign-up.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
+        Scene scene = new Scene(fxmlLoader.load(), 520, 610);
         stage.setTitle("Hello!");
-        System.out.println(scene.getRoot());
         stage.setScene(scene);
         Image icon = new Image(String.valueOf(HelloApplication.class.getResource("ICONS/icons8-verified_account.png")));
         stage.getIcons().add(icon);
 
         stage.show();
-        System.out.println(stage);
 
 
     }

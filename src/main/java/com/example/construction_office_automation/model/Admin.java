@@ -5,8 +5,18 @@ public class Admin {
     private String username;
     private String email;
     private String role;
+    private String status;
 
     private String password;
+
+    public Admin(){}
+    public Admin(String username,String email,String id,String role,String status){
+        this.username = username;
+        this.email = email;
+        this.id = id;
+        this.role = role;
+        this.status = status;
+    }
 
     public String getPassword() {
         return password;
@@ -47,6 +57,14 @@ public class Admin {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public boolean validateFields(){
