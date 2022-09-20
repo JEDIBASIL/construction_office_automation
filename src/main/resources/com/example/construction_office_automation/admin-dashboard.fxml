@@ -757,7 +757,7 @@
                                                                                     <VBox prefHeight="94.0" prefWidth="419.0" styleClass="form-content">
                                                                                        <children>
                                                                                           <Label text="Old password" />
-                                                                                          <PasswordField>
+                                                                                          <PasswordField fx:id="oldPasswordField">
                                                                                              <VBox.margin>
                                                                                                 <Insets bottom="3.0" top="10.0" />
                                                                                              </VBox.margin>
@@ -768,7 +768,7 @@
                                                                                     <VBox layoutX="10.0" layoutY="70.0" prefHeight="94.0" prefWidth="423.0" styleClass="form-content">
                                                                                        <children>
                                                                                           <Label text="New password" />
-                                                                                          <PasswordField>
+                                                                                          <PasswordField fx:id="newPasswordField">
                                                                                              <VBox.margin>
                                                                                                 <Insets bottom="3.0" top="10.0" />
                                                                                              </VBox.margin>
@@ -779,7 +779,7 @@
                                                                                     <VBox layoutX="10.0" layoutY="265.0" prefHeight="94.0" prefWidth="421.0" styleClass="form-content">
                                                                                        <children>
                                                                                           <Label text="Confirm new password" />
-                                                                                          <PasswordField prefWidth="379.0">
+                                                                                          <PasswordField fx:id="confirmPasswordField" prefWidth="379.0">
                                                                                              <VBox.margin>
                                                                                                 <Insets bottom="3.0" top="10.0" />
                                                                                              </VBox.margin>
@@ -789,7 +789,7 @@
                                                                                     </VBox>
                                                                                     <HBox prefHeight="63.0" prefWidth="421.0">
                                                                                        <children>
-                                                                                          <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="200.0" styleClass="add-worker-btn" text="Change">
+                                                                                          <Button mnemonicParsing="false" onAction="#onChangePasswordClicked" prefHeight="37.0" prefWidth="200.0" styleClass="add-worker-btn" text="Change">
                                                                                              <HBox.margin>
                                                                                                 <Insets top="10.0" />
                                                                                              </HBox.margin>
@@ -1397,6 +1397,11 @@
                                                       </VBox>
                                                    </children>
                                                 </VBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox layoutX="40.0" layoutY="40.0" prefHeight="131.0" prefWidth="912.0" spacing="10.0" styleClass="table-container">
+                                             <children>
+                                                <VBox prefHeight="297.0" prefWidth="854.0" spacing="10.0" styleClass="project-container" />
                                              </children>
                                           </VBox>
                                           <VBox layoutX="40.0" layoutY="40.0" prefHeight="674.0" prefWidth="912.0" spacing="10.0" styleClass="table-container">

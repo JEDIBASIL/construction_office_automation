@@ -302,6 +302,10 @@ public class AdminController extends Thread implements Initializable {
 //  PROJECT LOCATION CHOICEBOX
 
     private ChoiceBox pjLocationChoiceBox;
+
+    @FXML
+
+    private PasswordField oldPasswordField,newPasswordField,confirmPasswordField;
     @FXML
 
     //  PROJECT LOCATION CHOICEBOX
@@ -535,9 +539,12 @@ public class AdminController extends Thread implements Initializable {
 
         projectPaginationContainer.setOnMouseClicked(e -> {
             System.out.println("happy");
-            switchPane(7);
+            System.out.println("INDEX "+projectPagination.getCurrentPageIndex());
             displayProjects(projectPagination.getCurrentPageIndex() * 10L, 10);
         });
+
+        projectPagination.setOnKeyPressed(e-> displayProjects(projectPagination.getCurrentPageIndex() * 10L, 10));
+
 
 
     }
@@ -858,6 +865,23 @@ public class AdminController extends Thread implements Initializable {
                 setProjectsChart(Integer.parseInt(chartYearChoice.getValue() + ""));
             }
         }
+    }
+
+    @FXML
+    protected void onChangePasswordClicked(){
+        EncryptPassword encryptPassword = new EncryptPassword();
+        String adminPassword = validator.validatePasswordFields(oldPasswordError,oldPasswordField,null,"Password",null);
+        String adminNewPassword = validator.validatePasswordFields(newPasswordError,newPasswordField,null,"Password",null);
+        admin.setPassword(validator.validatePasswordFields(confirmNewPasswordError,confirmPasswordField,newPasswordField,"Password",CONFIRMATION.toString()));
+        if(admin.getPassword() !=null){
+            if(confirmPassword(Long.parseLong(loggedInUserId.getText()),adminPassword)){
+                if(changePassword(Long.parseLong(loggedInUserId.getText()),admin.getPassword()))
+                    toast("Message","your password has been changed");
+            }else{
+                displayModal("Error","wrong password",null);
+            }
+        }
+
     }
 
     @FXML
@@ -1407,12 +1431,13 @@ public class AdminController extends Thread implements Initializable {
     public Long getTotalProject(String status, long admin) {
         long result = 0L;
         if (databaseConnection.dbConnect()) {
-            String COUNT_WORKERS = "SELECT COUNT(*) as total FROM projects WHERE project_manger= ? OR project_monitor = ? AND project_status = ? ";
+            String COUNT_WORKERS = "SELECT COUNT(*) as total FROM projects WHERE  project_manger = ? AND project_status = ?  OR project_monitor = ? ";
             try {
                 PreparedStatement preparedStatement = DatabaseConnection.getConnection().prepareStatement(COUNT_WORKERS);
                 preparedStatement.setString(1, "PAN" + admin);
-                preparedStatement.setString(2, "PAN" + admin);
-                preparedStatement.setString(3, status);
+                preparedStatement.setString(2, status);
+                preparedStatement.setString(3, "PAN" + admin);
+
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) result = resultSet.getInt("total");
@@ -1583,5 +1608,39 @@ public class AdminController extends Thread implements Initializable {
         }
         return false;
     }
+
+    public boolean changePassword(Long id,String newPassword){
+        EncryptPassword encryptPassword = new EncryptPassword();
+        if(databaseConnection.dbConnect()){
+            String UPDATE_PASSWORD = "UPDATE admin SET password = ? WHERE employee_id = ?";
+            try {
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(UPDATE_PASSWORD);
+                preparedStatement.setString(1,encryptPassword.EncryptPassword(newPassword));
+                preparedStatement.setLong(2,id);
+                int upd = preparedStatement.executeUpdate();
+                if(upd !=0) return true;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
+    }
+    public boolean confirmPassword(Long id,String password){
+        EncryptPassword encryptPassword = new EncryptPassword();
+        if(databaseConnection.dbConnect()){
+            String CONFIRM_PASSWORD = "SELECT * FROM admin WHERE employee_id = ? AND password = ?";
+            try {
+                PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(CONFIRM_PASSWORD);
+                preparedStatement.setLong(1,id);
+                preparedStatement.setString(2,encryptPassword.EncryptPassword(password));
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if(resultSet.next()) return true;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
+    }
+
 
 }
